@@ -90,7 +90,7 @@
         <div v-else class="w-full h-96">
             <p class="flex flex-col justify-center text-center text-4xl mt-24">
                 <i class="fal fa-exclamation-circle text-orange-500"></i>
-                <span>Savatchaga buyurtmalar qo'shganingiz yo'q</span>
+                <span>Вы ничего добавли в корзину</span>
             </p>
         </div>
     </section>
