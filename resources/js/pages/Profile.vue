@@ -39,6 +39,12 @@
                             </p>
                         </div>
                     </div>
+                    <div class="flex justify-between bg-gray-100 rounded-sm mx-1 my-1">
+                        <p class="py-2 px-2">Баланс:</p>
+                    </div>
+                    <router-link :to="{name:'payStepOne', params: {id: $store.state.user.id}}" class="flex justify-between bg-orange-500 rounded-sm mx-1 my-1 text-md text-white hover:bg-orange-600 cursor-pointer">
+                        <button class="py-2 px-2">Пополнить лицовой счет</button>
+                    </router-link>
                     <article class="flex justify-between  rounded-sm  mx-1 my-1 items-center">
                         <input v-on:focus="$event.target.select()" class="w-5/6 outline-0" ref="generator" :value="'www.4ever.uz/register/' + $store.state.user.promo_code" id="generator"
                             type="text" readonly>
