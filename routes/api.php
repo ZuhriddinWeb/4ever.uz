@@ -18,6 +18,7 @@ use App\Http\Controllers\api\UniversalBonusController;
 use App\Http\Controllers\api\UserCardController;
 use App\Http\Controllers\StartBonusController;
 use App\Http\Controllers\MoneyController;
+use App\Http\Controllers\api\ViloyatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,7 +112,9 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
     Route::post('/user-card-save', [UserCardController::class, 'create']);
     Route::get('/user-cards/{id}', [UserCardController::class, 'index']);
     Route::get('/user-info/{id}', [UserController::class, 'info']);
-
+    Route::get('/viloyat', [ViloyatController::class, 'index']);
+    Route::get('/tuman/{id}', [ViloyatController::class, 'tuman']);
+    Route::get('/getPay', [ViloyatController::class, 'getPay']);
 
     
 });

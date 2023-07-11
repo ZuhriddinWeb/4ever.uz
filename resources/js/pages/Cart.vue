@@ -81,10 +81,17 @@
                     <p>В корзине: <span class="font-medium">{{ $store.state.cart.length }}</span> товара</p>
                     <p><span class="text-green-500 font-medium">{{ summa }}</span> <span class="font-medium">UZS</span></p>
                 </div>
-                <button @click="agreement(cart_user)"
+                <!-- <button @click="agreement(cart_user)"
                     class="border-b-2 border-orange-500 mx-4 text-xl hover:text-orange-500">
                     <i class="fal fa-handshake mx-2"></i>ОФОРМИТЬ
-                </button>
+                </button> -->
+                <router-link :to="{
+                    name: 'checkout',
+                    params: { id: store.state.user.id },
+                }" 
+                    class="border-b-2 border-orange-500 mx-4 text-xl hover:text-orange-500">
+                    <i class="fal fa-handshake mx-2"></i>ОФОРМИТЬ
+                </router-link>
             </article>
         </div>
         <div v-else class="w-full h-96">

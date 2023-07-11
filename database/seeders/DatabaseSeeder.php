@@ -81,6 +81,7 @@ class DatabaseSeeder extends Seeder
             [ 'name' => 'Ayollar uchun ',],
             [ 'name' => 'Erkaklar uchun',],            
         ]);
+       
         DB::table('statuses')->insert([
             [ 'status_name' => 'Участник',],
             [ 'status_name' => 'Клиент',],
@@ -127,6 +128,10 @@ class DatabaseSeeder extends Seeder
                 'period' => 6,
                 'prosent' => 10,
             ],
+        ]);
+        DB::table('pay_selects')->insert([
+            [ 'name' => 'Картой онлайн (UzCard, Humo)',],
+            [ 'name' => 'При получении (Наличными)',],            
         ]);
     }
 }

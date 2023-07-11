@@ -40,7 +40,12 @@ export default [
 			guard: 'auth',
 		},
 	},
-	
+	{
+		path: '/checkout/:id',
+		name:'checkout',
+		component: () => import('../pages/Checkout.vue'),
+		props: true,
+	},
 	{
 		path: '/payStepOne/:id',
 		component: () => import('../pages/PayStepOne.vue'),
