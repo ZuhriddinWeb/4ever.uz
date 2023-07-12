@@ -44,13 +44,22 @@ class OrdersController extends Controller
     public function create(Request $request)
     {
             $result = $request->all();
+            $order=$result['cart_user'][0];
             $summa = 0;
-                for ($i=0; $i <count($result) ; $i++) { 
-                    $summa+= $request[$i]['count']*$request[$i]['price'];
+                for ($i=0; $i <count($result['cart_user']) ; $i++) { 
+                    $summa+= $result['cart_user'][$i]['count']*$result['cart_user'][$i]['price'];
                 }
             $data = new Orders();
             $data->user_id = Auth::user()->id; 
+            $data->name = $result['name'];
+            $data->phone = $result['phone'];
+            $data->viloyat_id = $result['viloyat_id'];
+            $data->tuman_id = $result['tuman_id'];
+            $data->address = $result['address'];
+            $data->point = $result['point'];
+            $data->pay_id = $result['pay_id'];           
             $data->order_summa = $summa;
+
             $data->save();
 
         return response()->json([

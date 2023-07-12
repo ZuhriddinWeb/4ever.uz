@@ -16,8 +16,15 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('payment_id')->nullable();
-            $table->string('oreder_pay_image')->nullable();
+            $table->string('name');
+            $table->string('phone');
+            $table->integer('viloyat_id');
+            $table->integer('tuman_id');
+            $table->text('address');
+            $table->text('point');
+            $table->integer('pay_id');
+            // $table->integer('payment_id')->nullable();
+            // $table->string('oreder_pay_image')->nullable();
             $table->integer('order_check')->nullable();
             $table->integer('order_summa')->nullable();
             $table->timestamps();

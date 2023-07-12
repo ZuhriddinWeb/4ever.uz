@@ -41,10 +41,12 @@ export default [
 		},
 	},
 	{
-		path: '/checkout/:id',
+		path: '/checkout',
 		name:'checkout',
 		component: () => import('../pages/Checkout.vue'),
-		props: true,
+		meta: {
+			guard: 'auth',
+		},
 	},
 	{
 		path: '/payStepOne/:id',

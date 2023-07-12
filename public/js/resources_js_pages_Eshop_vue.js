@@ -226,7 +226,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.emit('open');
     }),
     "class": "inline-block no-underline hover:border-b-1 border-orange-500",
-    to: "/cart"
+    to: "/checkout"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.cart.length), 1 /* TEXT */)])];

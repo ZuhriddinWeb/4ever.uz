@@ -50,7 +50,7 @@
                     <!-- <button v-else @click="emit('open')" class="inline-block no-underline hover:text-black" href="#" :class="{ 'justify-end relative': $store.state.opened }">                   
                         <i class="fal fa-user-circle text-2xl"></i>
                     </button>  -->
-                    <router-link  @click="emit('open')" class="inline-block no-underline hover:border-b-1 border-orange-500 " to="/cart">                        
+                    <router-link  @click="emit('open')" class="inline-block no-underline hover:border-b-1 border-orange-500 " to="/checkout">                        
                         <i class="fal fa-cart-plus text-2xl pl-8 relative">
                             <span class="bg-rose-500 w-4 h-4 absolute rounded-full text-sm text-center text-white">
                                 {{ $store.state.cart.length }}

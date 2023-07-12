@@ -18,12 +18,12 @@ class OrdersObserver
     public function created(Orders $orders)
     {
         $result = request()->all();
-        
-        for($i=0;$i<count($result);$i++){
+        $order = $result['cart_user'][0];
+        for($i=0;$i<count($result['cart_user']);$i++){
             $data = new Orders_Products();
             $data->order_id = $orders['id'];
-            $data->product_id = $result[$i]['product_id'];
-            $data->count =  $result[$i]['count'];             
+            $data->product_id = $result['cart_user'][$i]['product_id'];
+            $data->count =  $result['cart_user'][$i]['count'];             
             $data->save();
         }
         return response()->json([
