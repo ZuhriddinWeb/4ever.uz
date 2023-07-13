@@ -9,10 +9,10 @@
             <div class="w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
                 <div class="flex justify-between md:w-2/3 lg:w-3/4 py-5 ">
                     <div class="w-5/6 mx-3 bg-gray-200">
-                        <img class="h-full w-full" v-bind:src="'/images/' + currentProduct?.images_product" />
+                        <img class="h-wull w-full" v-bind:src="'/images/' + currentProduct?.images_product" />
                     </div>
                 </div>
-                <div class="flex flex-col justify-between my-2 px-4 py-5 md:w-3/3 lg:w-1/4">
+                <div class="flex flex-col justify-between my-2 px-4 py-5 lg:w-1/4  md:w-2/3">
                     <article class="flex flex-col h-2/3 ">
                         <p class="text-gray-300">#{{ currentProduct.id }}</p>
                         <h3 class="text-2xl my-3">

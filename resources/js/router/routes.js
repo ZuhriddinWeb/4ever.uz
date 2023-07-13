@@ -52,8 +52,7 @@ export default [
 		path: '/payStepOne/:id',
 		component: () => import('../pages/PayStepOne.vue'),
 		name: 'payStepOne',
-		props: true,
-		
+		props: true,		
 	},
 	{
 		path: '/profile',

@@ -164,6 +164,7 @@
 import { reactive, onMounted, ref } from "vue";
 import Header from "../components/Header.vue";
 import store from "../store";
+import { useRouter } from 'vue-router'
 
 const user_id = defineProps(["id", "user_id"]);
 
@@ -190,9 +191,8 @@ axios.get(`viloyat`).then((res) => {
 
 })
 async function agreement() {
-    console.log(result);
     const { data } = await axios.post("order-save", result);
-    if (data.status == 200) {
+    if (data.status == 200 && result.pay_id==1) {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -202,7 +202,7 @@ async function agreement() {
         })
         axios.post("cart-clear");
 
-        router.push('profile')
+        router.push({name: 'payStepOne', params: {id: store.state.user.id}})
     }
 
 }

@@ -115,6 +115,7 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
     Route::get('/viloyat', [ViloyatController::class, 'index']);
     Route::get('/tuman/{id}', [ViloyatController::class, 'tuman']);
     Route::get('/getPay', [ViloyatController::class, 'getPay']);
+    Route::get('/latest', [OrdersController::class, 'getLatest']);
 
     
 });

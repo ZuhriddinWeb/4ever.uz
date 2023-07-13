@@ -24,6 +24,12 @@ class OrdersController extends Controller
         return Orders::where('user_id' , $id)->orderBy('id', 'desc')->get();
 
     }
+    public function getLatest()
+    {
+        $user=Auth::user()->id;
+        return Orders::where('user_id' , $user)->latest()->limit(1)->get();
+
+    }
     public function index_all()
     {
         // return Orders::where('user_id' , $id)->latest()->first();
