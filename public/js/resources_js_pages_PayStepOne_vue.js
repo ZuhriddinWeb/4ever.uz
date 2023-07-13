@@ -164,56 +164,62 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "flex justify-between container items-center mx-auto py-5"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "order-1 md:order-2 ml-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_3 = {
+  "class": "flex justify-between order-1 md:order-2 ml-2 items-center"
+};
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fal fa-bars text-center text-2xl"
+}, null, -1 /* HOISTED */);
+var _hoisted_5 = {
   "class": "flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl",
   href: "/"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <svg class=\"fill-current text-orange-500 mr-2\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n                            <path d=\"M5,22h14c1.103,0,2-0.897,2-2V9c0-0.553-0.447-1-1-1h-3V7c0-2.757-2.243-5-5-5S7,4.243,7,7v1H4C3.447,8,3,8.447,3,9v11 C3,21.103,3.897,22,5,22z M9,7c0-1.654,1.346-3,3-3s3,1.346,3,3v1H9V7z M5,10h2v2h2v-2h6v2h2v-2h2l0.002,10H5V10z\" />\n                        </svg> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "far fa-shopping-bag mr-2 text-orange-500"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 4Ever.uz ")])], -1 /* HOISTED */);
-var _hoisted_4 = {
+};
+var _hoisted_6 = ["src"];
+var _hoisted_7 = {
   "class": "order-2 md:order-3 flex items-center mr-4",
   id: "nav-content"
 };
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fal fa-user text-2xl"
+}, null, -1 /* HOISTED */);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-user-circle text-2xl"
 }, null, -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fal fa-user-circle text-2xl"
-}, null, -1 /* HOISTED */);
-var _hoisted_7 = {
-  "class": "fal fa-cart-plus text-2xl pl-8 relative"
+var _hoisted_10 = {
+  "class": "fal fa-shopping-bag text-2xl pl-8 relative"
 };
-var _hoisted_8 = {
-  "class": "bg-rose-500 w-4 h-4 absolute rounded-full text-sm text-center text-white"
+var _hoisted_11 = {
+  "class": "bg-orange-500 w-4 h-4 absolute rounded-full text-sm text-center text-white"
 };
-var _hoisted_9 = {
+var _hoisted_12 = {
   "class": "flex justify-start container items-center mx-auto"
 };
-var _hoisted_10 = {
+var _hoisted_13 = {
   "class": "hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1 -mx-2",
   id: "menu"
 };
-var _hoisted_11 = {
+var _hoisted_14 = {
   "class": "flex justify-between"
 };
-var _hoisted_12 = {
+var _hoisted_15 = {
   "class": "md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0"
 };
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "pl-8 text-gray-600"
 }, "Mahsulotlar", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" :class=\"{ 'justify-end relative': $store.state.opened }\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <label for=\"menu-toggle\" class=\"cursor-pointer md:hidden block\">\n                <svg class=\"fill-current text-gray-900\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\">\n                    <title>menu</title>\n                    <path d=\"M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z\"></path>\n                </svg>\n            </label>\n            <input class=\"hidden\" type=\"checkbox\" id=\"menu-toggle\" /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1 -mx-2\" id=\"menu\">\n                <nav class=\"flex justify-between\">\n                    <div class=\"md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0\" v-for=\"item in categories\">\n                        <router-link :to=\"{name:'categories', params: {id: item.id}}\" class=\"inline-block no-underline hover:text-black hover:underline py-2 px-4\">\n                            {{item.category_name}} \n                        </router-link>                       \n                    </div>\n                </nav>\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link v-if=\"$store.state.user\" class=\"inline-block no-underline hover:border-b-1 border-orange-500 \" to=\"/profile\">                        \n                        <i class=\"fal fa-truck text-2xl pr-8\"></i>                  \n                    </router-link>     "), _ctx.$store.state.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" :class=\"{ 'justify-end relative': $store.state.opened }\" "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <label for=\"menu-toggle\" class=\"cursor-pointer md:hidden block\">\n                <svg class=\"fill-current text-gray-900\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\">\n                    <title>menu</title>\n                    <path d=\"M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z\"></path>\n                </svg>\n            </label>\n            <input class=\"hidden\" type=\"checkbox\" id=\"menu-toggle\" /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1 -mx-2\" id=\"menu\">\n                <nav class=\"flex justify-between\">\n                    <div class=\"md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0\" v-for=\"item in categories\">\n                        <router-link :to=\"{name:'categories', params: {id: item.id}}\" class=\"inline-block no-underline hover:text-black hover:underline py-2 px-4\">\n                            {{item.category_name}} \n                        </router-link>                       \n                    </div>\n                </nav>\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <svg class=\"fill-current text-orange-500 mr-2\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\">\n                            <path d=\"M5,22h14c1.103,0,2-0.897,2-2V9c0-0.553-0.447-1-1-1h-3V7c0-2.757-2.243-5-5-5S7,4.243,7,7v1H4C3.447,8,3,8.447,3,9v11 C3,21.103,3.897,22,5,22z M9,7c0-1.654,1.346-3,3-3s3,1.346,3,3v1H9V7z M5,10h2v2h2v-2h6v2h2v-2h2l0.002,10H5V10z\" />\n                        </svg> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <i class=\"far fa-shopping-bag mr-2 text-orange-500\"></i> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    "class": "w-[150px] h-[50px] inline-block text-center justify-center",
+    src: '/images/header.png'
+  }, null, 8 /* PROPS */, _hoisted_6)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link v-if=\"$store.state.user\" class=\"inline-block no-underline hover:border-b-1 border-orange-500 \" to=\"/profile\">                        \n                        <i class=\"fal fa-truck text-2xl pr-8\"></i>                  \n                    </router-link>     "), _ctx.$store.state.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
     key: 0,
     "class": "inline-block no-underline hover:border-b-1 border-orange-500",
     to: "/profile"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [_hoisted_8];
     }),
     _: 1 /* STABLE */
   })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
@@ -222,7 +228,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "/login"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <i class=\"fal fa-registered text-2xl\"></i>                     "), _hoisted_6];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <i class=\"fal fa-registered text-2xl\"></i>                     "), _hoisted_9];
     }),
     _: 1 /* STABLE */
   })), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link  class=\"inline-block no-underline hover:border-b-1 border-orange-500 \"   to=\"/register\">    \n                        <i class=\"fal fa-registered text-2xl\"></i>                    \n                    </router-link>   "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button v-else @click=\"emit('open')\" class=\"inline-block no-underline hover:text-black\" href=\"#\" :class=\"{ 'justify-end relative': $store.state.opened }\">                   \n                        <i class=\"fal fa-user-circle text-2xl\"></i>\n                    </button>  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
@@ -233,16 +239,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "/checkout"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.cart.length), 1 /* TEXT */)])];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.cart.length), 1 /* TEXT */)])];
     }),
 
     _: 1 /* STABLE */
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name:'categories', params: {id: item.id}}\" class=\"inline-block no-underline hover:text-black hover:border-b-2 border-orange-500 py-2 px-4\">\n                            {{item.category_name}} \n                        </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{name:'categories', params: {id: item.id}}\" class=\"inline-block no-underline hover:text-black hover:border-b-2 border-orange-500 py-2 px-4\">\n                            {{item.category_name}} \n                        </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "inline-block no-underline hover:border-b-1 border-orange-500",
     to: "/eshop"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_13];
+      return [_hoisted_16];
     }),
     _: 1 /* STABLE */
   })])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" </div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Header end ")], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
