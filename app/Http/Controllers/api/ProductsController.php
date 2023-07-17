@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Str;
 use App\Models\Products;
+use Ixudra\Curl\Facades\Curl;
 class ProductsController extends Controller
 {
     /**
@@ -16,6 +17,8 @@ class ProductsController extends Controller
      */
     public function index(Request $request,$id)
     {
+
+
         $data=DB::table('products')    
         // ->join('categories','products.category_id','=','categories.id')
         ->join('trees','products.tree_id','=','trees.id')
@@ -42,10 +45,20 @@ class ProductsController extends Controller
     {
         return Products::where('id',$id)->get();
     }
-
+    public function index_UZS()
+    {
+        $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
+        ->get();
+        $usd = json_decode($response, true);
+        return $usd;
+    }
 
     public function limit(Request $request)
     {
+        // $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
+        // ->get();
+        // $usd = json_decode($response, true);
+        // dd($usd[0]['Rate']*10);
         // $data= DB::table('products')
         // ->join('categories','products.category_id','=','categories.id')
         // ->orderByRaw('products.updated_at - products.created_at DESC')

@@ -36,6 +36,7 @@ Route::post('/logout' , [UserController::class, 'login']);
 Route::get('/products-limit', [ProductsController::class, 'limit']);
 Route::get('/products-with-cat/{id}', [ProductsController::class, 'limit_category']);
 Route::get('/products-by-id/{id}', [ProductsController::class, 'index_id']);
+Route::get('/uzsnbu', [ProductsController::class, 'index_UZS']);
 
 
 

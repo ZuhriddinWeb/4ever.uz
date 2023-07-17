@@ -40,8 +40,11 @@
                             <p class="my-2">
                                 <span class="mr-1 text-xl">Объем :</span>{{ currentProduct.volume }}ml
                             </p>
-                            <p class="text-md font-bold uppercase my-1 text-xl">
-                                {{ currentProduct.price }}$
+                            <p class="text-md uppercase my-1 text-xl">
+                                Цена на USD: <span class=" font-medium font-medium">{{ currentProduct.price }}$</span>
+                            </p>
+                            <p class="text-md uppercase my-1 text-xl">
+                                Цена на UZS: <span class=" font-medium font-medium">{{ currentProduct.price*uzsnbu.Rate }} сум</span>
                             </p>
                             <div class="flex justify-start items-center">
                                 <button @click="add_cart_user(currentProduct.id)"
@@ -173,6 +176,8 @@ const loader = ref(null);
 
 const openTab = ref(1);
 const product_with_cat = ref(null);
+const uzsnbu = ref(null);
+
 function toggleTabs(tabNumber) {
     return (openTab.value = tabNumber);
 }
@@ -189,7 +194,9 @@ function add_cart_user(id_product) {
         }
     })
 }
-
+axios.get(`uzsnbu`).then(({ data }) => {
+    uzsnbu.value = data[0];
+});
 
 function getProducts() {
     axios.get(`products-by-id/${product_id.id}`).then(({ data }) => {
