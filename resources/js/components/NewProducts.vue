@@ -42,21 +42,23 @@
     </div> -->
 
     <main class="flex flex-wrap w-full">
-            <router-link v-for="item,index in new_products" :to="{name:'product-view', params: {id: item.id}}"  class="w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col px-2  cursor-pointer border-gray-50" >
+            <div v-for="item,index in new_products"   class="w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col px-2  cursor-pointer border-gray-50" >
                 <div class="w-full p-4 flex flex-col bg-white my-2 rounded-sm border border-gray-100 hover:shadow-lg" >
                     <main class="-m-4 mb-3 relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-full h-full bg-black/10"></div>
                         <img class="h-[180px] w-full object-contain" v-bind:src="'/images/' + item.images_product" />
-                        <div class="absolute bottom-3 right-3 w-[48px] h-[48px] bg-white rounded-full shadow-md">
-                            <i class="fal fa-shopping-bag text-xl  text-black ml-[15px] mt-3"></i>
-                        </div>
+                        <div @click="add_cart_user(item.id)" :class="{ 'bg-orange-600 text-white': $store.state.cart.includes(item.id) }"
+                         class="absolute bottom-3 right-3 w-[48px] h-[48px] bg-white rounded-full shadow-md">
+                            <i v-if="$store.state.cart.includes(item.id) == false" class="fal fa-shopping-bag text-xl  text-black ml-[15px] mt-3"></i>
+                           <i v-else class="fal fa-check text-xl  text-black ml-[15px] mt-3"></i>
+                        </div>                       
                     </main>
                    <main class="flex flex-col">
                         <!-- <h3 class="font-semibold text-xl">{{ item.product_name }}</h3> 781502224-->
                         <p class="text-orange-500">#{{ item.id }}</p>
-                        <p class="text-gray-400 mb-4">
+                        <router-link class="text-blue-400 mb-4" :to="{name:'product-view', params: {id: item.id}}">
                             {{item.description_product}}
-                        </p>
+                        </router-link>
                         <main class="text-gray-400 flex justify-between items-center">
                             <span>
                                 <i class="fal fa-certificate text-orange-500 mr-1"></i> {{ item.category_name }}
@@ -70,7 +72,7 @@
                         </main>
                    </main>           
                 </div>
-            </router-link>
+            </div>
         </main>
 
     </div>
@@ -84,4 +86,13 @@
     axios.get(`products-limit`).then((res) => {
         new_products.value = res.data;
     })
+
+    function add_cart_user(id_product) {
+    axios.get(`cart-save/${id_product}`).then(({ data }) => {
+        if (data) store.state.cart.push(id_product)
+        else {
+            store.state.cart = store.state.cart.filter((item) => item !== id_product)
+        }
+    })
+}
   </script>
