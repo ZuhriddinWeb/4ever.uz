@@ -1,6 +1,4 @@
 <template>
-    <Header />
-
     <main
         class="xl:mx-auto md:mx-4   w-full h-full flex flex-col justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
         <article class="xl:w-2/5 md:w-full m-4 h-full">

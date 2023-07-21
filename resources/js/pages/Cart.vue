@@ -1,9 +1,4 @@
 <template>
-    <header>
-        <Header />
-    </header>
-    <Preloader @close="loader = true" v-if="!loader" />
-
     <section class="w-full container mx-auto flex flex-col mt-0 py-3">
         <p class="text-2xl font-semibold mx-2">Корзина</p>
         <div class=" justify-between w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 mx-2"

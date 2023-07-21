@@ -1,9 +1,4 @@
 <template>
-    <header>
-        <Header />
-    </header>
-    <Preloader @close="loader = true" v-if="!loader" />
-
     <section class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
         <article class="flex flex-col w-full ">
             <div class="w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
@@ -41,10 +36,10 @@
                                 <span class="mr-1 text-xl">Объем :</span>{{ currentProduct.volume }}ml
                             </p>
                             <p class="text-md uppercase my-1 text-xl">
-                                Цена на USD: <span class=" font-medium font-medium">{{ currentProduct.price }}$</span>
+                                Цена на USD: <span class="font-medium">{{ currentProduct.price }}$</span>
                             </p>
                             <p class="text-md uppercase my-1 text-xl">
-                                Цена на UZS: <span class=" font-medium font-medium">{{ currentProduct.price*uzsnbu.Rate }} сум</span>
+                                Цена на UZS: <span class="font-medium">{{ currentProduct.price*uzsnbu.Rate }} сум</span>
                             </p>
                             <div class="flex justify-start items-center">
                                 <button @click="add_cart_user(currentProduct.id)"

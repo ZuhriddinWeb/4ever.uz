@@ -655,30 +655,6 @@ function Init() {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/swiper/swiper.min.css":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/swiper/swiper.min.css ***!
-  \****************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "/**\n * Swiper 9.3.2\n * Most modern mobile touch slider and framework with hardware accelerated transitions\n * https://swiperjs.com\n *\n * Copyright 2014-2023 Vladimir Kharlampidi\n *\n * Released under the MIT License\n *\n * Released on: May 15, 2023\n */\n\n@font-face{font-family:swiper-icons;src:url('data:application/font-woff;charset=utf-8;base64, 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');font-weight:400;font-style:normal}:root{--swiper-theme-color:#007aff}.swiper,swiper-container{margin-left:auto;margin-right:auto;position:relative;overflow:hidden;list-style:none;padding:0;z-index:1;display:block}.swiper-vertical>.swiper-wrapper{flex-direction:column}.swiper-wrapper{position:relative;width:100%;height:100%;z-index:1;display:flex;transition-property:transform;transition-timing-function:var(--swiper-wrapper-transition-timing-function,initial);box-sizing:content-box}.swiper-android .swiper-slide,.swiper-wrapper{transform:translate3d(0px,0,0)}.swiper-horizontal{touch-action:pan-y}.swiper-vertical{touch-action:pan-x}.swiper-slide,swiper-slide{flex-shrink:0;width:100%;height:100%;position:relative;transition-property:transform;display:block}.swiper-slide-invisible-blank{visibility:hidden}.swiper-autoheight,.swiper-autoheight .swiper-slide{height:auto}.swiper-autoheight .swiper-wrapper{align-items:flex-start;transition-property:transform,height}.swiper-backface-hidden .swiper-slide{transform:translateZ(0);-webkit-backface-visibility:hidden;backface-visibility:hidden}.swiper-3d.swiper-css-mode .swiper-wrapper{perspective:1200px}.swiper-3d .swiper-wrapper{transform-style:preserve-3d}.swiper-3d{perspective:1200px}.swiper-3d .swiper-cube-shadow,.swiper-3d .swiper-slide,.swiper-3d .swiper-slide-shadow,.swiper-3d .swiper-slide-shadow-bottom,.swiper-3d .swiper-slide-shadow-left,.swiper-3d .swiper-slide-shadow-right,.swiper-3d .swiper-slide-shadow-top{transform-style:preserve-3d}.swiper-3d .swiper-slide-shadow,.swiper-3d .swiper-slide-shadow-bottom,.swiper-3d .swiper-slide-shadow-left,.swiper-3d .swiper-slide-shadow-right,.swiper-3d .swiper-slide-shadow-top{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:10}.swiper-3d .swiper-slide-shadow{background:rgba(0,0,0,.15)}.swiper-3d .swiper-slide-shadow-left{background-image:linear-gradient(to left,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-3d .swiper-slide-shadow-right{background-image:linear-gradient(to right,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-3d .swiper-slide-shadow-top{background-image:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-3d .swiper-slide-shadow-bottom{background-image:linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,0))}.swiper-css-mode>.swiper-wrapper{overflow:auto;scrollbar-width:none;-ms-overflow-style:none}.swiper-css-mode>.swiper-wrapper::-webkit-scrollbar{display:none}.swiper-css-mode>.swiper-wrapper>.swiper-slide{scroll-snap-align:start start}.swiper-horizontal.swiper-css-mode>.swiper-wrapper{scroll-snap-type:x mandatory}.swiper-vertical.swiper-css-mode>.swiper-wrapper{scroll-snap-type:y mandatory}.swiper-centered>.swiper-wrapper::before{content:'';flex-shrink:0;order:9999}.swiper-centered>.swiper-wrapper>.swiper-slide{scroll-snap-align:center center;scroll-snap-stop:always}.swiper-centered.swiper-horizontal>.swiper-wrapper>.swiper-slide:first-child{-webkit-margin-start:var(--swiper-centered-offset-before);margin-inline-start:var(--swiper-centered-offset-before)}.swiper-centered.swiper-horizontal>.swiper-wrapper::before{height:100%;min-height:1px;width:var(--swiper-centered-offset-after)}.swiper-centered.swiper-vertical>.swiper-wrapper>.swiper-slide:first-child{-webkit-margin-before:var(--swiper-centered-offset-before);margin-block-start:var(--swiper-centered-offset-before)}.swiper-centered.swiper-vertical>.swiper-wrapper::before{width:100%;min-width:1px;height:var(--swiper-centered-offset-after)}.swiper-lazy-preloader{width:42px;height:42px;position:absolute;left:50%;top:50%;margin-left:-21px;margin-top:-21px;z-index:10;transform-origin:50%;box-sizing:border-box;border:4px solid var(--swiper-preloader-color,var(--swiper-theme-color));border-radius:50%;border-top-color:transparent}.swiper-watch-progress .swiper-slide-visible .swiper-lazy-preloader,.swiper:not(.swiper-watch-progress) .swiper-lazy-preloader,swiper-container:not(.swiper-watch-progress) .swiper-lazy-preloader{animation:swiper-preloader-spin 1s infinite linear}.swiper-lazy-preloader-white{--swiper-preloader-color:#fff}.swiper-lazy-preloader-black{--swiper-preloader-color:#000}@keyframes swiper-preloader-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/moment/locale/af.js":
 /*!******************************************!*\
   !*** ./node_modules/moment/locale/af.js ***!
@@ -22269,36 +22245,6 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./node_modules/swiper/swiper.min.css":
-/*!********************************************!*\
-  !*** ./node_modules/swiper/swiper.min.css ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_swiper_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./swiper.min.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/swiper/swiper.min.css");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_swiper_min_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_swiper_min_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./resources/js/adminpages/SelectedUser.vue":
 /*!**************************************************!*\
   !*** ./resources/js/adminpages/SelectedUser.vue ***!
@@ -22312,13 +22258,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _SelectedUser_vue_vue_type_template_id_0a30e112__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectedUser.vue?vue&type=template&id=0a30e112 */ "./resources/js/adminpages/SelectedUser.vue?vue&type=template&id=0a30e112");
 /* harmony import */ var _SelectedUser_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectedUser.vue?vue&type=script&setup=true&lang=js */ "./resources/js/adminpages/SelectedUser.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SelectedUser_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SelectedUser_vue_vue_type_template_id_0a30e112__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/SelectedUser.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SelectedUser_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SelectedUser_vue_vue_type_template_id_0a30e112__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/SelectedUser.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -22340,13 +22286,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Users_vue_vue_type_template_id_5f13c2ac__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=5f13c2ac */ "./resources/js/adminpages/Users.vue?vue&type=template&id=5f13c2ac");
 /* harmony import */ var _Users_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&setup=true&lang=js */ "./resources/js/adminpages/Users.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Users_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Users_vue_vue_type_template_id_5f13c2ac__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/Users.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Users_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Users_vue_vue_type_template_id_5f13c2ac__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/Users.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -23152,6 +23098,7 @@ function setBreakpoint() {
 
   // Toggle navigation, pagination, scrollbar
   ['navigation', 'pagination', 'scrollbar'].forEach(prop => {
+    if (typeof breakpointParams[prop] === 'undefined') return;
     const wasModuleEnabled = params[prop] && params[prop].enabled;
     const isModuleEnabled = breakpointParams[prop] && breakpointParams[prop].enabled;
     if (wasModuleEnabled && !isModuleEnabled) {
@@ -23657,7 +23604,7 @@ class Swiper {
     } = swiper;
     let spv = 1;
     if (params.centeredSlides) {
-      let slideSize = slides[activeIndex].swiperSlideSize;
+      let slideSize = slides[activeIndex] ? slides[activeIndex].swiperSlideSize : 0;
       let breakLoop;
       for (let i = activeIndex + 1; i < slides.length; i += 1) {
         if (slides[i] && !breakLoop) {
@@ -23722,14 +23669,14 @@ class Swiper {
       swiper.updateSlidesClasses();
     }
     let translated;
-    if (swiper.params.freeMode && swiper.params.freeMode.enabled) {
+    if (params.freeMode && params.freeMode.enabled && !params.cssMode) {
       setTranslate();
-      if (swiper.params.autoHeight) {
+      if (params.autoHeight) {
         swiper.updateAutoHeight();
       }
     } else {
-      if ((swiper.params.slidesPerView === 'auto' || swiper.params.slidesPerView > 1) && swiper.isEnd && !swiper.params.centeredSlides) {
-        const slides = swiper.virtual && swiper.params.virtual.enabled ? swiper.virtual.slides : swiper.slides;
+      if ((params.slidesPerView === 'auto' || params.slidesPerView > 1) && swiper.isEnd && !params.centeredSlides) {
+        const slides = swiper.virtual && params.virtual.enabled ? swiper.virtual.slides : swiper.slides;
         translated = swiper.slideTo(slides.length - 1, 0, false, true);
       } else {
         translated = swiper.slideTo(swiper.activeIndex, 0, false, true);
@@ -24582,7 +24529,7 @@ function onTouchEnd(event) {
   if (params.cssMode) {
     return;
   }
-  if (swiper.params.freeMode && params.freeMode.enabled) {
+  if (params.freeMode && params.freeMode.enabled) {
     swiper.freeMode.onTouchEnd({
       currentPos
     });
@@ -24608,7 +24555,7 @@ function onTouchEnd(event) {
   let rewindLastIndex = null;
   if (params.rewind) {
     if (swiper.isBeginning) {
-      rewindLastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
+      rewindLastIndex = params.virtual && params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
     } else if (swiper.isEnd) {
       rewindFirstIndex = 0;
     }
@@ -24904,7 +24851,7 @@ function onTouchMove(event) {
     swiper.updateActiveIndex();
     swiper.updateSlidesClasses();
   }
-  if (swiper.params.freeMode && params.freeMode.enabled && swiper.freeMode) {
+  if (params.freeMode && params.freeMode.enabled && swiper.freeMode) {
     swiper.freeMode.onTouchMove();
   }
   // Update progress
@@ -25035,7 +24982,7 @@ function onTouchStart(event) {
   if ((params.touchStartForcePreventDefault || shouldPreventDefault) && !targetEl.isContentEditable) {
     e.preventDefault();
   }
-  if (swiper.params.freeMode && swiper.params.freeMode.enabled && swiper.freeMode && swiper.animating && !params.cssMode) {
+  if (params.freeMode && params.freeMode.enabled && swiper.freeMode && swiper.animating && !params.cssMode) {
     swiper.freeMode.onTouchStart();
   }
   swiper.emit('touchStart', e);
@@ -25815,7 +25762,7 @@ function slideTo(index = 0, speed = this.params.speed, runCallbacks = true, inte
   }
   // Directions locks
   if (swiper.initialized && slideIndex !== activeIndex) {
-    if (!swiper.allowSlideNext && translate < swiper.translate && translate < swiper.minTranslate()) {
+    if (!swiper.allowSlideNext && (rtl ? translate > swiper.translate && translate > swiper.minTranslate() : translate < swiper.translate && translate < swiper.minTranslate())) {
       return false;
     }
     if (!swiper.allowSlidePrev && translate > swiper.translate && translate > swiper.maxTranslate()) {
@@ -27059,7 +27006,7 @@ function updateSlides() {
     allSlidesSize -= spaceBetween;
     const maxSnap = allSlidesSize - swiperSize;
     snapGrid = snapGrid.map(snap => {
-      if (snap < 0) return -offsetBefore;
+      if (snap <= 0) return -offsetBefore;
       if (snap > maxSnap) return maxSnap + offsetAfter;
       return snap;
     });
@@ -28157,14 +28104,15 @@ function EffectCards({
   const setTranslate = () => {
     const {
       slides,
-      activeIndex
+      activeIndex,
+      rtlTranslate: rtl
     } = swiper;
     const params = swiper.params.cardsEffect;
     const {
       startTranslate,
       isTouched
     } = swiper.touchEventsData;
-    const currentTranslate = swiper.translate;
+    const currentTranslate = rtl ? -swiper.translate : swiper.translate;
     for (let i = 0; i < slides.length; i += 1) {
       const slideEl = slides[i];
       const slideProgress = slideEl.progress;
@@ -28194,10 +28142,10 @@ function EffectCards({
       }
       if (progress < 0) {
         // next
-        tX = `calc(${tX}px + (${tXAdd * Math.abs(progress)}%))`;
+        tX = `calc(${tX}px ${rtl ? '-' : '+'} (${tXAdd * Math.abs(progress)}%))`;
       } else if (progress > 0) {
         // prev
-        tX = `calc(${tX}px + (-${tXAdd * Math.abs(progress)}%))`;
+        tX = `calc(${tX}px ${rtl ? '-' : '+'} (-${tXAdd * Math.abs(progress)}%))`;
       } else {
         tX = `${tX}px`;
       }
@@ -28207,11 +28155,15 @@ function EffectCards({
         tX = prevY;
       }
       const scaleString = progress < 0 ? `${1 + (1 - scale) * progress}` : `${1 - (1 - scale) * progress}`;
+
+      /* eslint-disable */
       const transform = `
         translate3d(${tX}, ${tY}, ${tZ}px)
-        rotateZ(${params.rotate ? rotate : 0}deg)
+        rotateZ(${params.rotate ? rtl ? -rotate : rotate : 0}deg)
         scale(${scaleString})
       `;
+      /* eslint-enable */
+
       if (params.slideShadows) {
         // Set shadows
         let shadowEl = slideEl.querySelector('.swiper-slide-shadow');
@@ -28953,6 +28905,7 @@ function freeMode({
     }
   });
   function onTouchStart() {
+    if (swiper.params.cssMode) return;
     const translate = swiper.getTranslate();
     swiper.setTranslate(translate);
     swiper.setTransition(0);
@@ -28962,6 +28915,7 @@ function freeMode({
     });
   }
   function onTouchMove() {
+    if (swiper.params.cssMode) return;
     const {
       touchEventsData: data,
       touches
@@ -28981,6 +28935,7 @@ function freeMode({
   function onTouchEnd({
     currentPos
   }) {
+    if (swiper.params.cssMode) return;
     const {
       params,
       wrapperEl,
@@ -29205,7 +29160,6 @@ function Grid({
       rows,
       fill
     } = swiper.params.grid;
-    slidesPerRow = slidesNumberEvenToRows / rows;
     numFullColumns = Math.floor(slidesLength / rows);
     if (Math.floor(slidesLength / rows) === slidesLength / rows) {
       slidesNumberEvenToRows = slidesLength;
@@ -29215,6 +29169,7 @@ function Grid({
     if (slidesPerView !== 'auto' && fill === 'row') {
       slidesNumberEvenToRows = Math.max(slidesNumberEvenToRows, slidesPerView * rows);
     }
+    slidesPerRow = slidesNumberEvenToRows / rows;
   };
   const updateSlide = (i, slide, slidesLength, getDirectionLabel) => {
     const {
@@ -29251,6 +29206,8 @@ function Grid({
       row = Math.floor(i / slidesPerRow);
       column = i - row * slidesPerRow;
     }
+    slide.row = row;
+    slide.column = column;
     slide.style[getDirectionLabel('margin-top')] = row !== 0 ? spaceBetween && `${spaceBetween}px` : '';
   };
   const updateWrapperSize = (slideSize, snapGrid, getDirectionLabel) => {
@@ -29328,7 +29285,7 @@ function HashNavigation({
   const onHashChange = () => {
     emit('hashChange');
     const newHash = document.location.hash.replace('#', '');
-    const activeSlideEl = swiper.slidesEl.querySelector(`[data-swiper-slide-index="${swiper.activeIndex}"]`);
+    const activeSlideEl = swiper.virtual && swiper.params.virtual.enabled ? swiper.slidesEl.querySelector(`[data-swiper-slide-index="${swiper.activeIndex}"]`) : swiper.slides[swiper.activeIndex];
     const activeSlideHash = activeSlideEl ? activeSlideEl.getAttribute('data-hash') : '';
     if (newHash !== activeSlideHash) {
       const newIndex = swiper.params.hashNavigation.getSlideIndex(swiper, newHash);
@@ -29338,7 +29295,7 @@ function HashNavigation({
   };
   const setHash = () => {
     if (!initialized || !swiper.params.hashNavigation.enabled) return;
-    const activeSlideEl = swiper.slidesEl.querySelector(`[data-swiper-slide-index="${swiper.activeIndex}"]`);
+    const activeSlideEl = swiper.virtual && swiper.params.virtual.enabled ? swiper.slidesEl.querySelector(`[data-swiper-slide-index="${swiper.activeIndex}"]`) : swiper.slides[swiper.activeIndex];
     const activeSlideHash = activeSlideEl ? activeSlideEl.getAttribute('data-hash') || activeSlideEl.getAttribute('data-history') : '';
     if (swiper.params.hashNavigation.replaceState && window.history && window.history.replaceState) {
       window.history.replaceState(null, null, `#${activeSlideHash}` || '');
@@ -30713,6 +30670,8 @@ function Pagination({
           const bulletIndex = (0,_shared_utils_js__WEBPACK_IMPORTED_MODULE_2__.elementIndex)(bullet);
           if (bulletIndex === current) {
             bullet.classList.add(...params.bulletActiveClass.split(' '));
+          } else if (swiper.isElement) {
+            bullet.setAttribute('part', 'bullet');
           }
           if (params.dynamicBullets) {
             if (bulletIndex >= firstIndex && bulletIndex <= lastIndex) {
@@ -30730,6 +30689,11 @@ function Pagination({
         const bullet = bullets[current];
         if (bullet) {
           bullet.classList.add(...params.bulletActiveClass.split(' '));
+        }
+        if (swiper.isElement) {
+          bullets.forEach((bulletEl, bulletIndex) => {
+            bulletEl.setAttribute('part', bulletIndex === current ? 'bullet-active' : 'bullet');
+          });
         }
         if (params.dynamicBullets) {
           const firstDisplayedBullet = bullets[firstIndex];
@@ -30810,7 +30774,8 @@ function Pagination({
         if (params.renderBullet) {
           paginationHTML += params.renderBullet.call(swiper, i, params.bulletClass);
         } else {
-          paginationHTML += `<${params.bulletElement} class="${params.bulletClass}"></${params.bulletElement}>`;
+          // prettier-ignore
+          paginationHTML += `<${params.bulletElement} ${swiper.isElement ? 'part="bullet"' : ''} class="${params.bulletClass}"></${params.bulletElement}>`;
         }
       }
     }
@@ -33059,15 +33024,30 @@ const preload = swiper => {
   amount = Math.min(amount, len);
   const slidesPerView = swiper.params.slidesPerView === 'auto' ? swiper.slidesPerViewDynamic() : Math.ceil(swiper.params.slidesPerView);
   const activeIndex = swiper.activeIndex;
+  if (swiper.params.grid && swiper.params.grid.rows > 1) {
+    const activeColumn = activeIndex;
+    const preloadColumns = [activeColumn - amount];
+    preloadColumns.push(...Array.from({
+      length: amount
+    }).map((_, i) => {
+      return activeColumn + slidesPerView + i;
+    }));
+    swiper.slides.forEach((slideEl, i) => {
+      if (preloadColumns.includes(slideEl.column)) unlazy(swiper, i);
+    });
+    return;
+  }
   const slideIndexLastInView = activeIndex + slidesPerView - 1;
-  if (swiper.params.rewind) {
+  if (swiper.params.rewind || swiper.params.loop) {
     for (let i = activeIndex - amount; i <= slideIndexLastInView + amount; i += 1) {
       const realIndex = (i % len + len) % len;
-      if (realIndex !== activeIndex && realIndex > slideIndexLastInView) unlazy(swiper, realIndex);
+      if (realIndex < activeIndex || realIndex > slideIndexLastInView) unlazy(swiper, realIndex);
     }
   } else {
-    for (let i = Math.max(slideIndexLastInView - amount, 0); i <= Math.min(slideIndexLastInView + amount, len - 1); i += 1) {
-      if (i !== activeIndex && i > slideIndexLastInView) unlazy(swiper, i);
+    for (let i = Math.max(activeIndex - amount, 0); i <= Math.min(slideIndexLastInView + amount, len - 1); i += 1) {
+      if (i !== activeIndex && (i > slideIndexLastInView || i < activeIndex)) {
+        unlazy(swiper, i);
+      }
     }
   }
 };
@@ -33435,7 +33415,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_effect_creative_effect_creative_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./modules/effect-creative/effect-creative.js */ "./node_modules/swiper/modules/effect-creative/effect-creative.js");
 /* harmony import */ var _modules_effect_cards_effect_cards_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./modules/effect-cards/effect-cards.js */ "./node_modules/swiper/modules/effect-cards/effect-cards.js");
 /**
- * Swiper 9.3.2
+ * Swiper 9.4.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
@@ -33443,7 +33423,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Released under the MIT License
  *
- * Released on: May 15, 2023
+ * Released on: June 13, 2023
  */
 
 
@@ -33686,7 +33666,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _swiper_slide_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./swiper-slide.js */ "./node_modules/swiper/vue/swiper-slide.js");
 /* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.js */ "./node_modules/swiper/vue/context.js");
 /**
- * Swiper Vue 9.3.2
+ * Swiper Vue 9.4.1
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
@@ -33694,7 +33674,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * Released under the MIT License
  *
- * Released on: May 15, 2023
+ * Released on: June 13, 2023
  */
 
 

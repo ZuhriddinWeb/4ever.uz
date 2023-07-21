@@ -1,7 +1,4 @@
 <template>
-    <header>
-        <Header />
-    </header>
     <section class="w-full container mx-auto flex items-start justify-between mt-0 py-3">
         <div class="w-1/6 mr-2">
             <h3 class="flex justify-center items-center h-10 text-xl border-b-2 border-orange-500">

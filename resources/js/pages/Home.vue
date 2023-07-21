@@ -1,40 +1,27 @@
 <template>
-    <section class="bg-white h-screen flex flex-col justify-between overflow-y-scroll">
-        <Preloader @close="loader = true" v-if="!loader" />
-
-        <Header @open="sideBarToggle = true" />
+    <section class="h-screen">
         <!-- <Categories/> -->
-        <Slider />
-        <main class="flex flex-col justify-between">
-            <NewProducts />
-        </main>
-        <Footer />
         <transition name="fade">
-            <Sidebar v-if="sideBarToggle" @close="sideBarToggle = false" class="no-print" />
+            <Sidebar v-if="sideBarToggle" @close="sideBarToggle = false"/>
         </transition>
-        <router-view class="p-12 flex-grow no-print" />
-        <!-- <img src="/images/16807053060.jpg" alt="" srcset=""> -->
-        <!-- https://www.vuescript.com/simple-image-gallery-component-for-vue-js-lingallery/ -->
+        <Slider />
+        <section class="container mx-auto px-3">
+            <NewProducts></NewProducts>
+            <Footer></Footer>
+        </section>
     </section>
 </template>
   
 <script setup>
 import { ref,onMounted } from "vue"
-import Header from "../components/Header.vue"
 import Sidebar from "../components/Sidebar.vue"
 import Categories from "../components/Categories.vue"
 import Slider from "../components/Slider.vue"
 import Footer from "../components/Footer.vue"
 import NewProducts from "../components/NewProducts.vue"
-import Preloader from '../components/Preloader.vue';
 
 const sideBarToggle = ref(false)
-const loader = ref(null);
-onMounted(async () => {   
-    setInterval(() => {
-		loader.value=true
-	}, 1500)
-});
+
 </script>
   
 <style>

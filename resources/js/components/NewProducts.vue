@@ -1,34 +1,30 @@
 <template>
-    <section class="bg-white py-8">
-
-<div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
-
-    <nav id="store" class="w-full z-30 top-0 px-6 py-1">
-        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-
-            <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-        Store
-    </a>
-
-            <div class="flex items-center" id="store-nav-content">
-
-                <a class="pl-3 inline-block no-underline hover:text-black" href="#">
-                    <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
-                    </svg>
-                </a>
-
-                <a class="pl-3 inline-block no-underline hover:text-black" href="#">
-                    <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
-                    </svg>
-                </a>
-
-            </div>
-      </div>
-    </nav>
-
-    <!-- <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+    <section class="py-8">
+        <div class="flex items-center flex-wrap">
+            <nav id="store" class="w-full z-30 top-0">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
+                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
+                        href="#">
+                        Store
+                    </a>
+                    <div class="flex items-center" id="store-nav-content">
+                        <a class="pl-3 inline-block no-underline hover:text-black" href="#">
+                            <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
+                            </svg>
+                        </a>
+                        <a class="pl-3 inline-block no-underline hover:text-black" href="#">
+                            <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <path
+                                    d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <!-- <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
         <a href="#">
             <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
             <div class="pt-3 flex items-center justify-between">
@@ -41,53 +37,54 @@
         </a>
     </div> -->
 
-    <main class="flex flex-wrap w-full">
-            <div v-for="item,index in new_products"   class="w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col px-2  cursor-pointer border-gray-50" >
-                <div class="w-full p-4 flex flex-col bg-white my-2 rounded-sm border border-gray-100 hover:shadow-lg" >
-                    <main class="-m-4 mb-3 relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-full bg-black/10"></div>
-                        <img class="h-[180px] w-full object-contain" v-bind:src="'/images/' + item.images_product" />
-                        <div @click="add_cart_user(item.id)" :class="{ 'bg-orange-600 text-white': $store.state.cart.includes(item.id) }"
-                         class="absolute bottom-3 right-3 w-[48px] h-[48px] bg-white rounded-full shadow-md">
-                            <i v-if="$store.state.cart.includes(item.id) == false" class="fal fa-shopping-bag text-xl  text-black ml-[15px] mt-3"></i>
-                           <i v-else class="fal fa-check text-xl  text-black ml-[15px] mt-3"></i>
-                        </div>                       
-                    </main>
-                   <main class="flex flex-col">
-                        <!-- <h3 class="font-semibold text-xl">{{ item.product_name }}</h3> 781502224-->
-                        <p class="text-orange-500">#{{ item.id }}</p>
-                        <router-link class="text-blue-400 mb-4" :to="{name:'product-view', params: {id: item.id}}">
-                            {{item.description_product}}
-                        </router-link>
-                        <main class="text-gray-400 flex justify-between items-center">
-                            <span>
-                                <i class="fal fa-certificate text-orange-500 mr-1"></i> {{ item.category_name }}
-                            </span>
-                            <div >
-                                <span class="text-xs">
-                                    17 Mar 
-                                </span>
-                                <i class="ml-1 fal text-orange-500 fa-calendar"></i>
+            <main class="flex flex-wrap w-full">
+                <div v-for="item, index in new_products"
+                    class="w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col px-2  cursor-pointer border-gray-50">
+                    <div class="w-full p-4 flex flex-col bg-white my-2 rounded-sm border border-gray-100 hover:shadow-lg">
+                        <main class="-m-4 mb-3 relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-full bg-black/10"></div>
+                            <img class="h-[180px] w-full object-contain" v-bind:src="'/images/' + item.images_product" />
+                            <div @click="add_cart_user(item.id)"
+                                :class="{ 'bg-orange-600 text-white': $store.state.cart.includes(item.id) }"
+                                class="absolute bottom-3 right-3 w-[48px] h-[48px] bg-white rounded-full shadow-md">
+                                <i v-if="$store.state.cart.includes(item.id) == false"
+                                    class="fal fa-shopping-bag text-xl  text-black ml-[15px] mt-3"></i>
+                                <i v-else class="fal fa-check text-xl  text-black ml-[15px] mt-3"></i>
                             </div>
                         </main>
-                   </main>           
+                        <main class="flex flex-col">
+                            <!-- <h3 class="font-semibold text-xl">{{ item.product_name }}</h3> 781502224-->
+                            <p class="text-orange-500">#{{ item.id }}</p>
+                            <router-link class="text-blue-400 mb-4" :to="{ name: 'product-view', params: { id: item.id } }">
+                                {{ item.description_product }}
+                            </router-link>
+                            <main class="text-gray-400 flex justify-between items-center">
+                                <span>
+                                    <i class="fal fa-certificate text-orange-500 mr-1"></i> {{ item.category_name }}
+                                </span>
+                                <div>
+                                    <span class="text-xs">
+                                        17 Mar
+                                    </span>
+                                    <i class="ml-1 fal text-orange-500 fa-calendar"></i>
+                                </div>
+                            </main>
+                        </main>
+                    </div>
                 </div>
-            </div>
-        </main>
-
-    </div>
-
-</section>
-  </template>
+            </main>
+        </div>
+    </section>
+</template>
   
-  <script setup>
-    import { reactive, onMounted, ref } from "vue";
-    const new_products = ref(null);
-    axios.get(`products-limit`).then((res) => {
-        new_products.value = res.data;
-    })
+<script setup>
+import { reactive, onMounted, ref } from "vue";
+const new_products = ref(null);
+axios.get(`products-limit`).then((res) => {
+    new_products.value = res.data;
+})
 
-    function add_cart_user(id_product) {
+function add_cart_user(id_product) {
     axios.get(`cart-save/${id_product}`).then(({ data }) => {
         if (data) store.state.cart.push(id_product)
         else {
@@ -95,4 +92,4 @@
         }
     })
 }
-  </script>
+</script>

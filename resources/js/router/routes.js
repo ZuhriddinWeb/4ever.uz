@@ -3,15 +3,6 @@ export default [
 		path: '/',
 		name:'home',
 		component: () => import('../pages/Home.vue'),
-		// children: [
-		// 	{
-		// 		path: '/register',
-		// 		name:'register',
-		// 		component: () => import('../pages/Register.vue'),
-		// 		props: true,
-				
-		// 	},
-		// ]
 	},
 	{
 		path: '/register/:id',

@@ -37,7 +37,7 @@ Route::get('/products-limit', [ProductsController::class, 'limit']);
 Route::get('/products-with-cat/{id}', [ProductsController::class, 'limit_category']);
 Route::get('/products-by-id/{id}', [ProductsController::class, 'index_id']);
 Route::get('/uzsnbu', [ProductsController::class, 'index_UZS']);
-
+Route::get('/category', [CategoryController::class, 'index']);
 
 
 Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
@@ -54,7 +54,6 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
 
     Route::get('/getuniversalbonuses' , [UniversalBonusController::class, 'getUniversalBonuses']);
     Route::post('/category-save', [CategoryController::class, 'store']);
-    Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/category_id/{id}', [CategoryController::class, 'index_id']);
     Route::post('/category-delete', [CategoryController::class, 'delete']);
     Route::post('/category-update/{id}', [CategoryController::class, 'update']);

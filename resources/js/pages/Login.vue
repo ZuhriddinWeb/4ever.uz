@@ -1,9 +1,4 @@
 <template>
-    <header>
-        <Header />
-    </header>
-    <Preloader @close="loader = true" v-if="!loader" />
-
     <main
         class="xl:mx-auto md:mx-4 bg-white my-5 w-full flex flex-col text-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
         <article class="xl:w-3/5 md:w-full m-4">

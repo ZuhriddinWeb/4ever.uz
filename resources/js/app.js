@@ -3,6 +3,7 @@ import App from './components/App.vue';
 import store from './store'
 import axios from 'axios'
 import router from './router'
+import 'swiper/css';
 import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 import 'ag-grid-community/styles/ag-theme-material.css'; // Optional theme CSS
