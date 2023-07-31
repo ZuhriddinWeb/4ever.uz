@@ -2,14 +2,14 @@
     <section class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
         <article class="flex flex-col w-full ">
             <div class="w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-                <div class="flex justify-between md:w-2/3 lg:w-3/4 py-5 ">
-                    <div class="w-5/6 mx-3 bg-gray-200">
+                <div class="flex justify-between md:w-2/4 lg:w-2/4 py-5">
+                    <div class="w-5/6 mx-3">
                         <img class="h-wull w-full" v-bind:src="'/images/' + currentProduct?.images_product" />
                     </div>
                 </div>
                 <div class="flex flex-col justify-between my-2 px-4 py-5 lg:w-1/4  md:w-2/3">
                     <article class="flex flex-col h-2/3 ">
-                        <p class="text-gray-300">#{{ currentProduct.id }}</p>
+                        <!-- <p class="text-gray-300">#{{ currentProduct.id }}</p> -->
                         <h3 class="text-2xl my-3">
                             {{ currentProduct.product_name }}
                         </h3>
@@ -115,62 +115,25 @@
                 </div>
             </div>
             <div class="flex flex-col">
-                <h3 v-if="product_with_cat"
-                    class="flex h-10 text-xl px-2 mx-2 mb-2 items-center border-b-2 border-orange-500 justify-center rounded-sm">
-                    <i class="fal fa-leaf-maple mr-2"></i>МЫ РЕКОМЕНДУЕМ
+                <h3 class="flex text-xl mb-2 text-gray-500">
+                    РЕКОМЕНДУЕМ
                 </h3>
-                <div class="flex flex-wrap w-full">
-                    <router-link v-if="product_with_cat" v-for="(similarProducts, index) in product_with_cat" :to="{
-                        name: 'product-view',
-                        params: { id: similarProducts.id },
-                    }" class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col px-2  cursor-pointer border-gray-50">
-                        <div
-                            class="w-full p-4 flex flex-col bg-white mb-2 rounded-sm border border-gray-100 hover:shadow-lg">
-                            <main class="-m-4 mb-3 relative overflow-hidden">
-                                <div class="absolute top-0 left-0 w-full h-full bg-black/20"></div>
-                                <img class="h-[180px] w-full object-contain"
-                                    v-bind:src="'/images/' + similarProducts?.images_product" />
-                            </main>
-                            <main class="flex flex-col">
-                                <!-- <h3 class="font-semibold text-xl">{{ similarProducts.id }}</h3> -->
-                                <p class="text-orange-500">
-                                    #{{ similarProducts.id }}
-                                </p>
-                                <p class="text-gray-400 mb-4">
-                                    {{ similarProducts.description_product }}
-                                </p>
-                                <main class="text-gray-400 flex justify-between items-center">
-                                    <span>
-                                        <i class="fal fa-certificate text-orange-500 mr-1"></i>
-                                        {{ similarProducts.category_name }}
-                                    </span>
-                                    <div>
-                                        <span class="text-xs"> 17 Mar </span>
-                                        <i class="ml-1 fal text-orange-500 fa-calendar"></i>
-                                    </div>
-                                </main>
-                            </main>
-                        </div>
-                    </router-link>
+                <div class="flex flex-wrap w-full -mx-2">
+                    <card v-for="product in products" :product="product"></card>
                 </div>
             </div>
         </article>
     </section>
-    <!-- <footer>
-<Footer/>
-</footer> -->
 </template>
 <script setup>
-import { reactive, onMounted, ref, watch } from "vue";
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
-import Preloader from '../components/Preloader.vue';
-import { useRoute } from "vue-router";
-const route = useRoute();
-const loader = ref(null);
+import { ref, watch } from "vue"
+import { useRoute } from "vue-router"
+import Card from "../components/Card.vue"
+const route = useRoute()
+const loader = ref(null)
 
 const openTab = ref(1);
-const product_with_cat = ref(null);
+const products = ref([])
 const uzsnbu = ref(null);
 
 function toggleTabs(tabNumber) {
@@ -195,10 +158,10 @@ axios.get(`uzsnbu`).then(({ data }) => {
 
 function getProducts() {
     axios.get(`products-by-id/${product_id.id}`).then(({ data }) => {
-        currentProduct.value = data[0];
+        currentProduct.value = data[0]
 
         axios.get(`products-with-cat/${data[0].category_id}`).then((res) => {
-            product_with_cat.value = res.data;
+            products.value = res.data;
         });
         setInterval(() => {
             loader.value = true

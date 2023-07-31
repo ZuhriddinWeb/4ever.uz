@@ -4,7 +4,7 @@
             <div class="flex justify-between order-1 md:order-2 items-center">
                 <RouterLink class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
                     to="/">
-                    <img class="w-[150px] h-[50px] border-l inline-block text-center justify-center" :src="'/images/header.png'">
+                    <img class="w-[150px] h-[50px] inline-block text-center justify-center" :src="'/images/header.png'">
                 </RouterLink>
             </div>
             <div class="order-2 md:order-3 flex items-center" id="nav-content">
