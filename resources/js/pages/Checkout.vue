@@ -199,8 +199,9 @@ async function agreement() {
             timer: 2000
         })
         axios.post("cart-clear");
-
-        router.push({name: 'payStepOne', params: {id: store.state.user.id}})
+        // console.log(data.message)
+        // router.push(data.message)
+        window.location.href = data.message;
     }
 
 }

@@ -24,24 +24,28 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-    //    $query =  Http::withHeaders([
+    //    $k =  Http::withHeaders([
     //         'Content-Language' => 'uz-UZ',
     //         'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
+    //         'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
     //         'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-    //         'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59'
     //     ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/register', [
-    //         'amount' => 100,
+    //         'amount' => 100000,
     //         'clientId' => 2,
-    //         'currency' => 643,
-    //         'orderNumber' => 1,
+    //         'currency' => 860,
+    //         "successUrl"=> "https://4ever.uz",
+    //         // "failureUrl"=> "https://example.com",
+    //         'orderNumber' => 18,
     //         'viewType' => 'WEB_VIEW',
     //         'paymentParams' => [
     //             'payType' => 'TWO_STEP'
     //         ],
     //         'sessionTimeoutSecs' => 1000,
     //     ]);
-    //     $json = json_decode($query, true);
+    //     $usd = json_decode($k, true);
 
-    //     dd($json);
+    //     dd($usd);
      }
+    //  9860120182993282
+    //  1225
 }

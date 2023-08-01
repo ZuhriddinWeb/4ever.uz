@@ -68,7 +68,7 @@ const pay_check = ref(null);
 
 axios.get(`order-by-id/${store.state.id_selected}`).then(({ data }) => {
     order_info.value = data;
-    console.log(data[0].order_summa);
+    // console.log(data[0].order_summa);
    result.order_summa=data[0].order_summa
 })
 
@@ -83,15 +83,16 @@ axios.get(`pay-check`).then(({ data }) => {
     pay_check.value = data;
     // console.log(data)
 })
-const onSubmit = async () => {    
-    const { data } = await axios.post("order-pay-check", result);
-    if (data.status == 200) {
-        emit("added");
-        emit("close");
-    }
-};
-// AA2656556
-// 32204701120075
-// 22041970
-// 939550068
+axios.get(`pay-check`).then(({ data }) => {
+    pay_check.value = data;
+    // console.log(data)
+})
+axios.post("order-pay-check", result);
+// const onSubmit = async () => {    
+//     const { data } = await axios.post("order-pay-check", result);
+//     if (data.status == 200) {
+//         emit("added");
+//         emit("close");
+//     }
+// };
 </script>

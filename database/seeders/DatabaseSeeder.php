@@ -131,7 +131,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('pay_selects')->insert([
             [ 'name' => 'Картой онлайн (UzCard, Humo)',],
-            [ 'name' => 'При получении (Наличными)',],            
+            [ 'name' => 'Оплата с лицевого счёта',],            
         ]);
     }
 }
