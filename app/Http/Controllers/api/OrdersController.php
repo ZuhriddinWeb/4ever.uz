@@ -52,6 +52,10 @@ class OrdersController extends Controller
     public function create(Request $request)
     {
         // dd($request);
+            $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
+            ->get();
+            $usd = json_decode($response, true);
+        // dd($usd[0]['Rate']);
             $result = $request->all();
             $order=$result['cart_user'][0];
             $summa = 0;
@@ -67,9 +71,9 @@ class OrdersController extends Controller
             $data->address = $result['address'];
             $data->point = $result['point'];
             $data->pay_id = $result['pay_id'];           
-            $data->order_summa = $summa;
+            $data->order_summa = $summa*$usd[0]['Rate'];
             $data->save();
-            // dd($data->order_summa);
+
             $uzumPayCurl =  Http::withHeaders([
                 'Content-Language' => 'uz-UZ',
                 'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
@@ -90,13 +94,28 @@ class OrdersController extends Controller
             ]);
             
             $payment = json_decode($uzumPayCurl, true);
-            $data->orderId = $payment['result']['orderId'];
-            $data->save();
+            $data->order_id = $payment['result']['orderId'];
+            // $data->save();
 
             return response()->json([
                 'status' => 200,
+                'orderId' => $payment['result']['orderId'],
                 'message' => $payment['result']['paymentRedirectUrl'],
             ]);
+
+            // $uzum =  Http::withHeaders([
+            // 'Content-Language' => 'uz-UZ',
+            // 'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
+            // 'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
+            // 'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
+            //     ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [           
+            //         'orderId' => $data->order_id,            
+            //     ]);
+            // $pay = json_decode($uzum, true);
+            // $order = Orders::where('id',$data->id);
+            // $order->order_check = 'registered';
+            // $order->save();
+                       
     }
 
     /**
@@ -174,7 +193,7 @@ class OrdersController extends Controller
     }
     public function update(Request $request)
     {
-        // dd($request);
+        dd($request);
         $result = $request->all();
         $data = new Orders();    
         $count = Orders_Products::where('order_id',$request['id'])->get();
@@ -189,7 +208,7 @@ class OrdersController extends Controller
         // ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [           
         //     'orderId' => 18,            
         // ]);
-        // $payment = json_decode($uzumPayCurl, true);
+        $payment = json_decode($uzumPayCurl, true);
         $order = Orders::find($request['id']);
         $order->order_check = $request['check'];
         $order->save();

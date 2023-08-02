@@ -17,6 +17,7 @@ class OrdersObserver
      */
     public function created(Orders $orders)
     {
+        // dd(request()->all());
         $result = request()->all();
         $order = $result['cart_user'][0];
         for($i=0;$i<count($result['cart_user']);$i++){

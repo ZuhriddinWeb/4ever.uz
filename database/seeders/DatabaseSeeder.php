@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('categories')->insert([
-             ['category_name' => 'Classic','category_image'=> '"16829112800.jpg"'],           
+             ['category_name' => 'Classic'],           
         ]);
    
         DB::table('universal_bonuses')->insert([

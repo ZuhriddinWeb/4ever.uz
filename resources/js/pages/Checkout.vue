@@ -171,6 +171,8 @@ const tuman = ref(null);
 const user_info = ref(null);
 const getpay = ref(null);
 const summa = ref(null);
+const orderId = ref(null);
+
 // const cart_user = ref([]);
 
 const result = reactive({
@@ -201,6 +203,8 @@ async function agreement() {
         axios.post("cart-clear");
         // console.log(data.message)
         // router.push(data.message)
+        orderId.value = data.orderId
+        axios.post("/order-pay-check", orderId.value)
         window.location.href = data.message;
     }
 
