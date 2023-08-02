@@ -1,121 +1,99 @@
 <template>
-    <section class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
-        <article class="flex flex-col w-full ">
-            <div class="w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-                <div class="flex justify-between md:w-2/4 lg:w-2/4 py-5">
+    <section class="w-full container mx-auto flex flex-wrap items-center justify-between">
+        <article class="flex flex-col w-full">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row">
+                <div class="flex justify-between md:w-3/5 lg:w-3/5">
                     <div class="w-5/6 mx-3">
-                        <img class="h-wull w-full" v-bind:src="'/images/' + currentProduct?.images_product" />
+                        <img class="w-full" :src="'/images/' + currentProduct?.images_product" />
                     </div>
                 </div>
-                <div class="flex flex-col justify-between my-2 px-4 py-5 lg:w-1/4  md:w-2/3">
-                    <article class="flex flex-col h-2/3 ">
+                <div class="flex flex-col justify-between  w-full md:w-2/5">
+                    <article class="flex flex-col">
                         <!-- <p class="text-gray-300">#{{ currentProduct.id }}</p> -->
-                        <h3 class="text-2xl my-3">
-                            {{ currentProduct.product_name }}
-                        </h3>
-                        <p class="font-medium text-xl">
-                            <span class="mr-1">Категория:</span><span class="text-orange-500">{{
-                                currentProduct.category?.category_name
-                            }}</span>
+                        <div class="mb-3">
+                            <label class="text-gray-400 block text-sm">Названия</label>
+                            <h3 class="text-2xl text-orange-600 uppercase font-semibold">
+                                {{ currentProduct.product_name }}
+                            </h3>
+                        </div>
+                        <div class="mb-2">
+                            <label class="text-gray-400 block text-sm">Категория</label>
+                            <span class="text-gray-700 font-semibold">
+                                {{ currentProduct.category?.category_name }}
+                            </span>
+                        </div>
+                        <p class="mb-2">
+                            <label class="text-gray-400 block text-sm">Аромат</label>
+                            <span class="text-gray-700 font-semibold">
+                                {{ currentProduct.flavor }}
+                            </span>
                         </p>
-                        <p class="font-medium text-xl">
-                            <span class="mr-1">Аромат:</span><span class="text-orange-500">{{
-                                currentProduct.flavor
-                            }}</span>
-                        </p>
-                        <p class="font-medium text-xl">
-                            <span class="mr-1">Доступность:</span>
-                            <span v-if="currentProduct.count_products > 0" class="text-green-500">на складе</span>
+                        <p class="mb-2">
+                            <label class="text-gray-400 block text-sm">Доступность</label>
+                            <span class="text-gray-700 font-semibold" v-if="currentProduct.count_products > 0">на складе</span>
                             <span v-else class="text-rose-500">нет складе</span>
                         </p>
+                        <p class="mb-2">
+                            <label class="text-gray-400 block text-sm">Объем </label>
+                            <span class="text-gray-700 font-semibold">
+                                {{ currentProduct.volume }}ml
+                            </span>
+                        </p>
                     </article>
-                    <main class="flex flex-col">
-                        <div></div>
+                    <main class="flex justify-between items-end">
                         <div>
-                            <p class="my-2">
-                                <span class="mr-1 text-xl">Объем :</span>{{ currentProduct.volume }}ml
-                            </p>
-                            <p class="text-md uppercase my-1 text-xl">
-                                Цена на USD: <span class="font-medium">{{ currentProduct.price }}$</span>
-                            </p>
-                            <p class="text-md uppercase my-1 text-xl">
-                                Цена на UZS: <span class="font-medium">{{ currentProduct.price*uzsnbu.Rate }} сум</span>
-                            </p>
-                            <div class="flex justify-start items-center">
-                                <button @click="add_cart_user(currentProduct.id)"
-                                    :class="{ 'bg-orange-600 text-white': $store.state.cart.includes(currentProduct.id) }"
-                                    class="border border-orange-600 text-orange-600 px-4 py-2 rounded-sm hover:opacity-70 text-xs font-bold uppercase">
-                                    <span v-if="$store.state.cart.includes(currentProduct.id) == false"><i
-                                            class="fal fa-shopping-bag pr-3"></i>В корзину</span>
-
-                                    <span v-else><i class="fal fa-check pr-3"></i>Удалить из корзины </span>
-
-                                </button>
-                            </div>
+                            <span class="text-2xl text-orange-600">
+                                {{ currentProduct.price }}$
+                            </span>
+                            <br>
+                            <span class="text-gray-400 border-t">
+                                {{ currentProduct.price * uzsnbu.Rate }} сум
+                            </span>
+                        </div>
+                        <div class="flex justify-start items-center">
+                            <button @click="add_cart_user(currentProduct.id)"
+                                :class="{ 'bg-orange-600 text-white': $store.state.cart.includes(currentProduct.id) }"
+                                class="border border-orange-600 text-orange-600 px-4 py-2 rounded-sm hover:opacity-70 text-xs font-bold uppercase">
+                                <span v-if="$store.state.cart.includes(currentProduct.id) == false"><i
+                                        class="fal fa-shopping-bag pr-3"></i>В корзину</span>
+                                <span v-else><i class="fal fa-check pr-3"></i>Удалить из корзины </span>
+                            </button>
                         </div>
                     </main>
                 </div>
             </div>
-            <div class="px-2">
-                <div class="flex flex-wrap">
-                    <div class="w-full">
-                        <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 block leading-normal cursor-pointer hover:text-orange-500"
-                                    v-on:click="toggleTabs(1)" :class="{
-                                        'text-black': openTab !== 1,
-                                        'border-b-2 border-orange-500':
-                                            openTab === 1,
-                                    }">
-                                    Описание продукта
-                                </a>
-                            </li>
-                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 block leading-normal cursor-pointer hover:text-orange-500"
-                                    v-on:click="toggleTabs(2)" :class="{
-                                        'text-black': openTab !== 2,
-                                        'border-b-2 border-orange-500':
-                                            openTab === 2,
-                                    }">
-                                    Ингредиенты
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6">
-                            <div class="px-4 py-5 flex-auto">
-                                <div class="tab-content tab-space">
-                                    <div v-bind:class="{
-                                        hidden: openTab !== 1,
-                                        block: openTab === 1,
-                                    }">
-                                        <p>
-                                            {{
-                                                currentProduct.description_product
-                                            }}
-                                            <br />
-                                            <br />
-                                        </p>
-                                    </div>
-                                    <div v-bind:class="{
-                                                hidden: openTab !== 2,
-                                                block: openTab === 2,
-                                            }">
-                                        <p>
-                                            {{
-                                                currentProduct.instruction_product
-                                            }}
-                                            <br />
-                                            <br />
-                                        </p>
-                                    </div>
+            <div class="mt-4">
+                <div class="w-full">
+                    <ul class="flex mb-4 list-none flex-wrap flex-row">
+                        <li class="w-1/2 text-center">
+                            <a class="text-xs font-bold uppercase px-5 py-3 block border-b-2 cursor-pointer hover:text-orange-500"
+                                @click="openTab = 1" :class="{'border-orange-500 text-orange-600': openTab === 1 }">
+                                Описание продукта
+                            </a>
+                        </li>
+                        <li class="w-1/2 text-center">
+                            <a class="text-xs font-bold uppercase px-5 py-3 block border-b-2 cursor-pointer hover:text-orange-500"
+                                @click="openTab = 2" :class="{'border-orange-500 text-orange-600': openTab === 2 }">
+                                Ингредиенты
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="relative flex flex-col min-w-0 break-words w-full mb-6">
+                        <div class="flex-auto text-gray-600">
+                            <div class="tab-content tab-space">
+                                <div :class="{hidden: openTab !== 1,block: openTab === 1}">
+                                    <p>{{currentProduct.description_product}}</p>
+                                </div>
+                                <div :class="{hidden: openTab !== 2,block: openTab === 2}">
+                                    <p>{{currentProduct.instruction_product}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col">
-                <h3 class="flex text-xl mb-2 text-gray-500">
+            <div>
+                <h3 class="flex mb-2 text-gray-700">
                     РЕКОМЕНДУЕМ
                 </h3>
                 <div class="flex flex-wrap w-full -mx-2">

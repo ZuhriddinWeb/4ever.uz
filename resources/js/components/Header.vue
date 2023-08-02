@@ -1,13 +1,16 @@
 <template>
     <header>
-        <div class="flex justify-between container px-3 items-center mx-auto py-5 text-2xl">
+        <div class="flex justify-between container px-3 items-center mx-auto py-5">
             <div class="flex justify-between order-1 md:order-2 items-center">
                 <RouterLink class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
                     to="/">
-                    <img class="w-[150px] h-[50px] inline-block text-center justify-center" :src="'/images/header.png'">
+                    <i class="fas fa-gem text-orange-600 mr-3"></i> 4EVER.UZ
+                </RouterLink>
+                <RouterLink to="/eshop" class="text-gray-600 ml-8">
+                    Все продукты
                 </RouterLink>
             </div>
-            <div class="order-2 md:order-3 flex items-center" id="nav-content">
+            <div class="order-2 md:order-3 flex items-center text-xl" id="nav-content">
                 <RouterLink v-if="$store.state.user" to="/profile" class="px-2">
                     <i class="fal fa-user"></i>
                 </RouterLink>
@@ -20,9 +23,6 @@
                         {{ $store.state.cart.length }}
                     </span>
                 </RouterLink>
-                <button class="px-2 ml-4 relative -right-2">
-                    <i class="fal fa-bars"></i>
-                </button>
             </div>
         </div>
         <!-- <main class="flex justify-start container items-center mx-auto">

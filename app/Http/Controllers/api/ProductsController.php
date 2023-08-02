@@ -28,16 +28,7 @@ class ProductsController extends Controller
     }
     public function index_tree_cat(Request $request,$cat_id,$tree_id)
     {
-        $data=DB::table('products') 
-        ->join('categories','products.category_id','=','categories.id')
-        ->join('trees','products.tree_id','=','trees.id')
-        ->where([
-            ['products.category_id','=',$cat_id],
-            ['products.tree_id','=',$tree_id]
-            ])
-        ->select('categories.id as cid','categories.category_name','products.*')      
-        ->get();
-        return $data;
+        return Products::all();
     }
 
     

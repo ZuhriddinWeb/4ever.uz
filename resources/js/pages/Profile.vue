@@ -35,8 +35,8 @@
                 </div>
 
 
-                <p class="text-gray-400 text-sm mt-4">Реферальная ссылка</p>
-                <article @click.prevent="copyToClipboard" class="w-full theme-button-gray py-1.5 cursor-pointer">
+                <p class="text-gray-400 text-sm mt-4 mb-1">Реферальная ссылка</p>
+                <article @click.prevent="copyToClipboard" class="w-full theme-button-gray border-0 py-1.5 cursor-pointer">
                     <input @focus="$event.target.select()" class="w-5/6 outline-0 bg-transparent cursor-pointer" ref="generator" :value="'www.4ever.uz/register/' + $store.state.user.promo_code"
                         type="text" readonly>
                         <i class="fal fa-copy mx-1"></i>
