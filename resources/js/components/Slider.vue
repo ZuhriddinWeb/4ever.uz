@@ -1,9 +1,9 @@
 <template>
-    <div class="carousel relative">
-        <swiper :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
+    <div class="container mx-auto carousel relative px-3 ">
+        <swiper class="rounded-md border" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
             <swiper-slide>
                 <main class="h-[50vh]">
-                    <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://media.greenwaystart.com/banner/noname/Green_Fiber_Twist_3840_1210.jpg');">
+                    <div class="h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right" style="background-image: url('https://media.greenwaystart.com/banner/noname/Sharme_essential_candle_citronella_3840_1210.jpg');">
 
                         <div class="container mx-auto">
                             <div
