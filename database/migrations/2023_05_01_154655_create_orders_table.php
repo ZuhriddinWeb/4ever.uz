@@ -15,7 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('order_id');
+            $table->text('orderId')->nullable();
+            $table->text('urlPay')->nullable();
             $table->integer('user_id');
             $table->string('name');
             $table->string('phone');
@@ -26,7 +27,7 @@ class CreateOrdersTable extends Migration
             $table->integer('pay_id');
             // $table->integer('payment_id')->nullable();
             // $table->string('oreder_pay_image')->nullable();
-            $table->integer('order_check')->nullable();
+            $table->string('order_check')->nullable();
             $table->integer('order_summa')->nullable();
             $table->timestamps();
         });

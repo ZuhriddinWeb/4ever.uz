@@ -15,6 +15,7 @@ export default createStore({
             user_id_order: null,
             order_summa: null,
             summa:null,
+            orderId:null,
             statuses: [
                 'Active partner',
                 'Bronze',

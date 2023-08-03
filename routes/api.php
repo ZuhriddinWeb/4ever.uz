@@ -87,6 +87,8 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     Route::post('/order-pay-check', [OrdersController::class, 'update']);
 
     Route::get('/orders', [OrdersController::class, 'index_all']);
+    Route::get('/getOrderStatuses/{id}', [OrdersController::class, 'getOrderStatuses']);
+
     Route::get('/pay-check', [PayCheckController::class, 'index']);
 
 });

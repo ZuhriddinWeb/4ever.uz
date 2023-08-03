@@ -19,11 +19,11 @@
                 </main>
                 <article class="flex justify-between w-full h-full">
                     <div class="w-1/2 flex justify-center items-center text-white">
-                        <main class="shadow shadow-gray-400 flex flex-col justify-between text-xl min-w-[360px] h-[240px] rounded-xl bg-gradient-to-tr  from-sky-600 via-purple-400 to-sky-400">
+                        <!-- <main class="shadow shadow-gray-400 flex flex-col justify-between text-xl min-w-[360px] h-[240px] rounded-xl bg-gradient-to-tr  from-sky-600 via-purple-400 to-sky-400">
                             <img class="h-full w-full" :src=" '/images/' + order_info[0]?.oreder_pay_image"/>
-                        </main>
+                        </main> -->
                     </div>
-                    <div class="w-1/2 mx-4 border-l-2">
+                    <div class="mx-4 border-l-2">
                        <div class="text-center">
                             <p class="font-semibold">To'lov qilinishi kerak bo'lgan summa:{{ order_info[0]?.order_summa }} UZS</p>
                             <!-- <i class="fal fa-arrow-alt-to-bottom text-2xl my-4"></i> -->
@@ -66,7 +66,7 @@ const emit = defineEmits("added");
 const order_info = ref(null);
 const pay_check = ref(null);
 
-axios.get(`order-by-id/${store.state.id_selected}`).then(({ data }) => {
+axios.get(`order-by-id/${store.state.orderId}`).then(({ data }) => {
     order_info.value = data;
     // console.log(data[0].order_summa);
    result.order_summa=data[0].order_summa

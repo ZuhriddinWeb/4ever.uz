@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto carousel relative px-3 ">
+    <div class="container mx-auto carousel relative px-3">
         <swiper class="rounded-md border" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
             <swiper-slide>
                 <main class="h-[50vh]">

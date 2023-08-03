@@ -27,6 +27,8 @@ import store from "../store";
 import InfoOrder from '../admincomponents/orders/InfoOrder.vue'
 
 const openInfo = ref(null);
+const checkInfo = ref(null);
+
 const gridApi = ref(null); // Optional - for accessing Grid's API
 const onGridReady = (params) => {
     gridApi.value = params.api;
@@ -35,46 +37,53 @@ const rowData = ref(null); // Set rowData to Array of Objects, one Object per Ro
 const columnDefs = reactive([
         { headerName: "T/r", valueGetter: "node.rowIndex + 1", width: 120 },
         { headerName: "Kod", field: "id",width: 120 },
-        { headerName: "User Id", field: "user_id",flex:1 },
+        { headerName: "User Id", field: "user_id",width: 120 },
+        { headerName: "Buyurtma ID", field: "orderId",flex:1 },
+        // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
         { headerName: "Buyurtma vaqti", field: "created_at",flex:1 },
+
         {
             headerName: "",
             field: "",
             width: 70,
             onCellClicked: function (select) {
-                return getEdit(select.data);
+                getEdit(select.data);
             },
-            cellRenderer: (params) =>
-                "<div><button @click='category_update=true'><i class='fal fa-comment-alt-dollar  text-xl hover:text-green-400'></i></button></div>",
+            cellClass:[
+                'hover:bg-gray-100',
+                'cursor-pointer'
+            ],
+            cellRenderer: (params) => {
+                if(params.data.order_check=='COMPLETED'){
+                    return "<i class='fal fa-check-circle text-xl text-green-400'></i>"                    
+                }
+                else if(params.data.order_check=='DECLINED'){
+                    return "<i class='fal fa-exclamation-circle text-gray-400  text-xl'></i>"
+                }
+                else{
+                    return "<i class='fal fa-question-circle text-orange-400  text-xl'></i>"
+                }
+            }
         },
-        
       ],
      );
-function getRowClass (params) {
-    // const day = moment(params.data.next_exam_date)
-    // const today = moment()
-    // const diff = day.diff(today, 'days')
-    if(params.data.order_check==1) return '!bg-green-100'
-    else if(params.data.order_check==2) return '!bg-red-100'
-    else if(params.data.order_check==3) return '!bg-orange-100'
+// function getRowClass (params) {
+//     if(params.data.order_check=='COMPLETED') return '!bg-green-100'
+//     else if(params.data.order_check=='REGISTERED') return '!bg-orange-100'
+//     else if(params.data.order_check=='DECLINED') return '!bg-red-100'
 
-};
+// };
 const defaultColDef = {
     sortable: true,
     filter: true,
 };
 async function getEdit(e) {
-    if (e.id != "") {
-        store.state.user_id_order=e.user_id
-        store.state.id_selected = e.id;
-        openInfo.value = true;
-    }
+    const { data } = await axios.get(`getOrderStatuses/${e.orderId}`);
+    checkInfo.value = data;
+    getRowData()
 }
 
 
-function gridRestart() {
-    getRowData();
-}
 async function getRowData() {
     const { data } = await axios.get(`orders`);
     rowData.value = data;

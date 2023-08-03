@@ -12,7 +12,7 @@
                         </div>
                         <span class="text-gray-400 text-sm">Баланс</span>
                         <p class="flex justify-between flex-col text-xl text-orange-500">
-                            <span>$230 {{ my_cashback?.cashback }}</span>
+                            <span>{{ my_cashback?.cashback }}</span>
                         </p>
                         <router-link :to="{name:'payStepOne', params: {id: $store.state.user.id}}" class="w-full theme-button inline-block py-1.5 my-1">
                             Пополнить лицовой счет
