@@ -5,10 +5,8 @@
             <Sidebar v-if="sideBarToggle" @close="sideBarToggle = false"/>
         </transition>
         <Slider />
-        <section class="container mx-auto px-3">
-            <NewProducts></NewProducts>
-            <Footer></Footer>
-        </section>
+        <NewProducts></NewProducts>
+        <Footer></Footer>
     </section>
 </template>
   

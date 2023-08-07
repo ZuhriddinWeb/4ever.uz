@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-col md:flex-row">
-        <main class="sm:w-3/3 md:w-2/3 lg:w-1/4 py-4">
+        <main class="sm:w-3/3 md:w-2/3 lg:w-1/4 p-4 bg-gray-50 shadow-inner">
             <div>
                 <div>
-                    <div class="leading-none mb-3 bg-gray-50 px-3 py-2">
+                    <div class="leading-none mb-3">
                         <div>
                             <p class="font-semibold text-xl mb-1.5">
                                 <span class="mr-1">{{ $store.state.user.fname }}</span>
@@ -95,7 +95,7 @@
             </main>
 
         </main>
-        <aside class="sm:w-3/3 md:w-1/3 lg:w-3/4 pl-5 py-4">
+        <aside class="sm:w-3/3 md:w-1/3 lg:w-3/4 pl-5">
             <router-view></router-view>
         </aside>
     </div>

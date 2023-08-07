@@ -20,7 +20,7 @@
                 <article class="flex justify-center w-full">
                     <form class="mb-8 mt-8 mx-2" @submit.prevent="onSubmit" enctype="multipart/form-data">
                         <div class=" text-white">
-                            <main class="w-1/2 shadow shadow-gray-400 flex flex-col justify-center text-xl min-w-[315px] h-[225px] rounded-xl bg-gray-500">
+                            <main class="w-1/2 shadow shadow-gray-400 flex flex-col justify-center text-xl min-w-[315px] h-[200px] rounded-xl bg-gray-500">
                                 <div class="flex mx-4 my-4 font-medium" >
                                     <input v-model="result.number" placeholder="Номер карты" class="text-sm mb-2 appearance-none bg-transparent w-full text-white mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="text" />
                                 </div>
