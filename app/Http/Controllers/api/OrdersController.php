@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Orders_Products;
+use Ixudra\Curl\Facades\Curl;
 use Illuminate\Http\Request;
-use DB;
 use Illuminate\Support\Str;
-use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Cashback;
-
-use App\Models\Orders_Products;
+use App\Models\Orders;
+use App\Helpers\Helpers;
 use Http;
-use Ixudra\Curl\Facades\Curl;
+use DB;
 use Auth;
 class OrdersController extends Controller
 {
@@ -82,44 +82,23 @@ class OrdersController extends Controller
         $cashback_user = 0;
         $model = new Cashback();
         $orders = Orders::where('orderId',$id)->get();
-        if($orders[0]['order_summa'] > 150){
-            $cashback_user+=100*0.1;           
-        }
-        if($orders[0]['order_summa'] < 150){
-            $cashback_user+=($orders[0]['order_summa'] - 50)*0.1;
-        }
-        if($orders[0]['order_summa'] > 300){
-            $cashback_user+=150*0.15;           
-        }
-        if($orders[0]['order_summa'] < 300){
-            $cashback_user+=($orders[0]['order_summa'] - 150)*0.15;
-        }
-        if($orders[0]['order_summa'] > 500){
-            $cashback_user+=200*0.2;           
-        }
-        if($orders[0]['order_summa'] < 500){
-            $cashback_user+=($orders[0]['order_summa'] - 300)*0.2;
-        }
-        if($orders[0]['order_summa'] > 800){
-            $cashback_user+=($orders[0]['order_summa'] - 800)*0.3;
-            $cashback_user+=300*0.25;       
-        }
+
+        $helpers = new Helpers();
+        $helpers->getCashback(50);
+        // 
+
+        $older = Cashback::where('user_id',$orders[0]['user_id'])->first();
         
-        elseif($orders[0]['order_summa'] < 800){
-            $cashback_user+=($orders[0]['order_summa'] - 500)*0.25;
+        if(empty($older)){
+            $model->user_id =$orders[0]['user_id'];
+            $model->cashback = $cashback_user;
+            $model->save();
         }
-            $older = Cashback::where('user_id',$orders[0]['user_id'])->first();
-            
-            if(empty($older)){
-                $model->user_id =$orders[0]['user_id'];
-                $model->cashback = $cashback_user;
-                $model->save();
-            }
-            else{
-                $cashback = Cashback::where('user_id',$older->user_id)->first();
-                $cashback->cashback = $older->cashback + $cashback_user;
-                $cashback->save();                    
-            }
+        else{
+            $cashback = Cashback::where('user_id',$older->user_id)->first();
+            $cashback->cashback = $older->cashback + $cashback_user;
+            $cashback->save();                    
+        }
            
 
         return response()->json([

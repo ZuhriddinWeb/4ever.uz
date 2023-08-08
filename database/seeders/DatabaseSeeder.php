@@ -28,37 +28,37 @@ class DatabaseSeeder extends Seeder
             'phone' => '5972323',
             'status' => '1',
             'promo_code'=> $promo,
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('zzzz1111*'),
             'created_at' => now(),
         ]);
        
-        DB::table('users')->insert([
-            'fname' => 'Aziz',
-            'lname' => 'Soliyev',
-            'passport' => 'AA12345679',
-            'role' => '1',
-            'parent_id' => 1,
-            'phone' => '5972323',
-            'status' => '1',
-            'code'=> $promo,
-            'promo_code'=> bin2hex(random_bytes(2)),
-            'password' => Hash::make('12345678'),
-            'created_at' => now(),
-        ]);
+        // DB::table('users')->insert([
+        //     'fname' => 'Aziz',
+        //     'lname' => 'Soliyev',
+        //     'passport' => 'AA12345679',
+        //     'role' => '1',
+        //     'parent_id' => 1,
+        //     'phone' => '5972323',
+        //     'status' => '1',
+        //     'code'=> $promo,
+        //     'promo_code'=> bin2hex(random_bytes(2)),
+        //     'password' => Hash::make('12345678'),
+        //     'created_at' => now(),
+        // ]);
 
-        DB::table('users')->insert([
-            'fname' => 'Jamshid',
-            'lname' => 'Ravshanov',
-            'passport' => 'AA12345670',
-            'role' => '1',
-            'parent_id' => 1,
-            'phone' => '5972325',
-            'status' => '1',
-            'code'=> $promo,
-            'promo_code'=> bin2hex(random_bytes(2)),
-            'password' => Hash::make('12345678'),
-            'created_at' => now(),
-        ]);
+        // DB::table('users')->insert([
+        //     'fname' => 'Jamshid',
+        //     'lname' => 'Ravshanov',
+        //     'passport' => 'AA12345670',
+        //     'role' => '1',
+        //     'parent_id' => 1,
+        //     'phone' => '5972325',
+        //     'status' => '1',
+        //     'code'=> $promo,
+        //     'promo_code'=> bin2hex(random_bytes(2)),
+        //     'password' => Hash::make('12345678'),
+        //     'created_at' => now(),
+        // ]);
 
 
         DB::table('categories')->insert([
@@ -131,7 +131,7 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('pay_selects')->insert([
             [ 'name' => 'Картой онлайн (UzCard, Humo)',],
-            [ 'name' => 'Оплата с лицевого счёта',],            
+            [ 'name' => 'Оплата с лицевого счёта',],         AB5136977   
         ]);
     }
 }

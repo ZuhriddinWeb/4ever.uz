@@ -52,7 +52,6 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     Route::get('/money/{period}/{userid}' , [MoneyController::class, 'show']);
 // 
 
-    Route::get('/getuniversalbonuses' , [UniversalBonusController::class, 'getUniversalBonuses']);
     Route::post('/category-save', [CategoryController::class, 'store']);
     Route::get('/category_id/{id}', [CategoryController::class, 'index_id']);
     Route::post('/category-delete', [CategoryController::class, 'delete']);
@@ -119,6 +118,7 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
     Route::get('/getPay', [ViloyatController::class, 'getPay']);
     Route::get('/latest', [OrdersController::class, 'getLatest']);
 
+    Route::get('/getuniversalbonuses' , [UniversalBonusController::class, 'getUniversalBonuses']);
     
 });
 

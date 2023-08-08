@@ -23,11 +23,11 @@
                             <p>Mahsulot hidini kiriting:</p>
                             <input v-model="result.flavor" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="text" />                        
                             <p>Mahsulot narxi:</p>
-                            <input v-model="result.product_price" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="text" />
+                            <input v-model="result.product_price" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="number" />
                             <p>Mahsulot hajmi:</p>
-                            <input v-model="result.volume" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="text" />
+                            <input v-model="result.volume" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="number" />
                             <p>Mahsulot soni:</p>
-                            <input v-model="result.product_count" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="text" />
+                            <input v-model="result.product_count" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none" type="number" />
                             <p>Mahsulot haqida ma'lumot:</p>
                             <textarea v-model="result.product_descr" name="" id="" cols="30" rows="5" class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none"></textarea>
                             <p>Mahsulot instruksiyasi:</p>
