@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Products;
 use App\Models\Cashback;
+use App\Models\User;
+
 use App\Models\Orders;
 use App\Helpers\Helpers;
 use Http;
@@ -66,45 +68,104 @@ class OrdersController extends Controller
             ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [               
                 'orderId' => $id,                 
             ]);
+            // $uzumOperation =  Http::withHeaders([
+            //     'Content-Language' => 'uz-UZ',
+            //     'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
+            //     'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
+            //     'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
+            //     ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOperationState', [               
+            //         'operation_id' => '381c6272-79a2-432d-9467-cb15710b783a',
+
+            //     ]);
             $pay = json_decode($uzum, true);
+            // $uzumCheck =  Http::post('https://www.inplat-tech.ru/fiscal_receipt_generation', [               
+            //         'operation_id' => '381c6272-79a2-432d-9467-cb15710b783a',
+            //         'date_time'=>'2023-08-09T05:12:25ZZ',
+            //         'cash_amount'=> $pay['result']['completedAmount'],
+            //         'card_amount'=>$pay['result']['completedAmount'],
+            //         'phone_number'=>'5972323',
+            //         "items"=>[                       
+            //             "product_name"=> "string",
+            //             "price"=> 100000,
+            //             "count"=> 1,
+            //             "spic"=> "string",
+            //             "units"=> 1,
+            //             "package_code"=> "string",
+            //             "vat_percent"=> 0,
+            //             "voucher"=> 0]
+            //     ]);
+            // $pay1 = json_decode($uzumCheck, true);
+            // dd($pay1);
             $data = new Orders();
             $data = DB::table('orders')
             ->where('orderId', $id)
             ->update(['order_check' => $pay['result']['status']]);
-            $this->getCashback($pay['result']['orderId']);
+            // dd($pay['result']['orderId']);
+
+            if($pay['result']['status']=='COMPLETED'){
+                $this->getParentCashback($id);
+                $this->getCashback($pay['result']['orderId']);
+            }
+
 
             return response()->json([
                 'status' => 200,
                 'message'=>'Order Checked'
             ]);
     }
-    public function getCashback($id){
-        $cashback_user = 0;
-        $model = new Cashback();
-        $orders = Orders::where('orderId',$id)->get();
 
-        $helpers = new Helpers();
-        $helpers->getCashback(50);
-        // 
+    public function getParentCashback($id){
+        // dd($id);
+        $userPay =Orders::where('orderId',$id)->get();
+        $parent_id = User::where('id',$userPay[0]['user_id'])->get();
+        $parentCashback = ($userPay[0]['order_summa']/2)*0.25;
+        $cashback = new Cashback();
 
-        $older = Cashback::where('user_id',$orders[0]['user_id'])->first();
+        $older = Cashback::where('user_id',$parent_id[0]['parent_id'])->first();
         
         if(empty($older)){
-            $model->user_id =$orders[0]['user_id'];
-            $model->cashback = $cashback_user;
-            $model->save();
+            $cashback->user_id =$parent_id[0]['parent_id'];
+            $cashback->cashback = $parentCashback;
+            $cashback->save();
         }
         else{
-            $cashback = Cashback::where('user_id',$older->user_id)->first();
-            $cashback->cashback = $older->cashback + $cashback_user;
+            $cashback = Cashback::where('user_id',$parent_id[0]['parent_id'])->first();
+            $cashback->cashback = $older->cashback + $parentCashback;
             $cashback->save();                    
         }
-           
-
         return response()->json([
             'status' => 200,
             'message' => "Cashback muvafaqiyatli qo'shildi",
         ]);
+    }
+
+    public function getCashback($id){
+        $cashback_user = 0;
+        $cashback = new Cashback();
+        $orders = Orders::where('orderId',$id)->get();
+        $helpers = new Helpers();
+        $userCashback=$helpers->getCashback($orders[0]['order_summa'])/2;
+        $older = Cashback::where('user_id',$orders[0]['user_id'])->first();
+        if(empty($older)){
+            $cashback->user_id = $orders[0]['user_id'];
+            $cashback->cashback = $userCashback;
+            $cashback->save();
+        }
+        else{
+            $cashback = Cashback::where('user_id',$orders[0]['user_id'])->first();
+            $cashback->cashback = $older->cashback + $userCashback;
+            $cashback->save();                    
+        }
+        return response()->json([
+            'status' => 200,
+            'message' => "Cashback muvafaqiyatli qo'shildi",
+        ]);
+           
+
+        // return response()->json([
+        //     'status' => 200,
+        //     'message' => "Cashback muvafaqiyatli qo'shildi",
+        // ]);
     }
     /**
      * Show the form for creating a new resource.

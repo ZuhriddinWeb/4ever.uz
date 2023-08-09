@@ -34,7 +34,7 @@ const PageProps = reactive({
       { headerName: "Familiya", field: "lname", flex: 1 },
       { headerName: "Ism", field: "fname", flex: 1 },
       { headerName: "Telefon", field: "phone", flex: 1 },
-      { headerName: "Manzil", field: "address", flex: 1 },
+      // { headerName: "Manzil", field: "address", flex: 1 },
       { headerName: "Status", field: "fname", flex: 1 },
       { 
          headerName: "",

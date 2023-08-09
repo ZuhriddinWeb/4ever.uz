@@ -7,7 +7,7 @@
                 <img class="w-[50px] h-[50px] inline-block mb-4" :src="'/images/logo.png'">
                 <h3 class="flex justify-between text-3xl font-medium">
                     <span>Forever</span>
-                    <span class="text-orange-500">Gab</span>
+                    <span class="text-orange-500">GAB</span>
                 </h3>
                 <h3 class="text-3xl font-medium">perfume</h3>
             </div>

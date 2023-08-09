@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Orders;
 use App\Models\Orders_Products;
 use App\Models\Cashback;
+use App\Models\User;
 
 class OrdersObserver
 {
@@ -41,53 +42,7 @@ class OrdersObserver
      */
     public function updated(Orders $orders)
     {
-        // $cashback_user = 0;
-        // $model = new Cashback();
-        // if($orders->order_summa > 150){
-        //     $cashback_user+=100*0.1;           
-        // }
-        // if($orders->order_summa < 150){
-        //     $cashback_user+=($orders->order_summa - 50)*0.1;
-        // }
-        // if($orders->order_summa > 300){
-        //     $cashback_user+=150*0.15;           
-        // }
-        // if($orders->order_summa < 300){
-        //     $cashback_user+=($orders->order_summa - 150)*0.15;
-        // }
-        // if($orders->order_summa > 500){
-        //     $cashback_user+=200*0.2;           
-        // }
-        // if($orders->order_summa < 500){
-        //     $cashback_user+=($orders->order_summa - 300)*0.2;
-        // }
-        // if($orders->order_summa > 800){
-        //     $cashback_user+=($orders->order_summa - 800)*0.3;
-        //     $cashback_user+=300*0.25;       
-        // }
-        
-        // elseif($orders->order_summa < 800){
-        //     $cashback_user+=($orders->order_summa - 500)*0.25;
-        // }
-        //     $older = Cashback::where('user_id', $orders->user_id)->first();
-            
-        //     if(empty($older)){
-        //         $model->user_id = $orders->user_id;
-        //         $model->cashback = $cashback_user;
-        //         $model->save();
-        //     }
-        //     else{
-        //         $cashback = Cashback::where('user_id',$older->user_id)->first();
-        //         $cashback->cashback = $older->cashback + $cashback_user;
-        //         $cashback->save();                    
-        //     }
-           
-
-        // return response()->json([
-        //     'status' => 200,
-        //     'message' => "Cashback muvafaqiyatli qo'shildi",
-        // ]);
-
+       
     }
 
     /**

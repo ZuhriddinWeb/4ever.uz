@@ -216,11 +216,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         headerName: "Telefon",
         field: "phone",
         flex: 1
-      }, {
-        headerName: "Manzil",
-        field: "address",
-        flex: 1
-      }, {
+      },
+      // { headerName: "Manzil", field: "address", flex: 1 },
+      {
         headerName: "Status",
         field: "fname",
         flex: 1
