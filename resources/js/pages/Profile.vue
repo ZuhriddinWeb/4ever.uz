@@ -14,12 +14,12 @@
                         <p class="flex justify-between flex-col text-xl text-orange-500">
                             <span>{{ my_cashback?.cashback }}</span>
                         </p>
-                        <router-link :to="{name:'payStepOne', params: {id: $store.state.user.id}}" class="w-full theme-button inline-block py-1.5 my-1">
+                        <div  class="w-full theme-button inline-block py-1.5 my-1">
                             Пополнить лицовой счет
-                        </router-link>
+                        </div>
                     </div>
 
-                    <!-- <div class="leading-none mb-3">
+                    <!-- <div class="leading-none mb-3"> :to="{name:'payStepOne', params: {id: $store.state.user.id}}"
                         <span class="text-gray-400 text-sm">Бонус</span>
                         <p class="flex justify-between flex-col">
                             <span>$150 </span>
@@ -76,14 +76,14 @@
                         Дерево
                     </div>
                 </router-link>
-                <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-receipt"></i>
                     </div>
                     <div class="flex justify-center">
                         Транзакции
                     </div>
-                </router-link>
+                </router-link> -->
                 <article @click="$store.dispatch('logout')" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-sign-out"></i>

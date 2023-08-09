@@ -52,20 +52,22 @@
                         {{ item.created_at }}
                     </td>
                     <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <!-- {{ totalPrice(item.products) }} UZS -->
+                        {{ item.order_summa }} UZS
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <span v-if="item.order_check == null" class="px-4 text-lg rounded-sm bg-orange-400 text-white">
                             Tekshirilmoqda
                         </span>
-                        <span v-if="item.order_check == 1" class="px-4 text-lg rounded-sm bg-green-400 text-white">
+                        <span v-if="item.order_check == 'COMPLETED'"
+                            class="px-4 text-lg rounded-sm bg-green-400 text-white">
                             <span>Tasdiqlandi</span>
                         </span>
-                        <span v-if="item.order_check == 2" class="px-4 text-lg rounded-sm bg-orange-400 text-white">
+                        <span v-if="item.order_check == 'DECLINED'"
+                            class="px-4 text-lg rounded-sm bg-rose-400 text-white">
                             <span>Bekor qilindi</span>
                         </span>
                     </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <button class="bg-emerald-500 text-white"
                             @click="add_Check = true, $store.state.id_selected = item.id">
                             <span class="px-4 text-lg rounded-sm hover:bg-emerald-600">
@@ -73,15 +75,15 @@
                                 To'lov
                             </span>
                         </button>
+                    </td> -->
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <button class="bg-violet-500 text-white" @click="order_info = true, $store.state.id_selected = item.id">
+                            <span class="px-4 text-lg rounded-sm hover:bg-violet-600">
+                                <i class="fal fa-list-ul mr-1"></i>
+                                Batafsil
+                            </span>
+                        </button>
                     </td>
-                    <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        <button class="bg-violet-500 text-white" @click="order_info=true,$store.state.id_selected=item.id">
-                                           <span class="px-4 text-lg rounded-sm hover:bg-violet-600">
-                                            <i class="fal fa-list-ul mr-1"></i>
-                                            Batafsil
-                                        </span>
-                                        </button>
-                                    </td> -->
 
                 </tr>
             </tbody>

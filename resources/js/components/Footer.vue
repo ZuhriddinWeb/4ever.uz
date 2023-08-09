@@ -1,6 +1,6 @@
 <template>
     <section class="py-8">
-        <div>
+        <!-- <div>
             <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl mb-8"
                 href="#">
                 О нас
@@ -21,7 +21,7 @@
                 habitasse platea dictumst quisque. In aliquam sem fringilla ut. Gravida rutrum quisque non tellus orci ac
                 auctor augue mauris. Accumsan lacus vel facilisis volutpat est velit egestas dui id. At tempor commodo
                 ullamcorper a. Volutpat commodo sed egestas egestas fringilla. Vitae congue eu consequat ac.</p>
-        </div>
+        </div> -->
     </section>
     <footer class="py-8 border-t border-gray-300">
         <div>

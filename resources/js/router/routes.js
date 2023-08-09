@@ -4,6 +4,11 @@ export default [
 		name:'home',
 		component: () => import('../pages/Home.vue'),
 	},
+	// {
+	// 	path: '/public/images/FOREVER.pdf',
+	// 	// name:'home',
+	// 	// component: () => import('../pages/Home.vue'),
+	// },
 	{
 		path: '/register/:id',
 		name:'register',
@@ -133,6 +138,11 @@ export default [
 				path: 'orders',
 				name:'orders',
 				component: () => import('../adminpages/Orders.vue'),		
+			},
+			{
+				path: 'completedOrders',
+				name:'completedOrders',
+				component: () => import('../adminpages/CompletedOrders.vue'),		
 			},
 			{
 				path: 'users',

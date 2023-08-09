@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 use App\Models\Products;
 use App\Models\Cashback;
 use App\Models\User;
-
 use App\Models\Orders;
 use App\Helpers\Helpers;
 use Http;
@@ -42,6 +41,19 @@ class OrdersController extends Controller
         return Orders::orderBy('id', 'desc')->get();
 
     }
+    public function getCompleted()
+    {
+        // return Orders::where('user_id' , $id)->latest()->first();
+        return Orders::where('order_check','COMPLETED')->orderBy('id', 'desc')->get();
+
+    }
+    public function getWithProducts($id)
+    {
+        // return Orders::where('user_id' , $id)->latest()->first();
+        return Orders_Products::where('order_id',$id)->orderBy('id', 'desc')->get();
+
+    }
+    
     public function index_by_id($id)
     {
         $uzum =  Http::withHeaders([
@@ -162,14 +174,11 @@ class OrdersController extends Controller
         ]);
            
 
-        // return response()->json([
-        //     'status' => 200,
-        //     'message' => "Cashback muvafaqiyatli qo'shildi",
-        // ]);
+        
     }
     /**
-     * Show the form for creating a new resource.
-     *
+     * Show the form for creating a new resource.23120000200000111510
+     *201055108
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
