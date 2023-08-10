@@ -8,7 +8,7 @@
                 <main class="flex  justify-between w-full items-center bg-gray-100 shadow-sm">
                     <div class="flex justify-between p-2 w-full">
                         <header class="flex justify-center items-center text-xl text-gray-500">
-                            Jo'natma ma'lumotnomasi{{ $store.state.id_selected }}
+                            Jo'natma ma'lumotnomasi
                         </header>                    
                         <div class="text-xl">
                             <button @click="$emit('close')" class="px-3 py-1 hover:text-red-600">
@@ -40,8 +40,6 @@ import { reactive, onMounted, ref } from "vue";
 const { selectedDataDelete } = defineProps(["selectedDataDelete"]);
 
 const emit = defineEmits("added");
-const order_info = ref(null);
-const pay_check = ref(null);
 
 const gridApi = ref(null); // Optional - for accessing Grid's API
 const onGridReady = (params) => {
@@ -52,8 +50,9 @@ const columnDefs = reactive([
         { headerName: "T/r",headerClass:'items-center', valueGetter: "node.rowIndex + 1", width: 120 },
         { headerName: "Kod", field: "id",width: 120 },
         { headerName: "Mahsulot ID", valueGetter: params => {return params.data.products_info.id;} },
-        { headerName: "Mahsulot nomi", valueGetter: params => {return params.data.products_info.product_name;} },
+        { headerName: "Mahsulot nomi", valueGetter: params => {return params.data.products_info.product_name;} },        
         { headerName: "Aromat",valueGetter: params => {return params.data.products_info.flavor;}},
+        { headerName: "Soni",field: "count"},
         { headerName: "Buyurtma vaqti", field: "created_at"},
 
         {

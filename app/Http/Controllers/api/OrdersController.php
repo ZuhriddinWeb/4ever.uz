@@ -44,15 +44,38 @@ class OrdersController extends Controller
     public function getCompleted()
     {
         // return Orders::where('user_id' , $id)->latest()->first();
-        return Orders::where('order_check','COMPLETED')->orderBy('id', 'desc')->get();
+        return  DB::table('orders')
+        ->join('tuman','orders.tuman_id','=','tuman.id')
+        ->join('viloyat','orders.viloyat_id','=','viloyat.id')
+        ->where('order_check','COMPLETED')
+        ->select('orders.*','tuman.tuman','viloyat.viloyat')
+        ->orderBy('orders.id', 'desc')
+        ->get();
 
     }
     public function getWithProducts($id)
     {
         // return Orders::where('user_id' , $id)->latest()->first();
-        return Orders_Products::where('order_id',$id)->orderBy('id', 'desc')->get();
+        return Orders_Products::where('order_id',$id)
+        ->orderBy('orders__products.id', 'desc')
+        ->get();
 
     }
+    public function getSendOrder($id)
+    {
+        // return Orders::where('user_id' , $id)->latest()->first();
+        $data = new Orders();
+        $data = DB::table('orders')
+        ->where('id', $id)
+        ->update(['send_order' => '1']);
+        return response()->json([
+            'status' => 200,
+            'message'=>'Order Sended'
+        ]);
+
+
+    }
+    
     
     public function index_by_id($id)
     {
@@ -90,21 +113,23 @@ class OrdersController extends Controller
 
             //     ]);
             $pay = json_decode($uzum, true);
-            // $uzumCheck =  Http::post('https://www.inplat-tech.ru/fiscal_receipt_generation', [               
+            // $uzumCheck =  Http::withHeaders([
+            //     'ssl-client-fingerprint'=>'9e8f9cb431f69a39fab5f9cb91727343b8700154'
+            // ])->post('https://test-arp.ipt-merch.com/fiscal_receipt_generation', [               
             //         'operation_id' => '381c6272-79a2-432d-9467-cb15710b783a',
-            //         'date_time'=>'2023-08-09T05:12:25ZZ',
+            //         'date_time'=>'2023-08-09T05:12:25.734939+00:00',
             //         'cash_amount'=> $pay['result']['completedAmount'],
             //         'card_amount'=>$pay['result']['completedAmount'],
-            //         'phone_number'=>'5972323',
+            //         'phone_number'=>'+998795972323',
             //         "items"=>[                       
-            //             "product_name"=> "string",
+            //             "product_name"=> "Chanel",
             //             "price"=> 100000,
             //             "count"=> 1,
-            //             "spic"=> "string",
+            //             "spic"=> "test",
             //             "units"=> 1,
-            //             "package_code"=> "string",
-            //             "vat_percent"=> 0,
-            //             "voucher"=> 0]
+            //             "package_code"=> "test",
+            //             "vat_percent"=> 12,
+            //             ]
             //     ]);
             // $pay1 = json_decode($uzumCheck, true);
             // dd($pay1);

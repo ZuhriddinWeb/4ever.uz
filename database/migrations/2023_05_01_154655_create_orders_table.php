@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             // $table->string('oreder_pay_image')->nullable();
             $table->string('order_check')->nullable();
             $table->integer('order_summa')->nullable();
+            $table->integer('send_order')->nullable();
             $table->timestamps();
         });
     }

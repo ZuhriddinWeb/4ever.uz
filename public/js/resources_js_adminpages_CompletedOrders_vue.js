@@ -26,8 +26,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       emit = _ref.emit;
     expose();
     var selectedDataDelete = __props.selectedDataDelete;
-    var order_info = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var pay_check = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var gridApi = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null); // Optional - for accessing Grid's API
     var onGridReady = function onGridReady(params) {
       gridApi.value = params.api;
@@ -57,6 +55,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       valueGetter: function valueGetter(params) {
         return params.data.products_info.flavor;
       }
+    }, {
+      headerName: "Soni",
+      field: "count"
     }, {
       headerName: "Buyurtma vaqti",
       field: "created_at"
@@ -135,8 +136,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     })));
     var __returned__ = {
       emit: emit,
-      order_info: order_info,
-      pay_check: pay_check,
       gridApi: gridApi,
       onGridReady: onGridReady,
       rowData: rowData,
@@ -185,8 +184,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
-    var openInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var checkInfo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var viewDetails = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var gridApi = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null); // Optional - for accessing Grid's API
     var onGridReady = function onGridReady(params) {
@@ -196,19 +193,45 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var columnDefs = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([{
       headerName: "T/r",
       valueGetter: "node.rowIndex + 1",
-      width: 120
+      width: 100
     }, {
       headerName: "Kod",
       field: "id",
-      width: 120
+      width: 100
     }, {
       headerName: "User Id",
       field: "user_id",
       width: 120
+    },
+    // { headerName: "Buyurtma ID", field: "orderId",flex:1 },
+    {
+      headerName: "Ism",
+      field: "name",
+      width: 120
     }, {
-      headerName: "Buyurtma ID",
-      field: "orderId",
+      headerName: "Viloyat",
+      field: "viloyat",
+      width: 120
+    }, {
+      headerName: "Tuman",
+      field: "tuman",
+      width: 120
+    }, {
+      headerName: "Manzil",
+      field: "address",
       flex: 1
+    }, {
+      headerName: "Mo'ljal",
+      field: "point",
+      flex: 1
+    }, {
+      headerName: "Telefon",
+      field: "phone",
+      width: 120
+    }, {
+      headerName: "Summa",
+      field: "order_summa",
+      width: 120
     }, {
       headerName: "Buyurtma vaqti",
       field: "created_at",
@@ -223,6 +246,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       cellClass: ['hover:bg-gray-100', 'cursor-pointer'],
       cellRenderer: function cellRenderer(params) {
         return "<i  @click='viewDetails=true' class='fal fa-exclamation-circle text-gray-400  text-xl'></i>";
+      }
+    }, {
+      headerName: "",
+      field: "",
+      width: 70,
+      onCellClicked: function onCellClicked(select) {
+        return getSend(select.data);
+      },
+      cellClass: ['hover:bg-gray-100', 'cursor-pointer'],
+      cellRenderer: function cellRenderer(params) {
+        if (params.data.send_order == 1) {
+          return "<i class='fal fa-check-circle text-xl text-green-400'></i>";
+        } else {
+          return "<i class='fal fa-question-circle text-orange-400  text-xl'></i>";
+        }
       }
     }]);
     // function getRowClass (params) {
@@ -247,9 +285,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.id_selected = e.id;
                 viewDetails.value = true;
               }
-              // const { data } = await axios.get(`getOrderStatuses/${e.orderId}`);
-              // checkInfo.value = data;
-              // getRowData()
             case 1:
             case "end":
               return _context2.stop();
@@ -258,26 +293,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }));
       return _getEdit.apply(this, arguments);
     }
-    function getRowData() {
-      return _getRowData.apply(this, arguments);
+    function getSend(_x2) {
+      return _getSend.apply(this, arguments);
     }
-    function _getRowData() {
-      _getRowData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    function _getSend() {
+      _getSend = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
         var _yield$axios$get, data;
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("completedOrders");
+              return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("getSendOrder/".concat(e.id));
             case 2:
               _yield$axios$get = _context3.sent;
               data = _yield$axios$get.data;
               rowData.value = data;
-            case 5:
+              getRowData();
+            case 6:
             case "end":
               return _context3.stop();
           }
         }, _callee3);
+      }));
+      return _getSend.apply(this, arguments);
+    }
+    function getRowData() {
+      return _getRowData.apply(this, arguments);
+    }
+    function _getRowData() {
+      _getRowData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+        var _yield$axios$get2, data;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("completedOrders");
+            case 2:
+              _yield$axios$get2 = _context4.sent;
+              data = _yield$axios$get2.data;
+              rowData.value = data;
+            case 5:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
       }));
       return _getRowData.apply(this, arguments);
     }
@@ -293,8 +352,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee);
     })));
     var __returned__ = {
-      openInfo: openInfo,
-      checkInfo: checkInfo,
       viewDetails: viewDetails,
       gridApi: gridApi,
       onGridReady: onGridReady,
@@ -302,6 +359,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columnDefs: columnDefs,
       defaultColDef: defaultColDef,
       getEdit: getEdit,
+      getSend: getSend,
       getRowData: getRowData,
       get axios() {
         return axios__WEBPACK_IMPORTED_MODULE_3__["default"];
@@ -346,9 +404,9 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "flex justify-between p-2 w-full"
 };
-var _hoisted_4 = {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
   "class": "flex justify-center items-center text-xl text-gray-500"
-};
+}, " Jo'natma ma'lumotnomasi ", -1 /* HOISTED */);
 var _hoisted_5 = {
   "class": "text-xl"
 };
@@ -369,7 +427,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", {
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {}, ["stop"])),
     "class": "bg-white shadow h-4/5 w-4/6 rounded-sm"
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_4, " Jo'natma ma'lumotnomasi" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.id_selected), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$emit('close');
     }),
@@ -438,13 +496,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Completed_vue_vue_type_template_id_49721474__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Completed.vue?vue&type=template&id=49721474 */ "./resources/js/admincomponents/completedOrders/Completed.vue?vue&type=template&id=49721474");
 /* harmony import */ var _Completed_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Completed.vue?vue&type=script&setup=true&lang=js */ "./resources/js/admincomponents/completedOrders/Completed.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Completed_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Completed_vue_vue_type_template_id_49721474__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/admincomponents/completedOrders/Completed.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Completed_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Completed_vue_vue_type_template_id_49721474__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/admincomponents/completedOrders/Completed.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -465,13 +523,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _CompletedOrders_vue_vue_type_template_id_3fdd72b4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CompletedOrders.vue?vue&type=template&id=3fdd72b4 */ "./resources/js/adminpages/CompletedOrders.vue?vue&type=template&id=3fdd72b4");
 /* harmony import */ var _CompletedOrders_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CompletedOrders.vue?vue&type=script&setup=true&lang=js */ "./resources/js/adminpages/CompletedOrders.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CompletedOrders_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CompletedOrders_vue_vue_type_template_id_3fdd72b4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/CompletedOrders.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CompletedOrders_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CompletedOrders_vue_vue_type_template_id_3fdd72b4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/CompletedOrders.vue"]])
 /* hot reload */
 if (false) {}
 

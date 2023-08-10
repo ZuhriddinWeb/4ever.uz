@@ -43,7 +43,6 @@ Route::get('/category', [CategoryController::class, 'index']);
 Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     // Category routes
     Route::get('/getusers/{period}/{userid}' , [UniversalBonusController::class, 'getUsersWith']);
-
     // 
     Route::apiResource('startbonus' , StartBonusController::class);
     Route::apiResource('money' , MoneyController::class)->except('show', 'index');
@@ -90,6 +89,7 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
 
     
     Route::get('/getOrderStatuses/{id}', [OrdersController::class, 'getOrderStatuses']);
+    Route::get('/getSendOrder/{id}', [OrdersController::class, 'getSendOrder']);
 
     Route::get('/pay-check', [PayCheckController::class, 'index']);
 

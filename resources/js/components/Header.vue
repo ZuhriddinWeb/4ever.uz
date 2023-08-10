@@ -9,7 +9,7 @@
                 <RouterLink to="/eshop" class="text-gray-600 ml-8 mr-4">
                     Все продукты
                 </RouterLink>
-                <pdf href="../../../public/images/FOREVER.pdf" target="_blank">О нас</pdf>
+                <a :href="'/images/FOREVER.pdf'"  target="_blank">О нас</a>
             </div>
             <div class="order-2 md:order-3 flex items-center text-xl" id="nav-content">
                 <RouterLink v-if="$store.state.user" to="/profile" class="px-2">
