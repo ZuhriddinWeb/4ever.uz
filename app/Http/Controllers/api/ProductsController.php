@@ -28,7 +28,7 @@ class ProductsController extends Controller
     }
     public function index_tree_cat(Request $request,$cat_id,$tree_id)
     {
-        return Products::all();
+        return Products::where('tree_id', $tree_id)->get();
     }
 
     

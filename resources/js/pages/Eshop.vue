@@ -54,6 +54,8 @@ function select_products(tree_id) {
     });
 }
 
+select_products(1)
+
 axios.get(`category`).then((res) => {
     categories.value = res.data;
 });
