@@ -1,26 +1,35 @@
 /*!
-  * vue-router v4.0.13
-  * (c) 2022 Eduardo San Martin Morote
+  * vue-router v4.2.4
+  * (c) 2023 Eduardo San Martin Morote
   * @license MIT
   */
 
 /*!
- * vuex v4.0.2
- * (c) 2021 Evan You
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * vuex v4.1.0
+ * (c) 2022 Evan You
  * @license MIT
  */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
-          * @ag-grid-community/all-modules - Advanced Data Grid / Data Table supporting Javascript / Typescript / React / Angular / Vue * @version v29.2.0
+          * @ag-grid-community/all-modules - Advanced Data Grid / Data Table supporting Javascript / Typescript / React / Angular / Vue * @version v29.3.5
           * @link https://www.ag-grid.com/
           * @license MIT
           */
 
 /**
  * @ag-grid-community/core - Advanced Data Grid / Data Table supporting Javascript / Typescript / React / Angular / Vue
- * @version v29.2.0
+ * @version v29.3.5
  * @link https://www.ag-grid.com/
  * @license MIT
  */

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[480],{9480:(e,s,c)=>{c.r(s),c.d(s,{default:()=>t});var l=c(8222),n={class:"bg-white h-screen flex flex-col justify-between overflow-y-scroll"};const r={},t=(0,c(3744).Z)(r,[["render",function(e,s){return(0,l.wg)(),(0,l.iD)("section",n," 1231321331 ")}]])}}]);

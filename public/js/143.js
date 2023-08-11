@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[143],{7143:(e,n,r)=>{r.r(n),r.d(n,{default:()=>l});var t=r(8222);const c={},l=(0,r(3744).Z)(c,[["render",function(e,n){return(0,t.openBlock)(),(0,t.createElementBlock)("div",null," My HIstory ")}]])}}]);

@@ -10,7 +10,7 @@
                 <swiper
                     :slides-per-view="5"
                     :space-between="10"
-            >
+                >
                     <swiper-slide @click="changePeriod(index + 1)" v-for="(period, index) in user?.allperiods">
                         <main :class="{'bg-pink-100 shadow !border-pink-200': activePeriod == (index + 1)}" class="border bg-gray-100 p-2 pt-0 border-transparent cursor-pointer hover:bg-pink-200">
                             <div class="flex justify-between items-center  mb-2 pt-1">

@@ -20,10 +20,10 @@
         </main>
 
         <div class="flex justify-start mb-2">
-            <button @click="HandleChartZoomIn()" >
+            <button @click="tree.zoomIn()" >
                 <i class="fal fa-search-plus text-xl mr-4 p-4"></i>
             </button>
-            <button @click="HandleChartZoomOut()" >
+            <button @click="tree.zoomOut()" >
                 <i class="fal fa-search-minus text-xl ml-6"></i>
             </button>
         </div>
@@ -58,22 +58,11 @@ const vehicules = reactive({ name: null, children: [] })
 const { levels, totalPrice, user, period, changePeriod } = Init(null, store.state.user.lastPeriod)
 const tree = ref(null);
 
-function HandleChartZoomOut() {
-    tree.value.zoomOut()
-}
-function HandleChartZoomIn() {
-    tree.value.zoomIn()
-}
 watch(() => user.value, () => {
     vehicules.name = user.value.fname
     vehicules.total = user.value.periodSumma
     vehicules.children = user.value.children
     vehicules.childrenCount = user.value.children.length
-})
-
-const universalBonus = ref(null)
-axios.get(`getuniversalbonuses`).then(({ data }) => {
-    universalBonus.value = data
 })
 </script>
 <style>

@@ -24,7 +24,7 @@ class UserController extends Controller
             $date = Carbon::create($user->created_at);
             $today = Carbon::now();
             $diffDay = $today->diffInDays($date);
-            $user->lastPeriod = ceil($diffDay/30);
+            $user->lastPeriod = $diffDay == 0 ? 1 : ceil($diffDay/30);
         }
 
         return $users;
@@ -110,7 +110,7 @@ class UserController extends Controller
         $date = Carbon::create($user->created_at);
         $today = Carbon::now();
         $diffDay = $today->diffInDays($date);
-        $user->lastPeriod = ceil($diffDay/30);
+        $user->lastPeriod = $diffDay == 0 ? 1 : ceil($diffDay/30);
         return $user;
     }
 

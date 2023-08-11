@@ -4,7 +4,7 @@
             <main class="-m-3 mb-3 relative">
                 <div class="absolute top-0 left-0 w-full h-full bg-black/10"></div>
                 <img class="h-[250px] w-full object-contain" :src="'/images/' + product.images_product" />
-                <div @click="add_cart_user(product.id)"
+                <div @click="addToCart(product.id)"
                     class="cursor-pointer absolute bottom-3 right-3 w-[48px] h-[48px] bg-white/70 rounded-full shadow-inner flex justify-center items-center text-gray-700"
                     :class="{ '!bg-orange-600 text-white': $store.state.cart.includes(product.id) }">
 
@@ -35,14 +35,5 @@
 
 <script setup>
 const { product } = defineProps(['product'])
-
-
-function add_cart_user(id_product) {
-    axios.get(`cart-save/${id_product}`).then(({ data }) => {
-        if (data) store.state.cart.push(id_product)
-        else {
-            store.state.cart = store.state.cart.filter((item) => item !== id_product)
-        }
-    })
-}
+import { addToCart } from '../helpers/addToCart'
 </script>

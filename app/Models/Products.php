@@ -13,7 +13,6 @@ class Products extends Model
         'id',
         'product_id',        
     ];
-    protected $primaryKey = 'product_id';
 
     protected $with = [
         'Category'

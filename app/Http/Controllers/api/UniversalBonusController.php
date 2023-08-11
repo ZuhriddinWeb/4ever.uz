@@ -96,7 +96,7 @@ class UniversalBonusController extends Controller
     }
 
     public function detectionPeriod($day){
-        return ceil($day/30);
+        return $day == 0 ? 1 : ceil($day/30);
     }
 
     public function recursion($array, $index, $period, $mainuser){
