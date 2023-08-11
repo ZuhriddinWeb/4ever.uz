@@ -78,8 +78,8 @@ class DatabaseSeeder extends Seeder
 
         ]);
         DB::table('trees')->insert([
-            [ 'name' => 'Ayollar uchun ',],
-            [ 'name' => 'Erkaklar uchun',],            
+            [ 'name' => 'Женской'],
+            [ 'name' => 'Мужской'],            
         ]);
        
         DB::table('statuses')->insert([

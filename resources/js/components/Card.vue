@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 flex flex-col px-2">
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex flex-col px-2">
         <div class="w-full p-3 flex flex-col bg-white my-2 rounded-md border  overflow-hidden">
             <main class="-m-3 mb-3 relative">
                 <div class="absolute top-0 left-0 w-full h-full bg-black/10"></div>
@@ -26,7 +26,7 @@
                 <router-link
                     class="block border-gray-300 text-gray-500 border text-center mt-6 rounded shadow-inner py-0.5 hover:bg-gray-500 hover:text-white"
                     :to="{ name: 'product-view', params: { id: product.id } }">
-                    Подробнее <i class="far fa-long-arrow-alt-right ml-4"></i>
+                    Подробнее
                 </router-link>
             </main>
         </div>

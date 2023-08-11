@@ -28,4 +28,25 @@ class Products extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopeCategories($query,$category_id)
+    {
+        if(empty($category_id)){
+            return;
+        }
+        else{
+            $query->whereIn('category_id', $category_id);
+        }
+    }
+
+    public function scopeGender($query,$gender_id)
+    {
+        if($gender_id == null){
+            return;
+        }
+        else{
+            $query->where('tree_id', $gender_id);
+        }
+    }
+
 }

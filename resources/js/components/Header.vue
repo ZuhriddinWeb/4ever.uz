@@ -2,14 +2,14 @@
     <header>
         <div class="flex justify-between container px-3 items-center mx-auto py-5">
             <div class="flex justify-between order-1 md:order-2 items-center">
-                <RouterLink class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
+                <RouterLink class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl"
                     to="/">
                     <i class="fas fa-gem text-orange-600 mr-3"></i> 4EVER.UZ
                 </RouterLink>
-                <RouterLink to="/eshop" class="text-gray-600 ml-8 mr-4">
+                <RouterLink to="/eshop" class="text-gray-600 ml-4 text-sm md:text-base">
                     Все продукты
                 </RouterLink>
-                <a :href="'/images/FOREVER.pdf'" class="text-gray-600 ml-8"  target="_blank">О нас</a>
+                <a :href="'/images/FOREVER.pdf'" class="text-gray-600 ml-4 text-sm md:text-base"  target="_blank">О нас</a>
             </div>
             <div class="order-2 md:order-3 flex items-center text-xl" id="nav-content">
                 <RouterLink v-if="$store.state.user" to="/profile" class="px-2">

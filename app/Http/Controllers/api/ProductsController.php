@@ -10,6 +10,22 @@ use App\Models\Products;
 use Ixudra\Curl\Facades\Curl;
 class ProductsController extends Controller
 {
+
+
+    public function filter(Request $request)
+    {
+        return Products::categories($request->categories)
+        ->gender($request->gender)
+        ->get();
+    }
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +34,6 @@ class ProductsController extends Controller
     public function index(Request $request,$id)
     {
 
-
         $data=DB::table('products')    
         // ->join('categories','products.category_id','=','categories.id')
         ->join('trees','products.tree_id','=','trees.id')
@@ -26,51 +41,28 @@ class ProductsController extends Controller
         ->get();
         return $data;
     }
-    public function index_tree_cat(Request $request,$cat_id,$tree_id)
-    {
-        return Products::where('tree_id', $tree_id)->get();
-    }
+    
 
     
-    public function index_id($id)
+    public function show($id)
     {
-        return Products::where('id',$id)->get();
+        return Products::find($id);
     }
+    
     public function index_UZS()
     {
-        $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
-        ->get();
-        $usd = json_decode($response, true);
-        return $usd;
+        $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')->get();
+        return json_decode($response, true);
     }
 
     public function limit(Request $request)
     {
-        // $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
-        // ->get();
-        // $usd = json_decode($response, true);
-        // dd($usd[0]['Rate']*10);
-        // $data= DB::table('products')
-        // ->join('categories','products.category_id','=','categories.id')
-        // ->orderByRaw('products.updated_at - products.created_at DESC')
-        // ->take(10)
-        // ->select('categories.id as cid','categories.category_name','categories.category_image','products.*')    
-        // ->get();
-        // return $data;
         return Products::orderByRaw('products.updated_at - products.created_at DESC')->take(5)->get();
 
     }
     public function limit_category($id)
     {
         
-        // $data=DB::table('products')
-        // // ->join('categories','products.category_id','=','categories.id')
-        // // ->orderByRaw('products.updated_at - products.created_at DESC')
-        // ->where('products.category_id','=',$id)
-        // ->take(5)
-        // // ->select('categories.id as cid','categories.category_name','products.*')    
-        // ->get();
-        // return $data;
         return Products::where('category_id',$id)->take(5)->get();
     }
     /**
@@ -145,16 +137,7 @@ class ProductsController extends Controller
             'message' => "Protocol muvafaqiyatli Yangilandi",
         ]);
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
