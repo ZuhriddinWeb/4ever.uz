@@ -14,11 +14,11 @@ class ViloyatController extends Controller
      */
     public function index()
     {
-        return DB::table('viloyat')->get();
+        return DB::table('viloyats')->get();
     }
     public function tuman($id)
     {
-        return DB::table('tuman')->where('id_viloyat',$id)->get();
+        return DB::table('regions')->where('id_viloyat',$id)->get();
     }
     public function getPay()
     {
