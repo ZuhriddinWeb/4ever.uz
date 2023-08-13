@@ -6,17 +6,13 @@
 
         <title>ForeverGab</title>
 
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{mix('/css/app.css')}}">
         <link rel="stylesheet" href="{{ asset('awesome/css/all.min.css') }}">
         <link rel="icon" href="{{ asset('images/logo.png')}}"/>
-
-        <!-- Styles -->
-
     </head>
     <body>
-       <div id="app"></div>
+       <div id="app" class="h-screen flex flex-col"></div>
        <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>

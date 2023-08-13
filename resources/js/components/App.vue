@@ -1,7 +1,7 @@
 <template>
     <Preloader v-if="loader" />
     <Header v-if="$route.meta.guard != 'admin'"></Header>
-    <router-view :class="{'container mx-auto px-3': $route.meta.guard != 'admin'}" />
+    <router-view :class="{'container mx-auto px-3': $route.meta.guard != 'admin'}" class="flex-grow" />
 </template>
 
 <script setup>

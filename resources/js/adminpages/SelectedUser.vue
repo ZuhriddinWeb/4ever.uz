@@ -1,18 +1,18 @@
 <template>
     <section @mousedown="$emit('close')" class="flex justify-center items-center">
         <main @mousedown.stop class="w-[900px] bg-white shadow-sm rounded-sm">
-            <header class="flex justify-end bg-gray-100">
-                <button class="w-10 h-10 bg-gray-200 text-gray-600 hover:bg-red-200 active:bg-red-100" @click="$emit('close')">
+            <header class="flex justify-end bg-gray-200">
+                <button class="w-10 h-10 bg-gray-300 text-gray-600 hover:bg-red-200 active:bg-red-100" @click="$emit('close')">
                     <i class="fal fa-times relative top-px"></i>
                 </button>
             </header>
-            <section v-if="user" class="p-4">
+            <section v-if="user" class="p-4 bg-gray-50">
                 <swiper
                     :slides-per-view="5"
                     :space-between="10"
                 >
                     <swiper-slide @click="changePeriod(index + 1)" v-for="(period, index) in user?.allperiods">
-                        <main :class="{'bg-pink-100 shadow !border-pink-200': activePeriod == (index + 1)}" class="border bg-gray-100 p-2 pt-0 border-transparent cursor-pointer hover:bg-pink-200">
+                        <main :class="{'bg-white shadow': activePeriod == (index + 1)}" class="border bg-gray-100 p-2 pt-0 border-transparent cursor-pointer hover:bg-pink-200">
                             <div class="flex justify-between items-center  mb-2 pt-1">
                                 <h3 class="text-sm text-gray-600 font-semibold">
                                     Mavsum {{ index + 1}} 
@@ -48,7 +48,7 @@
                         <span class="font-semibold">Universal bonus {{ totalPrice }} + {{ startBonus }} </span>
                     </div>
                 </main>
-                <vue-tree v-if="user" class="bg-stone-50 w-full h-[600px] shadow-inner" :dataset="vehicules"
+                <vue-tree v-if="user" class="w-full h-[600px] shadow bg-white" :dataset="vehicules"
                     :config="{ nodeWidth: 150, nodeHeight: 80, levelHeight: 200 }" linkStyle="straight">
                     <template v-slot:node="{ node, collapsed }">
                         <div class="bg-white border-t-2 border-pink-500 w-32 px-2 pt-1 pb-2 shadow relative">
