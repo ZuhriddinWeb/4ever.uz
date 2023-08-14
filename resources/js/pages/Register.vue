@@ -40,6 +40,7 @@
                 <input disabled v-model="result.code" type="text"
                     class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
                     placeholder="Promo Code">
+                <p class="mr-3 px-2">{{ parent_name[0].fname}} {{parent_name[0].lname}} </p>
                 <button
                     class="flex justify-center items-center w-full py-3 bg-orange-500 text-white text-xs font-bold uppercase px-5  shadow  leading-normal cursor-pointer rounded-sm"><i
                         class="fal fa-door-open mr-2 text-base"></i>Создать</button>
@@ -51,7 +52,7 @@
 <script setup>
 // import VuePhoneNumberInput from 'vue-phone-number-input';948537875
 import { kMaxLength } from "buffer";
-import Header from "../components/Header.vue"
+// import Header from "../components/Header.vue";
 import Preloader from '../components/Preloader.vue';
 
 import { reactive, onMounted, ref, computed } from "vue";
@@ -64,6 +65,7 @@ const showPasswordTwo = ref(false);
 const password = ref(null);
 const passwordTwo = ref(null);
 const loader = ref(null);
+const parent_name = ref(null);
 
 
 function toggleTabs(tabNumber) {
@@ -88,11 +90,12 @@ const result = reactive({
     password_confirmation: "",
     // promo_code:Math.random().toString(36).slice(2),
     code: user_id.id,
+    parent_name:""
 });
-const result_login = reactive({
-    phone: "",
-    password: "",
-});
+axios.get(`parent_name/${user_id.id}`).then(({ data }) => {
+    parent_name.value = data
+    console.log(result.parent_name);
+})
 const onRegistration = async () => {
     var k = Math.random().toString(36).slice(2);
     const { data } = await axios.post("regstration", result);

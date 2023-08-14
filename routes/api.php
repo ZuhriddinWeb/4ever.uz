@@ -31,6 +31,8 @@ use App\Http\Controllers\api\ViloyatController;
 |
 */
 Route::post('/regstration' , [UserController::class, 'register']);
+Route::get('/parent_name/{id}' , [UserController::class, 'getParent']);
+
 Route::post('/login' , [UserController::class, 'login']);
 Route::post('/logout' , [UserController::class, 'login']);
 Route::get('/products-limit', [ProductsController::class, 'limit']);
@@ -38,7 +40,8 @@ Route::get('/products-with-cat/{id}', [ProductsController::class, 'limit_categor
 Route::get('/products-by-id/{id}', [ProductsController::class, 'show']);
 Route::get('/uzsnbu', [ProductsController::class, 'index_UZS']);
 Route::get('/category', [CategoryController::class, 'index']);
-
+Route::post('/products-filter', [ProductsController::class, 'filter']);
+Route::get('/tree', [TreeController::class, 'index']);
 
 
 Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
@@ -57,7 +60,6 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     Route::post('/category-update/{id}', [CategoryController::class, 'update']);
 
     // Tip routes 
-    Route::get('/tree', [TreeController::class, 'index']);
     Route::post('/tree-save', [TreeController::class, 'store']);
     Route::post('/tree-update/{id}', [TreeController::class, 'update']);
     Route::post('/tree-delete', [TreeController::class, 'delete']);
@@ -65,7 +67,6 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     // Products routes
     Route::get('/products/{id}', [ProductsController::class, 'index']);
     // Route::get('/products-limit', [ProductsController::class, 'limit']);
-    Route::post('/products-filter', [ProductsController::class, 'filter']);
     Route::post('/product-save', [ProductsController::class, 'store']);
     Route::post('/product-delete', [ProductsController::class, 'delete']);
     Route::post('/product-update', [ProductsController::class, 'update']);
@@ -124,7 +125,7 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
 
     Route::get('/getuniversalbonuses' , [UniversalBonusController::class, 'getUniversalBonuses']);
     Route::get('/getusers/{period}' , [UniversalBonusController::class, 'getUsersWithChildrens']);
-    
+
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {

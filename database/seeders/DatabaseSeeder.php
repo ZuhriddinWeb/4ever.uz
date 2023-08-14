@@ -9,6 +9,7 @@ use Hash;
 use App\Models\Category;
 use App\Models\Products;
 use App\Models\StartBonus;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -240,7 +241,30 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
              ['category_name' => 'Classic'],           
         ]);
-   
+    //     DB::table('orders')->insert([
+    //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Zuhriddin','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],
+    //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Aziz','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
+    //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Jamshid','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
+    //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Jonibek','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
+    //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Sasha','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
+    //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Temur','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
+
+    //    ]);
+        DB::table('products')->insert([
+            ['category_id' =>1, 'tree_id' => 1,'product_name'=>'w101 Lanvin-Eclat d\'Arpege','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 1,'product_name'=>'w101 Lanvin-Eclat d\'Arpege','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 1,'product_name'=>'w101 Lanvin-Eclat d\'Arpege','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 1,'product_name'=>'w101 Lanvin-Eclat d\'Arpege','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+            ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
+
+
+       ]);
+
+      
         DB::table('universal_bonuses')->insert([
             [ 'name' => 'Activ partner','prosents'=>11,'count_person'=>0,'user_ball'=>0,     'min_tree_ball'=>0,      'min_tree_count' => 0 ],
             [ 'name' => 'Bronze','prosents'=>11,'count_person'=>1,'user_ball'=>0,            'min_tree_ball'=>0,      'min_tree_count' => 0 ], 

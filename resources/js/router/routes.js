@@ -10,7 +10,7 @@ export default [
 	// 	// component: () => import('../pages/Home.vue'),
 	// },
 	{
-		path: '/register/:id',
+		path: '/register/:id/:name',
 		name:'register',
 		component: () => import('../pages/Register.vue'),
 		props: true,

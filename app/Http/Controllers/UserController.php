@@ -113,7 +113,10 @@ class UserController extends Controller
         $user->lastPeriod = $diffDay == 0 ? 1 : ceil($diffDay/30);
         return $user;
     }
-
+    public function getParent($id){
+        
+        return User::where('promo_code',$id)->get();
+    }
     // public function passwordReset(Request $req){
     //     $user = Auth::user();
     

@@ -103,6 +103,10 @@ class OrdersController extends Controller
             ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [               
                 'orderId' => $id,                 
             ]);
+            $getOrderId = Orders::where('orderId',$id)->get();
+            $getOrderProducts = Orders_Products::where('order_id',$getOrderId[0]['id'])->get();
+
+            dd($getOrderId[0]['Products']);
             // $uzumOperation =  Http::withHeaders([
             //     'Content-Language' => 'uz-UZ',
             //     'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
@@ -113,26 +117,38 @@ class OrdersController extends Controller
 
             //     ]);
             $pay = json_decode($uzum, true);
-            // $uzumCheck =  Http::withHeaders([
-            //     'ssl-client-fingerprint'=>'9e8f9cb431f69a39fab5f9cb91727343b8700154'
-            // ])->post('https://test-arp.ipt-merch.com/fiscal_receipt_generation', [               
-            //         'operation_id' => '381c6272-79a2-432d-9467-cb15710b783a',
-            //         'date_time'=>'2023-08-09T05:12:25.734939+00:00',
-            //         'cash_amount'=> $pay['result']['completedAmount'],
-            //         'card_amount'=>$pay['result']['completedAmount'],
-            //         'phone_number'=>'+998795972323',
-            //         "items"=>[                       
-            //             "product_name"=> "Chanel",
-            //             "price"=> 100000,
-            //             "count"=> 1,
-            //             "spic"=> "test",
-            //             "units"=> 1,
-            //             "package_code"=> "test",
-            //             "vat_percent"=> 12,
-            //             ]
-            //     ]);
-            // $pay1 = json_decode($uzumCheck, true);
+            
+            for($i=0;$i<count($getOrderProducts);$i++){
+                $uzumCheck =  Http::withHeaders([
+                    'ssl-client-fingerprint'=>'9e8f9cb431f69a39fab5f9cb91727343b8700154'
+                ])->post('https://test-arp.ipt-merch.com/fiscal_receipt_generation', [               
+                    'operation_id' => $pay['result']['operations'][1]['operationId'],
+                    'date_time'=>$pay['result']['operations'][1]['doneAt'],
+                        'cash_amount'=> 0,
+                        'card_amount'=> $pay['result']['completedAmount'],
+                        'phone_number'=>'998795972323',
+                        "items"=> [
+                                [
+                                    "product_name"=> $getOrderProducts[$i]['ProductsInfo']['product_name'],
+                                    "price"=> $pay['result']['completedAmount'],
+                                    "count"=> 1,
+                                    "spic"=> "03302001002000000",
+                                    "units"=> 1,
+                                    "package_code"=> '1234567',
+                                    "vat_percent"=> 0,
+                                    "commission_info"=>[
+                                        "PINFL"=> "32507722390013"
+                                    ]
+                                ],
+                                
+                        ]
+                        
+                    ]);
+            }
+            $pay1 = json_decode($uzumCheck, true);
             // dd($pay1);
+            // dd($pay['result']['operations'][1]['doneAt']);
+
             $data = new Orders();
             $data = DB::table('orders')
             ->where('orderId', $id)

@@ -97,8 +97,8 @@ class ProductsController extends Controller
             // array_push($array_image,$imageName);
         }
 
-        $unique = (string) Str::uuid();
-        $data->product_id = $unique;
+        // $unique = (string) Str::uuid();
+        // $data->product_id = $unique;
         $data->category_id = $request->input('category_id');
         $data->tree_id = $request->input('tree_id');
         $data->product_name = $request->input('product_name');

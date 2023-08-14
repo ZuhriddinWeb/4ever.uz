@@ -115,11 +115,11 @@
                             <article class="w-full flex justify-between">
                                 <div class="w-1/6 text-center">
                                     {{ item.products?.price }}
-                                    <span class="font-medium text-green-500">UZS</span>
+                                    <span class="font-medium text-green-500">USD</span>
                                 </div>
                                 <div class="w-1/6 text-center">
                                     {{ item.products?.price * item.count }}
-                                    <span class="font-medium text-green-500">UZS</span>
+                                    <span class="font-medium text-green-500">USD</span>
                                 </div>
                                 <div class="mr-3">
                                     <button @click="delete_is_cart(item)">
