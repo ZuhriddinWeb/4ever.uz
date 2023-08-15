@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->integer('pay_id');
             $table->string('order_check')->nullable();
             $table->integer('order_summa')->nullable();
+            $table->double('rate_uzs')->nullable();
             $table->integer('send_order')->nullable();
             $table->timestamps();
         });

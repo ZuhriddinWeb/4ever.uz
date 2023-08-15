@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
              ['category_name' => 'Classic'],           
         ]);
-    //     DB::table('orders')->insert([
+    //     DB::table('orders')->insert([Janahmedov Y.B GO
     //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Zuhriddin','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],
     //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Aziz','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
     //         ['user_id' =>  User::inRandomOrder()->first('id'),'name'=>'Jamshid','phone'=>"5972323",'viloyat_id'=>3,'tuman_id'=>1,'address'=>'Qishloq','point'=>'Dacha','pay_id'=>1,'order_check'=>'COMPLETE','order_summa'=>100,'send_order'=>1, 'created_at' => now()],         
@@ -260,8 +260,6 @@ class DatabaseSeeder extends Seeder
             ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
             ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
             ['category_id' => 1,'tree_id' => 2,'product_name'=>'w10zzzzzzzzzz','flavor'=>'Цветочный, Зеленый','description_product'=>'Mezza','instruction_product'=>'Yana mezza','price'=>22,'volume'=>50,'count_products'=>100],
-
-
        ]);
 
       

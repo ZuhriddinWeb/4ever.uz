@@ -95,6 +95,13 @@ class OrdersController extends Controller
 
     public function getOrderStatuses($id)
     {
+
+        $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
+        ->get();
+        $usd = json_decode($response, true);
+        // dd($usd[0]['Rate']*100);
+
+
         $uzum =  Http::withHeaders([
             'Content-Language' => 'uz-UZ',
             'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
@@ -103,57 +110,54 @@ class OrdersController extends Controller
             ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [               
                 'orderId' => $id,                 
             ]);
-            $getOrderId = Orders::where('orderId',$id)->get();
-            $getOrderProducts = Orders_Products::where('order_id',$getOrderId[0]['id'])->get();
 
-            dd($getOrderId[0]['Products']);
-            // $uzumOperation =  Http::withHeaders([
-            //     'Content-Language' => 'uz-UZ',
-            //     'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
-            //     'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
-            //     'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-            //     ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOperationState', [               
-            //         'operation_id' => '381c6272-79a2-432d-9467-cb15710b783a',
-
-            //     ]);
-            $pay = json_decode($uzum, true);
             
-            for($i=0;$i<count($getOrderProducts);$i++){
-                $uzumCheck =  Http::withHeaders([
-                    'ssl-client-fingerprint'=>'9e8f9cb431f69a39fab5f9cb91727343b8700154'
-                ])->post('https://test-arp.ipt-merch.com/fiscal_receipt_generation', [               
-                    'operation_id' => $pay['result']['operations'][1]['operationId'],
-                    'date_time'=>$pay['result']['operations'][1]['doneAt'],
-                        'cash_amount'=> 0,
-                        'card_amount'=> $pay['result']['completedAmount'],
-                        'phone_number'=>'998795972323',
-                        "items"=> [
-                                [
-                                    "product_name"=> $getOrderProducts[$i]['ProductsInfo']['product_name'],
-                                    "price"=> $pay['result']['completedAmount'],
-                                    "count"=> 1,
-                                    "spic"=> "03302001002000000",
-                                    "units"=> 1,
-                                    "package_code"=> '1234567',
-                                    "vat_percent"=> 0,
-                                    "commission_info"=>[
-                                        "PINFL"=> "32507722390013"
-                                    ]
-                                ],
-                                
-                        ]
-                        
-                    ]);
+            // dd($getOrderId[0]['Products']);
+            // $uzumOperation =  Http::withHeaders([
+                //     'Content-Language' => 'uz-UZ',
+                //     'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
+                //     'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
+                //     'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
+                //     ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOperationState', [               
+                    //         'operation_id' => '381c6272-79a2-432d-9467-cb15710b783a',
+                    
+                    //     ]);
+            $order = Orders::where('orderId',$id)->first();
+    
+    
+            $products = [];
+            foreach ($order->products as $key => $product) {
+                $products[] = [
+                    "product_name"=> $product->productsInfo->product_name,
+                    "price"=> $product->productsInfo->price*$order->rate_uzs*100,
+                    "count"=> $product->count,
+                    "spic"=> "03302001002000000",
+                    "package_code"=> '1234567',
+                    "vat_percent"=> 0,
+                    "commission_info"=> ["PINFL"=> "32507722390013"]
+                ];
             }
-            $pay1 = json_decode($uzumCheck, true);
-            // dd($pay1);
-            // dd($pay['result']['operations'][1]['doneAt']);
 
+            $pay = json_decode($uzum, true);
+
+            $uzumCheck =  Http::withHeaders([
+                'ssl-client-fingerprint'=>'9e8f9cb431f69a39fab5f9cb91727343b8700154'
+            ])->post('https://test-arp.ipt-merch.com/fiscal_receipt_generation', [               
+                'operation_id' => $pay['result']['operations'][1]['operationId'],
+                'date_time'=>$pay['result']['operations'][1]['doneAt'],
+                    'cash_amount'=> 0,
+                    'card_amount'=> $pay['result']['completedAmount'],
+                    'phone_number'=>'998795972323',
+                    "items"=> $products
+            ]);
+
+
+            $payCheck = json_decode($uzumCheck, true);
+            // dd($payCheck);
             $data = new Orders();
             $data = DB::table('orders')
             ->where('orderId', $id)
-            ->update(['order_check' => $pay['result']['status']]);
-            // dd($pay['result']['orderId']);
+            ->update(['order_check' => $pay['result']['status'],'operation_id'=>$payCheck['operation_id'],'urlCheck'=>$payCheck['receipt_url']]);
 
             if($pay['result']['status']=='COMPLETED'){
                 $this->getParentCashback($id);
@@ -168,7 +172,6 @@ class OrdersController extends Controller
     }
 
     public function getParentCashback($id){
-        // dd($id);
         $userPay =Orders::where('orderId',$id)->get();
         $parent_id = User::where('id',$userPay[0]['user_id'])->get();
         $parentCashback = ($userPay[0]['order_summa']/2)*0.25;
@@ -244,6 +247,8 @@ class OrdersController extends Controller
             $data->point = $result['point'];
             $data->pay_id = $result['pay_id'];           
             $data->order_summa = $summa;
+            $data->rate_uzs = $usd[0]['Rate'];
+
             $data->save();
 
             $uzumPayCurl =  Http::withHeaders([
@@ -252,7 +257,7 @@ class OrdersController extends Controller
                 'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
                 'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
             ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/register', [
-                'amount' => 100000,
+                'amount' => $data->order_summa* $data->rate_uzs*100,
                 'clientId' =>  $data->user_id,
                 'currency' => 860,
                 "successUrl"=> "https://4ever.uz",

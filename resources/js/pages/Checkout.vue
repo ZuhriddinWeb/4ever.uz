@@ -148,7 +148,7 @@
                         <p>В корзине: <span class="font-medium">{{ $store.state.cart.length }}</span> товара</p>
                         <p>
                             <span class="text-green-500 font-medium">{{summa }}</span>
-                            <span class="font-medium">UZS</span>
+                            <span class="font-medium"> USD</span>
                         </p>
                     </div>
                 </article>
@@ -160,7 +160,7 @@
 
 <script setup>
 import { reactive, onMounted, ref } from "vue";
-import Header from "../components/Header.vue";
+// import Header from "../components/Header.vue";
 import store from "../store";
 import { useRouter } from 'vue-router'
 
