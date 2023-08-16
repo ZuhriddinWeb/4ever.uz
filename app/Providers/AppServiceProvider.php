@@ -82,24 +82,18 @@ class AppServiceProvider extends ServiceProvider
 
         
         // $uzumPayCurl =  Http::withHeaders([
-        //     'Content-Language' => 'uz-UZ',
-        //     'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
-        //     'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
-        //     'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-        // ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/register', [
-        //     'amount' => 100000,
-        //     'clientId' =>  1,
-        //     'currency' => 860,
-        //     "successUrl"=> "https://4ever.uz",
-        //     "failureUrl"=> "https://4ever.uz",
-        //     'orderNumber' => 70,
-        //     'viewType' => 'WEB_VIEW',
-        //     'paymentParams' => [
-        //         'payType' => 'TWO_STEP',
-        //         'isAutoComplete'=>true
+        //     'Authorization' => '355ecee8b55693deccf2c9461415228ba9c80d38',
+        //     'Accept-Language' => 'uz-UZ',
+        //     'Content-Type' => 'application/json',            
+        // ])->post('https://test-topup.apelsin.uz/api/v2/merchant', [
+        //     "jsonrpc"=> "2.0",
+        //     "id"=> "2000",
+        //     "method"=> "cards.get",
+        //     "params"=> [
+        //         "number"=> "986010010000000",
+        //         "expire"=> "2708"
+        //     ]
 
-        //     ],
-        //     'sessionTimeoutSecs' => 1000,
         // ]);
         // json_decode($uzumPayCurl, true);
 

@@ -31,11 +31,11 @@
                     </th>
                     <th
                         class="align-center px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Holati
+                        Статус
                     </th>
                     <th
                         class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Статус
+                        Фиксированный чек
                     </th>
                     <!-- <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                        Funksiyalar
@@ -52,38 +52,32 @@
                         {{ item.created_at }}
                     </td>
                     <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ item.order_summa }} UZS
+                        {{ item.order_summa }} USD
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <span v-if="item.order_check == null" class="px-4 text-lg rounded-sm bg-orange-400 text-white">
-                            Tekshirilmoqda
+                            Проверка
                         </span>
                         <span v-if="item.order_check == 'COMPLETED'"
                             class="px-4 text-lg rounded-sm bg-green-400 text-white">
-                            <span>Tasdiqlandi</span>
+                            <span>Подтвержденный</span>
                         </span>
                         <span v-if="item.order_check == 'DECLINED'"
                             class="px-4 text-lg rounded-sm bg-rose-400 text-white">
-                            <span>Bekor qilindi</span>
+                            <span>Отменён</span>
                         </span>
                     </td>
-                    <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-emerald-500 text-white"
-                            @click="add_Check = true, $store.state.id_selected = item.id">
-                            <span class="px-4 text-lg rounded-sm hover:bg-emerald-600">
-                                <i class="fal fa-receipt mr-1"></i>
-                                To'lov
-                            </span>
-                        </button>
-                    </td> -->
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                       <a :href="item.urlCheck" class="px-4 text-lg rounded-sm bg-blue-400 text-white" target="_blank" rel="noopener noreferrer">Посмотреть чек</a>
+                    </td>
+                    <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <button class="bg-violet-500 text-white" @click="order_info = true, $store.state.id_selected = item.id">
                             <span class="px-4 text-lg rounded-sm hover:bg-violet-600">
                                 <i class="fal fa-list-ul mr-1"></i>
                                 Batafsil
                             </span>
                         </button>
-                    </td>
+                    </td> -->
 
                 </tr>
             </tbody>
