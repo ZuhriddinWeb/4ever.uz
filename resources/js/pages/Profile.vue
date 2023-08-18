@@ -10,11 +10,24 @@
                                 <span>{{ $store.state.user.lname }}</span>
                             </p>
                         </div>
-                        <span class="text-gray-400 text-sm">Баланс</span>
-                        <p class="flex justify-between flex-col text-xl text-orange-500">
-                            <span>{{ my_cashback?.cashback }}</span>
-                        </p>
-                        <div  class="w-full theme-button inline-block py-1.5 my-1">
+                        <div class="flex justify-between">
+                            <div class="w-1/2">
+                                <span class="text-gray-400 text-sm">Кешбэк</span>
+                                <p class="flex justify-between flex-col text-xl text-green-500">
+                                    <span>{{ my_cashback?.cashback }}</span>
+                                </p>
+                            </div>
+                            <div class="w-1/2">
+                                <span class="text-gray-400 text-sm">Баланс</span>
+                                <p class="flex justify-between flex-col text-xl text-green-500">
+                                    <span>{{ my_cashback?.cashback }}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="w-full theme-button inline-block py-1.5 my-1">
+                            Пополнить лицовой счет doroshenk R 12938 
+                        </div> -->
+                        <div class="w-full text-center bg-blue-500 py-1.5 my-1 inline-block text-white">
                             Пополнить лицовой счет
                         </div>
                     </div>
@@ -37,14 +50,17 @@
 
                 <p class="text-gray-400 text-sm mt-4 mb-1">Реферальная ссылка</p>
                 <article @click.prevent="copyToClipboard" class="w-full theme-button-gray border-0 py-1.5 cursor-pointer">
-                    <input @focus="$event.target.select()" class="w-5/6 outline-0 bg-transparent cursor-pointer" ref="generator" :value="'www.4ever.uz/register/' + $store.state.user.promo_code+'/'+ $store.state.user.fname+ $store.state.user.lname"
+                    <input @focus="$event.target.select()" class="w-5/6 outline-0 bg-transparent cursor-pointer"
+                        ref="generator"
+                        :value="'www.4ever.uz/register/' + $store.state.user.promo_code + '/' + $store.state.user.fname + $store.state.user.lname"
                         type="text" readonly>
-                        <i class="fal fa-copy mx-1"></i>
+                    <i class="fal fa-copy mx-1"></i>
                 </article>
             </div>
 
             <main class="pt-3">
-                <router-link :to="{ name: 'myinfo' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <router-link :to="{ name: 'myinfo' }"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-user"></i>
                     </div>
@@ -52,7 +68,8 @@
                         Личные данные
                     </div>
                 </router-link>
-                <router-link :to="{ name: 'mywallet' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <router-link :to="{ name: 'mywallet' }"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-wallet"></i>
                     </div>
@@ -60,7 +77,8 @@
                         Карты
                     </div>
                 </router-link>
-                <router-link :to="{ name: 'myorders' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <router-link :to="{ name: 'myorders' }"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-box"></i>
                     </div>
@@ -68,7 +86,8 @@
                         Заказы
                     </div>
                 </router-link>
-                <router-link :to="{ name: 'mypeoples' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <router-link :to="{ name: 'mypeoples' }"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-users"></i>
                     </div>
@@ -76,7 +95,7 @@
                         Дерево
                     </div>
                 </router-link>
-                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-receipt"></i>
                     </div>
@@ -84,11 +103,12 @@
                         Транзакции
                     </div>
                 </router-link> -->
-                <article @click="$store.dispatch('logout')" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <article @click="$store.dispatch('logout')"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-sign-out"></i>
                     </div>
-                    <div class="flex justify-center" >
+                    <div class="flex justify-center">
                         <span class="font-normal">Выход</span>
                     </div>
                 </article>

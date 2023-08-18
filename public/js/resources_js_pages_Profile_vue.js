@@ -78,77 +78,92 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "mr-1"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_6 = {
+  "class": "flex justify-between"
+};
+var _hoisted_7 = {
+  "class": "w-1/2"
+};
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-gray-400 text-sm"
+}, "Кешбэк", -1 /* HOISTED */);
+var _hoisted_9 = {
+  "class": "flex justify-between flex-col text-xl text-green-500"
+};
+var _hoisted_10 = {
+  "class": "w-1/2"
+};
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-gray-400 text-sm"
 }, "Баланс", -1 /* HOISTED */);
-var _hoisted_7 = {
-  "class": "flex justify-between flex-col text-xl text-orange-500"
+var _hoisted_12 = {
+  "class": "flex justify-between flex-col text-xl text-green-500"
 };
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "w-full theme-button inline-block py-1.5 my-1"
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "w-full text-center bg-blue-500 py-1.5 my-1 inline-block text-white"
 }, " Пополнить лицовой счет ", -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-gray-400 text-sm mt-4 mb-1"
 }, "Реферальная ссылка", -1 /* HOISTED */);
-var _hoisted_10 = ["onClick"];
-var _hoisted_11 = ["value"];
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_15 = ["onClick"];
+var _hoisted_16 = ["value"];
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-copy mx-1"
 }, null, -1 /* HOISTED */);
-var _hoisted_13 = {
+var _hoisted_18 = {
   "class": "pt-3"
 };
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-user"
 })], -1 /* HOISTED */);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center"
 }, " Личные данные ", -1 /* HOISTED */);
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-wallet"
 })], -1 /* HOISTED */);
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center"
 }, " Карты ", -1 /* HOISTED */);
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-box"
 })], -1 /* HOISTED */);
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center"
 }, " Заказы ", -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-users"
 })], -1 /* HOISTED */);
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center"
 }, " Дерево ", -1 /* HOISTED */);
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-sign-out"
 })], -1 /* HOISTED */);
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "font-normal"
 }, "Выход")], -1 /* HOISTED */);
-var _hoisted_24 = [_hoisted_22, _hoisted_23];
-var _hoisted_25 = {
+var _hoisted_29 = [_hoisted_27, _hoisted_28];
+var _hoisted_30 = {
   "class": "sm:w-3/3 md:w-1/3 lg:w-3/4 pl-5"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _$setup$my_cashback;
+  var _$setup$my_cashback, _$setup$my_cashback2;
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.user.fname), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.user.lname), 1 /* TEXT */)])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$my_cashback = $setup.my_cashback) === null || _$setup$my_cashback === void 0 ? void 0 : _$setup$my_cashback.cashback), 1 /* TEXT */)]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"leading-none mb-3\"> :to=\"{name:'payStepOne', params: {id: $store.state.user.id}}\"\r\n                        <span class=\"text-gray-400 text-sm\">Бонус</span>\r\n                        <p class=\"flex justify-between flex-col\">\r\n                            <span>$150 </span>\r\n                        </p>\r\n                    </div>\r\n\r\n                    <div class=\"leading-none mb-3\">\r\n                        <span class=\"text-gray-400 text-sm\">Кешбэк</span>\r\n                        <p class=\"flex justify-between flex-col\">\r\n                            <span>$230 {{ my_cashback?.cashback }}</span>\r\n                        </p>\r\n                    </div> ")]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.user.fname), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.user.lname), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$my_cashback = $setup.my_cashback) === null || _$setup$my_cashback === void 0 ? void 0 : _$setup$my_cashback.cashback), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$setup$my_cashback2 = $setup.my_cashback) === null || _$setup$my_cashback2 === void 0 ? void 0 : _$setup$my_cashback2.cashback), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"w-full theme-button inline-block py-1.5 my-1\">\r\n                            Пополнить лицовой счет doroshenk R 12938 \r\n                        </div> "), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"leading-none mb-3\"> :to=\"{name:'payStepOne', params: {id: $store.state.user.id}}\"\r\n                        <span class=\"text-gray-400 text-sm\">Бонус</span>\r\n                        <p class=\"flex justify-between flex-col\">\r\n                            <span>$150 </span>\r\n                        </p>\r\n                    </div>\r\n\r\n                    <div class=\"leading-none mb-3\">\r\n                        <span class=\"text-gray-400 text-sm\">Кешбэк</span>\r\n                        <p class=\"flex justify-between flex-col\">\r\n                            <span>$230 {{ my_cashback?.cashback }}</span>\r\n                        </p>\r\n                    </div> ")]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", {
     onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.copyToClipboard, ["prevent"]),
     "class": "w-full theme-button-gray border-0 py-1.5 cursor-pointer"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -160,52 +175,52 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     value: 'www.4ever.uz/register/' + _ctx.$store.state.user.promo_code + '/' + _ctx.$store.state.user.fname + _ctx.$store.state.user.lname,
     type: "text",
     readonly: ""
-  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_11), _hoisted_12], 8 /* PROPS */, _hoisted_10)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_16), _hoisted_17], 8 /* PROPS */, _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'myinfo'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center py-3 cursor-pointer profile hover:text-green-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_14, _hoisted_15];
+      return [_hoisted_19, _hoisted_20];
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'mywallet'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center py-3 cursor-pointer profile hover:text-green-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_16, _hoisted_17];
+      return [_hoisted_21, _hoisted_22];
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'myorders'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center py-3 cursor-pointer profile hover:text-green-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_18, _hoisted_19];
+      return [_hoisted_23, _hoisted_24];
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'mypeoples'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center py-3 cursor-pointer profile hover:text-green-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_20, _hoisted_21];
+      return [_hoisted_25, _hoisted_26];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{ name: 'myhistory' }\" class=\"flex items-center py-3 cursor-pointer profile hover:text-orange-300\">\r\n                    <div class=\"bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center\">\r\n                        <i class=\"fal fa-receipt\"></i>\r\n                    </div>\r\n                    <div class=\"flex justify-center\">\r\n                        Транзакции\r\n                    </div>\r\n                </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{ name: 'myhistory' }\" class=\"flex items-center py-3 cursor-pointer profile hover:text-green-300\">\r\n                    <div class=\"bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center\">\r\n                        <i class=\"fal fa-receipt\"></i>\r\n                    </div>\r\n                    <div class=\"flex justify-center\">\r\n                        Транзакции\r\n                    </div>\r\n                </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('logout');
     }),
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
-  }, _hoisted_24)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])]);
+    "class": "flex items-center py-3 cursor-pointer profile hover:text-green-300"
+  }, _hoisted_29)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])]);
 }
 
 /***/ }),

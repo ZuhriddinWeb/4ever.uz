@@ -45,30 +45,30 @@
             <tbody>
                 <tr v-for="item in orders">
                     <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 border-b-2">
                         {{ item.id }}
                     </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 border-b-2">
                         {{ item.created_at }}
                     </td>
-                    <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4 border-b-2">
                         {{ item.order_summa }} USD
                     </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <span v-if="item.order_check == null" class="px-4 text-lg rounded-sm bg-orange-400 text-white">
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 border-b-2">
+                        <span v-if="item.order_check == null" class="px-4 text-sm rounded-sm bg-orange-400 text-white">
                             Проверка
                         </span>
                         <span v-if="item.order_check == 'COMPLETED'"
-                            class="px-4 text-lg rounded-sm bg-green-400 text-white">
+                            class="px-4 text-sm rounded-sm bg-green-500 text-white">
                             <span>Подтвержденный</span>
                         </span>
                         <span v-if="item.order_check == 'DECLINED'"
-                            class="px-4 text-lg rounded-sm bg-rose-400 text-white">
+                            class="px-4 text-sm rounded-sm bg-red-400 text-white">
                             <span>Отменён</span>
                         </span>
                     </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                       <a :href="item.urlCheck" class="px-4 text-lg rounded-sm bg-blue-400 text-white" target="_blank" rel="noopener noreferrer">Посмотреть чек</a>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 border-b-2">
+                       <a :href="item.urlCheck" class="px-4 text-sm rounded-sm bg-blue-400 text-white" target="_blank" rel="noopener noreferrer">Посмотреть чек</a>
                     </td>
                     <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <button class="bg-violet-500 text-white" @click="order_info = true, $store.state.id_selected = item.id">
