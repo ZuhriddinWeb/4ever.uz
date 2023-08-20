@@ -6,20 +6,21 @@
                     <div class="leading-none mb-3">
                         <div>
                             <p class="font-semibold text-xl mb-1.5">
+                                <i class="fas fa-user-circle text-gray-400 mr-2 text-2xl"></i>
                                 <span class="mr-1">{{ $store.state.user.fname }}</span>
                                 <span>{{ $store.state.user.lname }}</span>
                             </p>
                         </div>
-                        <div class="flex justify-between">
-                            <div class="w-1/2">
+                        <div class="flex justify-between mb-2">
+                            <div class="w-1/2 bg-white mr-1 rounded-md">
                                 <span class="text-gray-400 text-sm">Кешбэк</span>
-                                <p class="flex justify-between flex-col text-xl text-green-500">
+                                <p class="flex justify-between flex-col text-xl text-gray-500">
                                     <span>{{ my_cashback?.cashback }}</span>
                                 </p>
                             </div>
-                            <div class="w-1/2">
+                            <div class="w-1/2 bg-white ml-1 rounded-md">
                                 <span class="text-gray-400 text-sm">Баланс</span>
-                                <p class="flex justify-between flex-col text-xl text-green-500">
+                                <p class="flex justify-between flex-col text-xl text-gray-500">
                                     <span>{{ my_cashback?.cashback }}</span>
                                 </p>
                             </div>
@@ -27,8 +28,8 @@
                         <!-- <div class="w-full theme-button inline-block py-1.5 my-1">
                             Пополнить лицовой счет doroshenk R 12938 
                         </div> -->
-                        <div class="w-full text-center bg-blue-500 py-1.5 my-1 inline-block text-white">
-                            Пополнить лицовой счет
+                        <div class="w-full text-center bg-orange-500 py-4 my-1 inline-block text-white font-medium rounded-md">
+                            <i class="fal fa-sack-dollar"></i> Пополнить лицовой счет
                         </div>
                     </div>
 
@@ -60,7 +61,7 @@
 
             <main class="pt-3">
                 <router-link :to="{ name: 'myinfo' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-user"></i>
                     </div>
@@ -69,7 +70,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'mywallet' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-wallet"></i>
                     </div>
@@ -78,7 +79,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'myorders' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-box"></i>
                     </div>
@@ -87,7 +88,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'mypeoples' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-users"></i>
                     </div>
@@ -95,7 +96,7 @@
                         Дерево
                     </div>
                 </router-link>
-                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
+                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-receipt"></i>
                     </div>
@@ -104,7 +105,7 @@
                     </div>
                 </router-link> -->
                 <article @click="$store.dispatch('logout')"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-green-300">
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-sign-out"></i>
                     </div>

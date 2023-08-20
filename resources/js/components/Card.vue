@@ -13,18 +13,21 @@
                 </div>
                 <div
                     class="text-center leading-none absolute bottom-3 left-3 w-[48px] h-[48px] text-xs bg-white/70 rounded-full shadow-inner flex items-center justify-center">
-                    17 <br> Mar
+                    18 <br> Aug
                 </div>
             </main>
             <main class="flex flex-col">
                 <div class="mb-1.5 text-xl text-gray-700 text-ellipsis overflow-hidden whitespace-nowrap">
                     {{ product.product_name }}
                 </div>
-                <div class="text-gray-400 text-xs">
+                <div class="text-gray-400 text-xs mb-1.5">
                     {{ product.category?.category_name }}
                 </div>
+                <div class="text-orange-400 text-xs">
+                    {{ product.price }}$
+                </div>
                 <router-link
-                    class="block border-gray-300 text-gray-500 border text-center mt-6 rounded shadow-inner py-0.5 hover:bg-gray-500 hover:text-white"
+                    class="block border-gray-300 text-gray-500 border text-center mt-6 rounded shadow-inner py-0.5 hover:bg-orange-500 hover:text-white hover:border-0"
                     :to="{ name: 'product-view', params: { id: product.id } }">
                     Подробнее
                 </router-link>
