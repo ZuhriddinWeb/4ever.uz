@@ -5,7 +5,6 @@
             :selectedDataEdit="openInfo"
             v-if="openInfo"
         />
-       
         <ag-grid-vue
                 class="ag-theme-material h-full w-full shadow border-0"
                 :columnDefs="columnDefs"

@@ -4,6 +4,7 @@ export function Init(selectedUser = null, lastPeriod){
     const totalPrice = ref(null)
     const user = ref(null)
     const period = ref(lastPeriod)
+    const users = ref([])
 
     function changePeriod(){
         totalPrice.value = null
@@ -28,6 +29,8 @@ export function Init(selectedUser = null, lastPeriod){
             
             user.children = user.children.filter((element) => user.id == element.parent_id)
             user.childrenCount = user.children.length
+
+            users.value.push(user)
             recursiya(user.children)
         })
     }
@@ -105,5 +108,5 @@ export function Init(selectedUser = null, lastPeriod){
         return levelUp
     }
 
-    return { levels, totalPrice, user , period , changePeriod, getSelectedPeoples }
+    return { users, levels, totalPrice, user , period , changePeriod, getSelectedPeoples }
 }

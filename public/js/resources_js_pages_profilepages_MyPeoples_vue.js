@@ -249,6 +249,7 @@ function Init() {
   var totalPrice = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
   var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
   var period = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(lastPeriod);
+  var users = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
   function changePeriod() {
     totalPrice.value = null;
     if (selectedUser) getSelectedPeoples(period.value, selectedUser);else getPeoples(period.value);
@@ -269,6 +270,7 @@ function Init() {
         return user.id == element.parent_id;
       });
       user.childrenCount = user.children.length;
+      users.value.push(user);
       recursiya(user.children);
     });
   }
@@ -337,6 +339,7 @@ function Init() {
     return levelUp;
   }
   return {
+    users: users,
     levels: levels,
     totalPrice: totalPrice,
     user: user,
@@ -413,7 +416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MyPeoples_vue_vue_type_template_id_f93bfca6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyPeoples.vue?vue&type=template&id=f93bfca6 */ "./resources/js/pages/profilepages/MyPeoples.vue?vue&type=template&id=f93bfca6");
 /* harmony import */ var _MyPeoples_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyPeoples.vue?vue&type=script&setup=true&lang=js */ "./resources/js/pages/profilepages/MyPeoples.vue?vue&type=script&setup=true&lang=js");
 /* harmony import */ var _MyPeoples_vue_vue_type_style_index_0_id_f93bfca6_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyPeoples.vue?vue&type=style&index=0&id=f93bfca6&lang=css */ "./resources/js/pages/profilepages/MyPeoples.vue?vue&type=style&index=0&id=f93bfca6&lang=css");
-/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -421,7 +424,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_MyPeoples_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyPeoples_vue_vue_type_template_id_f93bfca6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyPeoples.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_MyPeoples_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyPeoples_vue_vue_type_template_id_f93bfca6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyPeoples.vue"]])
 /* hot reload */
 if (false) {}
 

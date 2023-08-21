@@ -96,6 +96,15 @@
                         Дерево
                     </div>
                 </router-link>
+                <router-link :to="{ name: 'mypeoplestable' }"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
+                        <i class="fal fa-poll-people"></i>
+                    </div>
+                    <div class="flex justify-center">
+                        Таблица
+                    </div>
+                </router-link>
                 <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-receipt"></i>

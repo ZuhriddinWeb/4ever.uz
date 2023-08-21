@@ -77,6 +77,11 @@ export default [
 				component: () => import('../pages/profilepages/MyPeoples.vue'),		
 			},
 			{
+				path: 'mypeoplestable',
+				name:'mypeoplestable',
+				component: () => import('../pages/profilepages/MyPeoplesTable.vue'),		
+			},
+			{
 				path: 'myhistory',
 				name:'myhistory',
 				component: () => import('../pages/profilepages/MyHistory.vue'),		
