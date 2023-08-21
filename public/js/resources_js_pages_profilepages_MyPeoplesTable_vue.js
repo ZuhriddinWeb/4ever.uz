@@ -53,11 +53,8 @@ __webpack_require__.r(__webpack_exports__);
       headerName: "T/r",
       valueGetter: "node.rowIndex + 1",
       width: 90
-    }, {
-      headerName: "Kod",
-      field: "id",
-      width: 90
     },
+    // { headerName: "Kod", field: "id",width: 90 },
     // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
     {
       headerName: "Имя ",

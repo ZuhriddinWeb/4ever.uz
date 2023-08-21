@@ -56,16 +56,13 @@ const onGridReady = (params) => {
 };
 const columnDefs = reactive([
         { headerName: "T/r", valueGetter: "node.rowIndex + 1", width: 90 },
-        { headerName: "Kod", field: "id",width: 90 },
+        // { headerName: "Kod", field: "id",width: 90 },
         // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
         { headerName: "Имя ", field: "fname",width:120 },
         { headerName: "Фамилия ", field: "lname",width:120  },
         { headerName: "Степень",field:'level' },
         { headerName: "Сумма",field:'total' },
-        { headerName: "Процент",field:'procent' },
-
-        
-        
+        { headerName: "Процент",field:'procent' },         
       ],
      );
 
