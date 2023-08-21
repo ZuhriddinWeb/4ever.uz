@@ -62,11 +62,11 @@ __webpack_require__.r(__webpack_exports__);
     {
       headerName: "Имя ",
       field: "fname",
-      flex: 1
+      width: 120
     }, {
       headerName: "Фамилия ",
       field: "lname",
-      flex: 1
+      width: 120
     }, {
       headerName: "Степень",
       field: 'level'
@@ -180,7 +180,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: period
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(period) + " Период", 9 /* TEXT, PROPS */, _hoisted_13);
   }), 256 /* UNKEYED_FRAGMENT */))], 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.period]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ag_grid_vue, {
-    "class": "ag-theme-material sm:h-96 w-full shadow border-0",
+    "class": "ag-theme-material h-96 md:h-full w-full shadow border-0",
     columnDefs: $setup.columnDefs,
     rowData: $setup.users,
     defaultColDef: $setup.defaultColDef,

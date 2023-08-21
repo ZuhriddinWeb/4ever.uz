@@ -22,7 +22,7 @@
         </header>
         <section class="flex-grow flex flex-col">           
             <ag-grid-vue
-                    class="ag-theme-material sm:h-96 w-full shadow border-0"
+                    class="ag-theme-material h-96 md:h-full w-full shadow border-0"
                     :columnDefs="columnDefs"
                     :rowData="users"
                     :defaultColDef="defaultColDef"
@@ -58,8 +58,8 @@ const columnDefs = reactive([
         { headerName: "T/r", valueGetter: "node.rowIndex + 1", width: 90 },
         { headerName: "Kod", field: "id",width: 90 },
         // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
-        { headerName: "Имя ", field: "fname",flex:1 },
-        { headerName: "Фамилия ", field: "lname",flex:1 },
+        { headerName: "Имя ", field: "fname",width:120 },
+        { headerName: "Фамилия ", field: "lname",width:120  },
         { headerName: "Степень",field:'level' },
         { headerName: "Сумма",field:'total' },
         { headerName: "Процент",field:'procent' },

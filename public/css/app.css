@@ -2166,6 +2166,10 @@ video {
     height: 24rem;
   }
 
+  .sm\:h-full {
+    height: 100%;
+  }
+
   .sm\:w-1\/2 {
     width: 50%;
   }
@@ -2205,6 +2209,10 @@ video {
 
   .md\:h-full {
     height: 100%;
+  }
+
+  .md\:h-96 {
+    height: 24rem;
   }
 
   .md\:w-1\/3 {
