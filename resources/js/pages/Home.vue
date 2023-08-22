@@ -2,21 +2,26 @@
     <section class="h-screen">
         <!-- <Categories/> -->
         <transition name="fade">
-            <Sidebar v-if="sideBarToggle" @close="sideBarToggle = false"/>
+            <Sidebar v-if="sideBarToggle" @close="sideBarToggle = false" />
         </transition>
-        <Slider />
+        <Slider />    
+        <NewVideos></NewVideos>
         <NewProducts></NewProducts>
         <Footer></Footer>
     </section>
 </template>
   
 <script setup>
-import { ref,onMounted } from "vue"
+import { ref, onMounted } from "vue"
 import Sidebar from "../components/Sidebar.vue"
 import Categories from "../components/Categories.vue"
 import Slider from "../components/Slider.vue"
 import Footer from "../components/Footer.vue"
 import NewProducts from "../components/NewProducts.vue"
+import NewVideos from "../components/NewVideos.vue"
+
+import { VideoPlayer } from '@videojs-player/vue'
+import 'video.js/dist/video-js.css'
 
 const sideBarToggle = ref(false)
 
