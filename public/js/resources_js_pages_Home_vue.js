@@ -930,7 +930,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right",
   style: {
-    "background-image": "url('https://i.ibb.co/0jw0BqB/df18a08e-32d2-470a-909e-6a4e0b401085.jpg')"
+    "background-image": "url('https://i.ibb.co/nsWX3r3/df18a08e-32d2-470a-909e-6a4e0b401085.jpg')"
   }
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide"
