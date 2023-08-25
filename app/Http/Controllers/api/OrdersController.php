@@ -270,8 +270,8 @@ class OrdersController extends Controller
                 ],
                 'sessionTimeoutSecs' => 1000,
             ]);
-            
             $payment = json_decode($uzumPayCurl, true);
+            // dd($payment);
             $data->orderId = $payment['result']['orderId'];
             $data->urlPay = $payment['result']['paymentRedirectUrl'];
 
