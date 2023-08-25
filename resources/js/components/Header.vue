@@ -1,5 +1,8 @@
 <template>
     <header>
+        <main class="fixed w-72 right-0 h-full bg-white z-50 shadow">
+
+        </main>
         <div class="flex justify-between container px-3 items-center mx-auto py-5">
             <div class="flex justify-between order-1 md:order-2 items-center">
                 <RouterLink class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-sm md:text-xl"
@@ -24,6 +27,10 @@
                         {{ $store.state.cart.length }}
                     </span>
                 </RouterLink>
+
+                <button class="px-3 py-1 ml-2 inline-block md:hidden">
+                    <i class="far fa-bars"></i>
+                </button>
             </div>
         </div>
         <!-- <main class="flex justify-start container items-center mx-auto">

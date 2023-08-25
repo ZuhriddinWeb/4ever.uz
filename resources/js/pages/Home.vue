@@ -20,9 +20,6 @@ import Footer from "../components/Footer.vue"
 import NewProducts from "../components/NewProducts.vue"
 import NewVideos from "../components/NewVideos.vue"
 
-import { VideoPlayer } from '@videojs-player/vue'
-import 'video.js/dist/video-js.css'
-
 const sideBarToggle = ref(false)
 
 </script>

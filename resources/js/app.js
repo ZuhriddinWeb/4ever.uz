@@ -11,8 +11,6 @@ import { AgGridVue } from "ag-grid-vue3";  // the AG Grid Vue Component
 import Swal from 'sweetalert2'
 import VueTree from "@ssthouse/vue3-tree-chart";
 import "@ssthouse/vue3-tree-chart/dist/vue3-tree-chart.css";
-import VueVideoPlayer from '@videojs-player/vue'
-import 'video.js/dist/video-js.css'
 
 window.Swal = Swal
 axios.defaults.baseURL = "/api/";
@@ -26,7 +24,6 @@ store.dispatch('getUser').then(()=>{
     createApp(App)
     .component('AgGridVue', AgGridVue)
     .component('vue-tree', VueTree)
-    .use(VueVideoPlayer)
     .use(store)
     .use(router)
     .mount('#app')
