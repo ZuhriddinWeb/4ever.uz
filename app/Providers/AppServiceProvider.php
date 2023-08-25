@@ -82,7 +82,7 @@ class AppServiceProvider extends ServiceProvider
 
         
         // $uzumPayCurl =  Http::withHeaders([
-        //     'Authorization' => '355ecee8b55693deccf2c9461415228ba9c80d38',
+        //     'Authorization' => 'testapelsin:X46gsp2TeKfLpksnp3tnTgz82a52dM',
         //     'Accept-Language' => 'uz-UZ',
         //     'Content-Type' => 'application/json',            
         // ])->post('https://test-topup.apelsin.uz/api/v2/merchant', [

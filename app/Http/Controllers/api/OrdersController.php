@@ -123,7 +123,7 @@ class OrdersController extends Controller
                     
                     //     ]);
             $order = Orders::where('orderId',$id)->first();
-    
+            // dd($order);
     
             $products = [];
             foreach ($order->products as $key => $product) {
@@ -132,7 +132,7 @@ class OrdersController extends Controller
                     "price"=> $product->productsInfo->price*$order->rate_uzs*100,
                     "count"=> $product->count,
                     "spic"=> "03302001002000000",
-                    "package_code"=> '1234567',
+                    "package_code"=> '8690359109331',
                     "vat_percent"=> 0,
                     "commission_info"=> ["PINFL"=> "32507722390013"]
                 ];
