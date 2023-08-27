@@ -1,5 +1,5 @@
 <template>
-    <div class="px-3 flex flex-col h-full">
+    <div class="flex flex-col h-full">
         <header>
             <h3 class="text-xl font-semibold">
                 <span>Квалификация</span><span class="text-teal-500 pl-2">{{ $store.state.statuses[levels - 1] }} </span>
@@ -20,27 +20,19 @@
                 </div>
             </main>
         </header>
-        <section class="flex-grow flex flex-col">           
-            <ag-grid-vue
-                    class="ag-theme-material h-96 md:h-full w-full shadow border-0"
-                    :columnDefs="columnDefs"
-                    :rowData="users"
-                    :defaultColDef="defaultColDef"
-                    animateRows="true"
-                    :rowSelection="'multiple'"
-                    @rowDoubleClicked="rowProtocolSelect">
-            </ag-grid-vue>
+        <section class="flex-grow flex flex-col">
+            <ag-grid-vue class="ag-theme-material h-96 w-full shadow border-0" :columnDefs="columnDefs"
+                :rowData="users" :defaultColDef="defaultColDef" animateRows="true" :rowSelection="'multiple'"
+            />
         </section>
     </div>
 </template>
 <script setup>
-import VueTree from "@ssthouse/vue3-tree-chart"
 import "@ssthouse/vue3-tree-chart/dist/vue3-tree-chart.css"
 import { reactive, ref, watch } from "vue"
 import { Init } from '../../helpers/userAccount'
 const vehicules = reactive({ name: null, children: [] })
 const { users, levels, totalPrice, user, period, changePeriod } = Init(null, store.state.user.lastPeriod)
-const tree = ref(null);
 
 watch(() => user.value, () => {
     vehicules.name = user.value.fname
@@ -49,22 +41,17 @@ watch(() => user.value, () => {
     vehicules.childrenCount = user.value.children.length
 })
 
-
-const gridApi = ref(null); // Optional - for accessing Grid's API
-const onGridReady = (params) => {
-    gridApi.value = params.api;
-};
 const columnDefs = reactive([
-        { headerName: "T/r", valueGetter: "node.rowIndex + 1", width: 90 },
-        // { headerName: "Kod", field: "id",width: 90 },
-        // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
-        { headerName: "Имя ", field: "fname",width:120 },
-        { headerName: "Фамилия ", field: "lname",width:120  },
-        { headerName: "Степень",field:'level' },
-        { headerName: "Сумма",field:'total' },
-        { headerName: "Процент",field:'procent' },         
-      ],
-     );
+    { headerName: "T/r", valueGetter: "node.rowIndex + 1", width: 90 },
+    // { headerName: "Kod", field: "id",width: 90 },
+    // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
+    { headerName: "Имя ", field: "fname", width: 120 },
+    { headerName: "Фамилия ", field: "lname", width: 120 },
+    { headerName: "Степень", field: 'level' },
+    { headerName: "Сумма", field: 'total' },
+    { headerName: "Процент", field: 'procent', flex: 1 },
+],
+);
 
 const defaultColDef = {
     sortable: true,

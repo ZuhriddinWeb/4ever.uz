@@ -1,5 +1,5 @@
 <template>
-    <div class="px-3 flex flex-col h-full">
+    <div class="flex flex-col h-full">
         <header>
             <h3 class="text-xl font-semibold">
                 <span>Квалификация</span><span class="text-teal-500 pl-2">{{ $store.state.statuses[levels - 1] }} </span>
@@ -29,7 +29,7 @@
                     <i class="fal fa-search-minus text-gray-600"></i>
                 </button>
             </div>
-            <vue-tree ref="tree" v-if="user" class="bg-stone-50 w-full shadow-inner h-[600px] md:h-full" :dataset="vehicules"
+            <vue-tree ref="tree" v-if="user" class="bg-stone-50 w-full shadow-inner h-[600px]" :dataset="vehicules"
                 :config="{ nodeWidth: 200, nodeHeight: 100, levelHeight: 180 }" linkStyle="straight">
                 <template v-slot:node="{ node, collapsed }">
                     <div class="bg-white border-t-2 border-pink-500 w-44 px-2 pt-1 pb-2 shadow relative">

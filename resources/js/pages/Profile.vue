@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col md:flex-row pb-6">
-        <main class="sm:w-3/3 md:w-2/3 lg:w-1/4 p-4 bg-gray-50 shadow-inner">
+    <div class="grid grid-cols-[1fr] lg:grid-cols-[300px,1fr] pb-6">
+        <main class="p-4 bg-gray-50 shadow-inner">
             <div>
                 <div>
                     <div class="leading-none mb-3">
@@ -125,7 +125,7 @@
             </main>
 
         </main>
-        <aside class="sm:w-3/3 md:w-1/3 lg:w-3/4 pl-5">
+        <aside class="pt-5 lg:pt-0 lg:pl-5 pl-0">
             <router-view></router-view>
         </aside>
     </div>
