@@ -1010,6 +1010,9 @@ video {
 .w-full {
   width: 100%;
 }
+.w-3\/5 {
+  width: 60%;
+}
 .min-w-0 {
   min-width: 0px;
 }
@@ -2238,6 +2241,10 @@ video {
 
   .md\:pt-0 {
     padding-top: 0px;
+  }
+
+  .md\:text-left {
+    text-align: left;
   }
 
   .md\:text-right {

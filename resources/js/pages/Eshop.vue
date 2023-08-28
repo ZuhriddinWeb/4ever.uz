@@ -12,8 +12,7 @@
                                     Все
                                 </span>
                                 <input type="radio" class="accent-orange-600" v-model="formData.gender" @change="getProducts()" :value="null" name="gender" id="genderinp">
-                            </label>
-                            
+                            </label>                            
                         </div>
                         <div v-for="gender in pageData.genders">
                             <label :for="'gender'+gender.id" :class="{'!bg-orange-100': formData.gender == gender.id}" class="radio-button">

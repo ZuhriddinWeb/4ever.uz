@@ -154,6 +154,11 @@ export default [
 				name:'users',
 				component: () => import('../adminpages/Users.vue'),		
 			},
+			{
+				path: 'left',
+				name:'left',
+				component: () => import('../adminpages/Left.vue'),		
+			},
 		],	
 		
 	},

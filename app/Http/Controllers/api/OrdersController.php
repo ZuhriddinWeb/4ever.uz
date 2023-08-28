@@ -221,7 +221,7 @@ class OrdersController extends Controller
             $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
             ->get();
             $usd = json_decode($response, true);
-
+            dd($request);
             $result = $request->all();
             $order=$result['cart_user'][0];
             $summa = 0;

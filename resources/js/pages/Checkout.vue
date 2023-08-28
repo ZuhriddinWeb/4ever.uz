@@ -84,14 +84,7 @@
                     <div v-for="item in result.cart_user"
                         class="flex justify-between items-start uppercase pt-4 border-b-2 pb-4">
                         <div class="flex justify-start w-2/6 mr-2">
-                            <main class="mr-3">
-                                <!-- <img
-                                class="h-full w-full"
-                                v-bind:src="
-                                    '/images/' +
-                                    item.products?.images_product
-                                "
-                            /> -->
+                            <main class="mr-3">                               
                             </main>
                             <main class="uppercase py-4">
                                 <p class="font-medium">#{{ item.products.id }}</p>

@@ -22,7 +22,8 @@ __webpack_require__.r(__webpack_exports__);
       fname: store.state.user.fname,
       lname: store.state.user.lname,
       passport: store.state.user.passport,
-      phone: store.state.user.phone
+      phone: store.state.user.phone,
+      id: store.state.user.id
     });
     function updateUser() {}
     var __returned__ = {
@@ -60,31 +61,38 @@ var _hoisted_3 = {
   "class": "bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4"
 };
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "formName",
+  "for": "formPhone",
   "class": "text-gray-400 block text-sm"
-}, "Имя", -1 /* HOISTED */);
+}, "ID", -1 /* HOISTED */);
 var _hoisted_5 = {
   "class": "bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4"
 };
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "formLast",
+  "for": "formName",
   "class": "text-gray-400 block text-sm"
-}, "Фамилия", -1 /* HOISTED */);
+}, "Имя", -1 /* HOISTED */);
 var _hoisted_7 = {
   "class": "bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4"
 };
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "formPassport",
+  "for": "formLast",
   "class": "text-gray-400 block text-sm"
-}, "Паспортные данные", -1 /* HOISTED */);
+}, "Фамилия", -1 /* HOISTED */);
 var _hoisted_9 = {
   "class": "bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4"
 };
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formPassport",
+  "class": "text-gray-400 block text-sm"
+}, "Паспортные данные", -1 /* HOISTED */);
+var _hoisted_11 = {
+  "class": "bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4"
+};
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "formPhone",
   "class": "text-gray-400 block text-sm"
 }, "Мобильный телефон", -1 /* HOISTED */);
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-right"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   disabled: "",
@@ -96,38 +104,46 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.updateUser, ["prevent"]),
     "class": "border border-gray-100 p-4 inline-block"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    id: "formName",
-    disabled: "",
-    "class": "bg-transparent outline-none",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $setup.formData.fname = $event;
-    }),
-    type: "text"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.fname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    id: "formLast",
-    disabled: "",
-    "class": "bg-transparent outline-none",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $setup.formData.lname = $event;
-    }),
-    type: "text"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.lname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    id: "formPassport",
-    disabled: "",
-    "class": "bg-transparent outline-none",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $setup.formData.passport = $event;
-    }),
-    type: "text"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.passport]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     id: "formPhone",
     disabled: "",
     "class": "bg-transparent outline-none",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $setup.formData.id = $event;
+    }),
+    type: "text"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "formName",
+    disabled: "",
+    "class": "bg-transparent outline-none",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $setup.formData.fname = $event;
+    }),
+    type: "text"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.fname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "formLast",
+    disabled: "",
+    "class": "bg-transparent outline-none",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $setup.formData.lname = $event;
+    }),
+    type: "text"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.lname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "formPassport",
+    disabled: "",
+    "class": "bg-transparent outline-none",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $setup.formData.passport = $event;
+    }),
+    type: "text"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.passport]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    id: "formPhone",
+    disabled: "",
+    "class": "bg-transparent outline-none",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.formData.phone = $event;
     }),
     type: "text"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.phone]])]), _hoisted_11], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_2)], 64 /* STABLE_FRAGMENT */);
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.formData.phone]])]), _hoisted_13], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_2)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -144,13 +160,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MyInfo_vue_vue_type_template_id_055e4895__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyInfo.vue?vue&type=template&id=055e4895 */ "./resources/js/pages/profilepages/MyInfo.vue?vue&type=template&id=055e4895");
 /* harmony import */ var _MyInfo_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyInfo.vue?vue&type=script&setup=true&lang=js */ "./resources/js/pages/profilepages/MyInfo.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyInfo_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyInfo_vue_vue_type_template_id_055e4895__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyInfo.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyInfo_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyInfo_vue_vue_type_template_id_055e4895__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyInfo.vue"]])
 /* hot reload */
 if (false) {}
 

@@ -4,6 +4,10 @@
     </section>
     <form @submit.prevent="updateUser" class="border border-gray-100 p-4 inline-block">
         <div class="bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4">
+            <label for="formPhone" class="text-gray-400 block text-sm">ID</label>
+            <input id="formPhone" disabled class="bg-transparent outline-none" v-model="formData.id" type="text">
+        </div>
+        <div class="bg-gray-50 rounded-t-md w-72 py-1.5 px-3 border-b border-gray-800 mb-4">
             <label for="formName" class="text-gray-400 block text-sm">Имя</label>
             <input id="formName" disabled class="bg-transparent outline-none" v-model="formData.fname" type="text">
         </div>
@@ -19,6 +23,7 @@
             <label for="formPhone" class="text-gray-400 block text-sm">Мобильный телефон</label>
             <input id="formPhone" disabled class="bg-transparent outline-none" v-model="formData.phone" type="text">
         </div>
+        
         <div class="text-right">
             <button disabled class="rounded shadow px-3 py-1.5 bg-orange-600 text-white active:bg-orange-400 hover:bg-orange-500 disabled:bg-gray-400">
                 Изменить
@@ -34,6 +39,8 @@ const formData = reactive({
     lname: store.state.user.lname,
     passport: store.state.user.passport,
     phone: store.state.user.phone,
+    id: store.state.user.id,
+
 })
 function updateUser() {
 
