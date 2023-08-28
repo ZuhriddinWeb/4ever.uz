@@ -12,9 +12,12 @@
                 <input v-model="result.passport" type="text"
                     class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
                     placeholder="Паспортные данные серия номер">
-                <input v-model="result.phone" type="text"
-                    class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
+                <div class="flex justify-between">
+                    <input class="w-1/5 mb-2 appearance-none bg-transparent text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none" type="text" value="+998" disabled>
+                    <input v-model="result.phone" type="text"
+                    class="w-4/5  mb-2 appearance-none bg-transparent text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
                     placeholder="Мобильный телефон">
+                </div>
                 <div class="flex justify-between">
                     <input v-if="showPassword" type="text" v-model="result.password"
                         class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"

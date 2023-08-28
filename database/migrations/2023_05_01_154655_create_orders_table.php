@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateOrdersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.operationState
      *
      * @return void
      */
@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->text('orderId')->nullable();
             $table->text('operation_id')->nullable();
+            $table->text('operationState')->nullable();
+            $table->text('operationType')->nullable();
             $table->text('urlPay')->nullable();
             $table->text('urlCheck')->nullable();
             $table->integer('user_id');

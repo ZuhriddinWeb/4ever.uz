@@ -84,6 +84,7 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     // Route::apiResource('photos', UserController::class);
     // Buyurtmlar
     Route::post('/order-pay-check', [OrdersController::class, 'update']);
+    Route::post('/order/register', [OrdersController::class, 'register']);
 
     Route::get('/orders', [OrdersController::class, 'index_all']);
     Route::get('/completedOrders', [OrdersController::class, 'getCompleted']);
