@@ -14,7 +14,7 @@
                 </div>
                 <form class="w-full  mb-8 mt-8" @submit.prevent="onSubmit" enctype="multipart/form-data">
                     <p>User ID:</p>
-                    <input v-model="result.product_name"
+                    <input @input="select_info" v-model="result.user_id"
                         class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none"
                         type="number" />
                     <main class="w-full flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0">
@@ -107,14 +107,26 @@
                             </div>
                         </aside>
                     </div>
-                    <main>
+                    <VueMultiselect
+                        v-model="selected"
+                        :options="options"
+                        :multiple="true"
+                        placeholder="Pick some" label="name"
+                        track-by="name"
+                        @update:modelValue="updateSelected"
+                    />
+                        
+                    <!-- <main>
                         <div v-for="item in pageData.products" class="flex justify-between items-center mb-3 border-b-2">
-                            <div class="w-4/5">
+                            <div class="w-3/5">
                                 {{ item.product_name }}
                             </div>
                             <div class="w-1/5">
+                                {{ item.price }}
+                            </div>
+                            <div class="w-1/5">
                                 <div class="text-center flex justify-start w-full mb-2">
-                                    <button class="mr-2 bg-gray-200" @click="decrement(item)">
+                                    <button class="mr-2 bg-gray-200" @click="decrement(item.count_products)">
                                         <i class="fal fa-chevron-left p-2"></i>
                                     </button>
                                     <span class="px-3">{{ item.count }}</span>
@@ -124,16 +136,16 @@
                                 </div>
                             </div>
                         </div>
-                    </main>
+                    </main> -->
                     <div class="flex justify-between">
-                        <button type="submit"
+                        <!-- <button type="submit" @click="agreement()"
                             class="bg-gray-100 w-1/2 py-1 px-4 mr-2 border-b-2 border-blue-500 hover:bg-blue-200">
                             <i class="far fa-layer-plus mx-2"></i>Saqlash
                         </button>
                         <button @click="emit('close')"
                             class="bg-gray-100 w-1/2 py-1 px-4 ml-2 border-b-2 border-rose-500 hover:bg-rose-200">
                             <i class="far fa-times mx-2"></i>Bekor qilish
-                        </button>
+                        </button> -->
                     </div>
                 </form>
             </div>
@@ -144,28 +156,36 @@
 <script setup>
 import { reactive, onMounted, ref } from "vue";
 import store from "../../store";
+
+
+function updateSelected(data){
+    console.log(data)
+}
+
 const emit = defineEmits(['close'])
-const category = ref(null);
-const tree = ref(null);
 const viloyat = ref(null);
 const tuman = ref(null);
-
-const usd_api = ref(null);
-
+const summa = ref(null);
+const selected = ref([]);
+const value=ref([]);
+const options = ref([
+        { name: 'Vue.js', language: 'JavaScript' },
+        { name: 'Adonis', language: 'JavaScript' },
+        { name: 'Rails', language: 'Ruby' },
+        { name: 'Sinatra', language: 'Ruby' },
+        { name: 'Laravel', language: 'PHP' },
+        { name: 'Phoenix', language: 'Elixir' }
+      ]);
 const result = reactive({
     user_id: "",
+    phone: "",
+    name: "",
     viloyat_id: "",
     tuman_id: "",
     category_id: "",
-    flavor: "",
-    tree_id: store.state.id_selected,
-    product_price: "",
-    volume: "",
-    product_count: "",
-    product_descr: "",
-    product_instr: "",
-    usd_api: "",
-    images: []
+    count: "",
+    pay_id: 3,
+    cart_user: "null",
 });
 const pageData = reactive({
     genders: null,
@@ -187,13 +207,25 @@ function getRegion(e) {
     })
 }
 
-axios.get(`user-info/${result.user_id}`).then((res) => {
-    result.name = res.data[0].fname
-    result.phone = res.data[0].phone
-})
+function onCheck() {
+
+}
 
 function getProducts() {
-    axios.post('products-filter', formData).then(({ data }) => pageData.products = data)
+    axios.post('products-filter', formData).then(({ data }) => {
+        data.forEach((element) => {
+            // console.log(element)
+            element.count = 0;
+            element.pri = element.count * element.price;
+            summa.value += element.pri
+            store.state.summa = summa.value
+        });
+        pageData.products = data
+        result.cart_user = data
+        console.log(pageData.products);
+
+    }
+    )
 }
 
 getProducts()
@@ -201,11 +233,12 @@ axios.get('tree').then(({ data }) => pageData.genders = data)
 axios.get('category').then(({ data }) => pageData.categories = data)
 
 function increment(cart) {
-    if (cart.count < cart.products.count_products) {
+    if (cart.count < cart.count_products) {
         cart.count++;
         summa.value += cart.price
     }
 }
+
 function decrement(cart) {
     if (cart.count > 1) {
         cart.count--;
@@ -227,10 +260,31 @@ const onSubmit = async () => {
 
     }
 
-    // const { data } = await axios.post("product-save", formdata);
-    // if (data.status == 200) {
-    //     emit("added");
-    //     emit("close");
-    // }
 };
+function select_info(e) {
+    axios.get(`user-info/${result.user_id}`).then((res) => {
+        result.name = res.data[0].fname
+        result.phone = res.data[0].phone
+    })
+
+}
+async function agreement() {
+    const { data } = await axios.post("order-save", result);
+    if (data.status == 200 && result.pay_id == 3) {
+        // Swal.fire({
+        //     position: 'top-end',
+        //     icon: 'success',
+        //     title: 'Спасибо, ваша заявка принята',
+        //     showConfirmButton: false,
+        //     timer: 2000
+        // })
+        // axios.post("cart-clear");
+        // console.log(data.message)
+        // router.push(data.message)
+        orderId.value = data.orderId
+        axios.post("/order-pay-check", orderId.value)
+        // window.location.href = data.message;
+    }
+
+}
 </script>

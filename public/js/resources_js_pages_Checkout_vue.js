@@ -60,9 +60,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              console.log(result);
+              _context.next = 3;
               return axios.post("order-save", result);
-            case 2:
+            case 3:
               _yield$axios$post = _context.sent;
               data = _yield$axios$post.data;
               if (data.status == 200 && result.pay_id == 1) {
@@ -80,7 +81,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 axios.post("/order-pay-check", orderId.value);
                 window.location.href = data.message;
               }
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -485,13 +486,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Checkout_vue_vue_type_template_id_19797662__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Checkout.vue?vue&type=template&id=19797662 */ "./resources/js/pages/Checkout.vue?vue&type=template&id=19797662");
 /* harmony import */ var _Checkout_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Checkout.vue?vue&type=script&setup=true&lang=js */ "./resources/js/pages/Checkout.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Checkout_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Checkout_vue_vue_type_template_id_19797662__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/Checkout.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Checkout_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Checkout_vue_vue_type_template_id_19797662__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/Checkout.vue"]])
 /* hot reload */
 if (false) {}
 

@@ -221,13 +221,20 @@ class OrdersController extends Controller
             $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')
             ->get();
             $usd = json_decode($response, true);
-            dd($request);
             $result = $request->all();
+            // dd($result);
             $order=$result['cart_user'][0];
             $summa = 0;
+            if($result["pay_id"]==1){
                 for ($i=0; $i <count($result['cart_user']) ; $i++) { 
                     $summa+= $result['cart_user'][$i]['count']*$result['cart_user'][$i]['price'];
                 }
+            }
+            elseif($result["pay_id"]==3){
+                for ($i=0; $i <count($result['cart_user']) ; $i++) { 
+                    $summa+= $result['cart_user'][$i]['count']*$result['cart_user'][$i]['pri'];
+                }
+            }
             $data = new Orders();
             $data->user_id = Auth::user()->id; 
             $data->name = $result['name'];
@@ -239,9 +246,9 @@ class OrdersController extends Controller
             $data->pay_id = $result['pay_id'];           
             $data->order_summa = $summa;
             $data->rate_uzs = $usd[0]['Rate'];
-
             $data->save();
 
+            if($result["pay_id"]==1){
             $uzumPayCurl =  Http::withHeaders([
                 'Content-Language' => 'uz-UZ',
                 'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
@@ -289,7 +296,11 @@ class OrdersController extends Controller
                     'message' => $payment['result']['paymentRedirectUrl'],
                 ]);
             }
-
+            return response()->json([
+                'status' => 200,
+                'message'=>'ok'               
+            ]);
+        }
     /**
      * Store a newly created resource in storage.
      *
@@ -365,7 +376,6 @@ class OrdersController extends Controller
     }
     public function update(Request $request)
     {
-        // dd($request);
         $result = $request->all();
         $data = new Orders();    
         $count = Orders_Products::where('order_id',$request['id'])->get();

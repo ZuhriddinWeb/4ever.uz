@@ -26,25 +26,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var expose = _ref.expose,
       emit = _ref.emit;
     expose();
-    var category = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var tree = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    function updateSelected(data) {
+      console.log(data);
+    }
     var viloyat = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var tuman = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var usd_api = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var summa = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
+    var selected = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+    var value = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+    var options = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
+      name: 'Vue.js',
+      language: 'JavaScript'
+    }, {
+      name: 'Adonis',
+      language: 'JavaScript'
+    }, {
+      name: 'Rails',
+      language: 'Ruby'
+    }, {
+      name: 'Sinatra',
+      language: 'Ruby'
+    }, {
+      name: 'Laravel',
+      language: 'PHP'
+    }, {
+      name: 'Phoenix',
+      language: 'Elixir'
+    }]);
     var result = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       user_id: "",
+      phone: "",
+      name: "",
       viloyat_id: "",
       tuman_id: "",
       category_id: "",
-      flavor: "",
-      tree_id: _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.id_selected,
-      product_price: "",
-      volume: "",
-      product_count: "",
-      product_descr: "",
-      product_instr: "",
-      usd_api: "",
-      images: []
+      count: "",
+      pay_id: 3,
+      cart_user: "null"
     });
     var pageData = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       genders: null,
@@ -63,14 +81,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         tuman.value = res.data;
       });
     }
-    axios.get("user-info/".concat(result.user_id)).then(function (res) {
-      result.name = res.data[0].fname;
-      result.phone = res.data[0].phone;
-    });
+    function onCheck() {}
     function getProducts() {
       axios.post('products-filter', formData).then(function (_ref2) {
         var data = _ref2.data;
-        return pageData.products = data;
+        data.forEach(function (element) {
+          // console.log(element)
+          element.count = 0;
+          element.pri = element.count * element.price;
+          summa.value += element.pri;
+          _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.summa = summa.value;
+        });
+        pageData.products = data;
+        result.cart_user = data;
+        console.log(pageData.products);
       });
     }
     getProducts();
@@ -83,7 +107,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return pageData.categories = data;
     });
     function increment(cart) {
-      if (cart.count < cart.products.count_products) {
+      if (cart.count < cart.count_products) {
         cart.count++;
         summa.value += cart.price;
       }
@@ -108,12 +132,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 } else formdata.append(key, result[key]);
               }
-
-              // const { data } = await axios.post("product-save", formdata);
-              // if (data.status == 200) {
-              //     emit("added");
-              //     emit("close");
-              // }
             case 2:
             case "end":
               return _context.stop();
@@ -124,21 +142,69 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref5.apply(this, arguments);
       };
     }();
+    function select_info(e) {
+      axios.get("user-info/".concat(result.user_id)).then(function (res) {
+        result.name = res.data[0].fname;
+        result.phone = res.data[0].phone;
+      });
+    }
+    function agreement() {
+      return _agreement.apply(this, arguments);
+    }
+    function _agreement() {
+      _agreement = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var _yield$axios$post, data;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios.post("order-save", result);
+            case 2:
+              _yield$axios$post = _context2.sent;
+              data = _yield$axios$post.data;
+              if (data.status == 200 && result.pay_id == 3) {
+                // Swal.fire({
+                //     position: 'top-end',
+                //     icon: 'success',
+                //     title: 'Спасибо, ваша заявка принята',
+                //     showConfirmButton: false,
+                //     timer: 2000
+                // })
+                // axios.post("cart-clear");
+                // console.log(data.message)
+                // router.push(data.message)
+                orderId.value = data.orderId;
+                axios.post("/order-pay-check", orderId.value);
+                // window.location.href = data.message;
+              }
+            case 5:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2);
+      }));
+      return _agreement.apply(this, arguments);
+    }
     var __returned__ = {
+      updateSelected: updateSelected,
       emit: emit,
-      category: category,
-      tree: tree,
       viloyat: viloyat,
       tuman: tuman,
-      usd_api: usd_api,
+      summa: summa,
+      selected: selected,
+      value: value,
+      options: options,
       result: result,
       pageData: pageData,
       formData: formData,
       getRegion: getRegion,
+      onCheck: onCheck,
       getProducts: getProducts,
       increment: increment,
       decrement: decrement,
       onSubmit: onSubmit,
+      select_info: select_info,
+      agreement: agreement,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_0__.onMounted,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
@@ -451,45 +517,12 @@ var _hoisted_36 = {
   "class": "mr-1.5"
 };
 var _hoisted_37 = ["value", "id"];
-var _hoisted_38 = {
-  "class": "flex justify-between items-center mb-3 border-b-2"
-};
-var _hoisted_39 = {
-  "class": "w-4/5"
-};
-var _hoisted_40 = {
-  "class": "w-1/5"
-};
-var _hoisted_41 = {
-  "class": "text-center flex justify-start w-full mb-2"
-};
-var _hoisted_42 = ["onClick"];
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fal fa-chevron-left p-2"
-}, null, -1 /* HOISTED */);
-var _hoisted_44 = [_hoisted_43];
-var _hoisted_45 = {
-  "class": "px-3"
-};
-var _hoisted_46 = ["onClick"];
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fal fa-chevron-right p-2"
-}, null, -1 /* HOISTED */);
-var _hoisted_48 = [_hoisted_47];
-var _hoisted_49 = {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-between"
-};
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit",
-  "class": "bg-gray-100 w-1/2 py-1 px-4 mr-2 border-b-2 border-blue-500 hover:bg-blue-200"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "far fa-layer-plus mx-2"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Saqlash ")], -1 /* HOISTED */);
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "far fa-times mx-2"
-}, null, -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button type=\"submit\" @click=\"agreement()\"\r\n                            class=\"bg-gray-100 w-1/2 py-1 px-4 mr-2 border-b-2 border-blue-500 hover:bg-blue-200\">\r\n                            <i class=\"far fa-layer-plus mx-2\"></i>Saqlash\r\n                        </button>\r\n                        <button @click=\"emit('close')\"\r\n                            class=\"bg-gray-100 w-1/2 py-1 px-4 ml-2 border-b-2 border-rose-500 hover:bg-rose-200\">\r\n                            <i class=\"far fa-times mx-2\"></i>Bekor qilish\r\n                        </button> ")], -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_VueMultiselect = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("VueMultiselect");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", {
     onClick: _cache[17] || (_cache[17] = function ($event) {
       return $setup.emit('close');
@@ -507,12 +540,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.onSubmit, ["prevent"]),
     enctype: "multipart/form-data"
   }, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onInput: $setup.select_info,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $setup.result.product_name = $event;
+      return $setup.result.user_id = $event;
     }),
     "class": "mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-300 py-2 focus:outline-none",
     type: "number"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.result.product_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.result.user_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.result.phone = $event;
     }),
@@ -619,24 +653,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       value: category.id,
       id: 'category' + category.id
     }, null, 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_37), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.formData.categories]])], 10 /* CLASS, PROPS */, _hoisted_35)]);
-  }), 256 /* UNKEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.pageData.products, function (item) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.product_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      "class": "mr-2 bg-gray-200",
-      onClick: function onClick($event) {
-        return $setup.decrement(item);
-      }
-    }, _hoisted_44, 8 /* PROPS */, _hoisted_42), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.count), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-      "class": "ml-2 bg-gray-200",
-      onClick: function onClick($event) {
-        return $setup.increment(item);
-      }
-    }, _hoisted_48, 8 /* PROPS */, _hoisted_46)])])]);
-  }), 256 /* UNKEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [_hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    onClick: _cache[15] || (_cache[15] = function ($event) {
-      return $setup.emit('close');
-    }),
-    "class": "bg-gray-100 w-1/2 py-1 px-4 ml-2 border-b-2 border-rose-500 hover:bg-rose-200"
-  }, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Bekor qilish ")])])], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7)])])]);
+  }), 256 /* UNKEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_VueMultiselect, {
+    modelValue: $setup.selected,
+    "onUpdate:modelValue": [_cache[15] || (_cache[15] = function ($event) {
+      return $setup.selected = $event;
+    }), $setup.updateSelected],
+    options: $setup.options,
+    multiple: true,
+    placeholder: "Pick some",
+    label: "name",
+    "track-by": "name"
+  }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <main>\r\n                        <div v-for=\"item in pageData.products\" class=\"flex justify-between items-center mb-3 border-b-2\">\r\n                            <div class=\"w-3/5\">\r\n                                {{ item.product_name }}\r\n                            </div>\r\n                            <div class=\"w-1/5\">\r\n                                {{ item.price }}\r\n                            </div>\r\n                            <div class=\"w-1/5\">\r\n                                <div class=\"text-center flex justify-start w-full mb-2\">\r\n                                    <button class=\"mr-2 bg-gray-200\" @click=\"decrement(item.count_products)\">\r\n                                        <i class=\"fal fa-chevron-left p-2\"></i>\r\n                                    </button>\r\n                                    <span class=\"px-3\">{{ item.count }}</span>\r\n                                    <button class=\"ml-2 bg-gray-200\" @click=\"increment(item)\">\r\n                                        <i class=\"fal fa-chevron-right p-2\"></i>\r\n                                    </button>\r\n                                </div>\r\n                            </div>\r\n                        </div>\r\n                    </main> "), _hoisted_38], 40 /* PROPS, HYDRATE_EVENTS */, _hoisted_7)])])]);
 }
 
 /***/ }),
@@ -702,13 +729,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddLeftOrders_vue_vue_type_template_id_46465f4d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddLeftOrders.vue?vue&type=template&id=46465f4d */ "./resources/js/admincomponents/left/AddLeftOrders.vue?vue&type=template&id=46465f4d");
 /* harmony import */ var _AddLeftOrders_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddLeftOrders.vue?vue&type=script&setup=true&lang=js */ "./resources/js/admincomponents/left/AddLeftOrders.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddLeftOrders_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddLeftOrders_vue_vue_type_template_id_46465f4d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/admincomponents/left/AddLeftOrders.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddLeftOrders_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddLeftOrders_vue_vue_type_template_id_46465f4d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/admincomponents/left/AddLeftOrders.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -729,13 +756,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Left_vue_vue_type_template_id_dbef80da__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Left.vue?vue&type=template&id=dbef80da */ "./resources/js/adminpages/Left.vue?vue&type=template&id=dbef80da");
 /* harmony import */ var _Left_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Left.vue?vue&type=script&setup=true&lang=js */ "./resources/js/adminpages/Left.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_programms_xampp_htdocs_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Left_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Left_vue_vue_type_template_id_dbef80da__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/Left.vue"]])
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Left_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Left_vue_vue_type_template_id_dbef80da__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/adminpages/Left.vue"]])
 /* hot reload */
 if (false) {}
 

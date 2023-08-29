@@ -18,20 +18,33 @@ class OrdersObserver
      */
     public function created(Orders $orders)
     {
-        // dd(request()->all());
         $result = request()->all();
-        $order = $result['cart_user'][0];
-        for($i=0;$i<count($result['cart_user']);$i++){
-            $data = new Orders_Products();
-            $data->order_id = $orders['id'];
-            $data->product_id = $result['cart_user'][$i]['product_id'];
-            $data->count =  $result['cart_user'][$i]['count'];             
-            $data->save();
+        if($result["pay_id"]==1){
+            for($i=0;$i<count($result['cart_user']);$i++){
+                $data = new Orders_Products();
+                $data->order_id = $orders['id'];
+                $data->product_id = $result['cart_user'][$i]['product_id'];
+                $data->count =  $result['cart_user'][$i]['count'];             
+                $data->save();
+            }
+            return response()->json([
+                'status' => 200,
+                'message' => "Orders Products muvafaqiyatli qo'shildi",
+            ]);
         }
-        return response()->json([
-            'status' => 200,
-            'message' => "Orders Products muvafaqiyatli qo'shildi",
-        ]);
+        elseif($result["pay_id"]==3){
+            for($i=0;$i<count($result['cart_user']);$i++){
+                $data = new Orders_Products();
+                $data->order_id = $orders['id'];
+                $data->product_id = $result['cart_user'][$i]['id'];
+                $data->count =  $result['cart_user'][$i]['count'];             
+                $data->save();
+            }
+            return response()->json([
+                'status' => 200,
+                'message' => "Orders Products muvafaqiyatli qo'shildi",
+            ]);
+        }
     }
 
     /**

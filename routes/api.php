@@ -105,6 +105,8 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
     Route::get('/cart-save/{id}', [CartController::class, 'store']);
     Route::get('/cart-user/{id}', [CartController::class, 'index']); 
     Route::get('/count-cart', [CartController::class, 'show']);
+    // Route::get('/count', [ProductsController::class, 'count']);
+
     Route::post('/cart-clear', [CartController::class, 'clear']);
 
     Route::delete('/cart/{id}', [CartController::class, 'destroy']);

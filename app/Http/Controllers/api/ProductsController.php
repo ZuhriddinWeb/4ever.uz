@@ -48,7 +48,10 @@ class ProductsController extends Controller
     {
         return Products::find($id);
     }
-    
+    public function count($id)
+    {
+        return Products::find($id);
+    }
     public function index_UZS()
     {
         $response = Curl::to('https://cbu.uz/uz/arkhiv-kursov-valyut/json/USD/')->get();

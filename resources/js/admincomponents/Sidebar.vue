@@ -36,6 +36,10 @@
                     <i class="fal fa-luggage-cart text-gray-400 text-xl"></i>                    
                     <span  class=" pl-6  text-gray-600 ">Jo'natmalar</span>
                 </router-link>                
+                <router-link :to="{ name: 'left'}" class="button flex mb-2  p-2   hover:border-r-4 border-orange-500  items-center  active:bg-gray-200">
+                    <i class="fal fa-shopping-bag text-gray-400 text-xl"></i>
+                    <span  class=" pl-6  text-gray-600 ">Buyurtma qilish</span>
+                </router-link>                
                 <router-link :to="{ name: 'status'}" class="button flex mb-2  p-2   hover:border-r-4 border-orange-500  items-center  active:bg-gray-200">
                     <i class="fal fa-sort-alpha-up text-gray-400 text-xl"></i>
                     <span  class=" pl-6  text-gray-600 ">Statuslar</span>

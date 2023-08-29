@@ -83,6 +83,7 @@
                     </div>
                     <div v-for="item in result.cart_user"
                         class="flex justify-between items-start uppercase pt-4 border-b-2 pb-4">
+                        
                         <div class="flex justify-start w-2/6 mr-2">
                             <main class="mr-3">                               
                             </main>
@@ -177,13 +178,14 @@ const result = reactive({
     point: "",
     pay_id: 'false',
     cart_user: null,
-
+    
 });
 axios.get(`viloyat`).then((res) => {
     viloyat.value = res.data;
 
 })
 async function agreement() {
+    console.log(result)
     const { data } = await axios.post("order-save", result);
     if (data.status == 200 && result.pay_id==1) {
         Swal.fire({
@@ -214,7 +216,6 @@ axios.get(`cart-user/${store.state.user.id}`).then(({ data }) => {
         store.state.summa = summa.value
     });
     result.cart_user = data;
-
 });
 function increment(cart) {
     if (cart.count < cart.products.count_products) {
