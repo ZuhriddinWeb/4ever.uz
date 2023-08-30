@@ -32,6 +32,13 @@ class OrdersController extends Controller
        
 
     }
+    public function getLeftOrders()
+    {
+        // return Orders::where('user_id' , $id)->latest()->first();
+        return Orders::where('pay_id' , 3)->orderBy('id', 'desc')->get();
+       
+
+    }
     public function getLatest()
     {
         $user=Auth::user()->id;
@@ -211,6 +218,55 @@ class OrdersController extends Controller
 
         
     }
+    public function getParentCashbackLeft($id){
+        $userPay =Orders::where('id',$id)->get();
+        $parent_id = User::where('id',$userPay[0]['user_id'])->get();
+        $parentCashback = ($userPay[0]['order_summa']/2)*0.25;
+        $cashback = new Cashback();
+
+        $older = Cashback::where('user_id',$parent_id[0]['parent_id'])->first();
+        
+        if(empty($older)){
+            $cashback->user_id =$parent_id[0]['parent_id'];
+            $cashback->cashback = $parentCashback;
+            $cashback->save();
+        }
+        else{
+            $cashback = Cashback::where('user_id',$parent_id[0]['parent_id'])->first();
+            $cashback->cashback = $older->cashback + $parentCashback;
+            $cashback->save();                    
+        }
+        return response()->json([
+            'status' => 200,
+            'message' => "Cashback muvafaqiyatli qo'shildi",
+        ]);
+    }
+
+    public function getCashbackLeft($id){
+        $cashback_user = 0;
+        $cashback = new Cashback();
+        $orders = Orders::where('id',$id)->get();
+        $helpers = new Helpers();
+        $userCashback=$helpers->getCashback($orders[0]['order_summa'])/2;
+        $older = Cashback::where('user_id',$orders[0]['user_id'])->first();
+        if(empty($older)){
+            $cashback->user_id = $orders[0]['user_id'];
+            $cashback->cashback = $userCashback;
+            $cashback->save();
+        }
+        else{
+            $cashback = Cashback::where('user_id',$orders[0]['user_id'])->first();
+            $cashback->cashback = $older->cashback + $userCashback;
+            $cashback->save();                    
+        }
+        return response()->json([
+            'status' => 200,
+            'message' => "Cashback muvafaqiyatli qo'shildi",
+        ]);
+           
+
+        
+    }
     /**
      * Show the form for creating a new resource.23120000200000111510
      *201055108
@@ -296,6 +352,8 @@ class OrdersController extends Controller
                     'message' => $payment['result']['paymentRedirectUrl'],
                 ]);
             }
+            $this->getParentCashbackLeft($data->id);
+            $this->getCashbackLeft($data->id);
             return response()->json([
                 'status' => 200,
                 'message'=>'ok'               

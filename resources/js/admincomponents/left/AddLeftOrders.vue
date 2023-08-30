@@ -108,16 +108,17 @@
                         </aside>
                     </div>
                     <VueMultiselect
-                        v-model="selected"
-                        :options="options"
+                        v-if="pageData.products"
+                        v-model="result.cart_user"
+                        :options="pageData.products"
                         :multiple="true"
-                        placeholder="Pick some" label="name"
-                        track-by="name"
+                        placeholder="Pick some" 
+                        label="product_name"
+                        track-by="id"
                         @update:modelValue="updateSelected"
-                    />
-                        
-                    <!-- <main>
-                        <div v-for="item in pageData.products" class="flex justify-between items-center mb-3 border-b-2">
+                    />                        
+                    <main class="my-4">
+                        <div v-for="item in result.cart_user" class="flex justify-between items-center mb-3 border-b-2">
                             <div class="w-3/5">
                                 {{ item.product_name }}
                             </div>
@@ -126,7 +127,7 @@
                             </div>
                             <div class="w-1/5">
                                 <div class="text-center flex justify-start w-full mb-2">
-                                    <button class="mr-2 bg-gray-200" @click="decrement(item.count_products)">
+                                    <button class="mr-2 bg-gray-200" @click="decrement(item)">
                                         <i class="fal fa-chevron-left p-2"></i>
                                     </button>
                                     <span class="px-3">{{ item.count }}</span>
@@ -136,16 +137,16 @@
                                 </div>
                             </div>
                         </div>
-                    </main> -->
+                    </main>
                     <div class="flex justify-between">
-                        <!-- <button type="submit" @click="agreement()"
+                        <button type="submit" @click="agreement()"
                             class="bg-gray-100 w-1/2 py-1 px-4 mr-2 border-b-2 border-blue-500 hover:bg-blue-200">
                             <i class="far fa-layer-plus mx-2"></i>Saqlash
                         </button>
                         <button @click="emit('close')"
                             class="bg-gray-100 w-1/2 py-1 px-4 ml-2 border-b-2 border-rose-500 hover:bg-rose-200">
                             <i class="far fa-times mx-2"></i>Bekor qilish
-                        </button> -->
+                        </button>
                     </div>
                 </form>
             </div>
@@ -166,16 +167,9 @@ const emit = defineEmits(['close'])
 const viloyat = ref(null);
 const tuman = ref(null);
 const summa = ref(null);
-const selected = ref([]);
+// const selected = ref([]);
 const value=ref([]);
-const options = ref([
-        { name: 'Vue.js', language: 'JavaScript' },
-        { name: 'Adonis', language: 'JavaScript' },
-        { name: 'Rails', language: 'Ruby' },
-        { name: 'Sinatra', language: 'Ruby' },
-        { name: 'Laravel', language: 'PHP' },
-        { name: 'Phoenix', language: 'Elixir' }
-      ]);
+
 const result = reactive({
     user_id: "",
     phone: "",
@@ -185,7 +179,8 @@ const result = reactive({
     category_id: "",
     count: "",
     pay_id: 3,
-    cart_user: "null",
+    // cart_user: "null",
+    cart_user:[]
 });
 const pageData = reactive({
     genders: null,
@@ -207,23 +202,18 @@ function getRegion(e) {
     })
 }
 
-function onCheck() {
-
-}
-
 function getProducts() {
     axios.post('products-filter', formData).then(({ data }) => {
         data.forEach((element) => {
             // console.log(element)
-            element.count = 0;
+            element.count = 1;
             element.pri = element.count * element.price;
             summa.value += element.pri
             store.state.summa = summa.value
         });
         pageData.products = data
-        result.cart_user = data
-        console.log(pageData.products);
-
+        // result.cart_user = data
+        // console.log(data);
     }
     )
 }
@@ -245,22 +235,7 @@ function decrement(cart) {
         summa.value -= cart.price
     }
 }
-const onSubmit = async () => {
-    const formdata = new FormData()
 
-
-    for (const key in result) {
-
-        if (key == 'images') {
-            result.images.forEach(image => {
-                formdata.append('images[]', image)
-            })
-        }
-        else formdata.append(key, result[key])
-
-    }
-
-};
 function select_info(e) {
     axios.get(`user-info/${result.user_id}`).then((res) => {
         result.name = res.data[0].fname

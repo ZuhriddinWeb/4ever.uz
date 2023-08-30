@@ -1,7 +1,6 @@
 <template>
     <section class="flex flex-col justify-between h-screen">
-        <AddLeftOrders @added="gridRestart" @close="left_input = null" :selectedDataInput="left_input"
-            v-if="left_input" />       
+        <AddLeftOrders @added="gridRestart" @close="left_input = null" :selectedDataInput="left_input" v-if="left_input" />
         <div class="flex justify-between mb-4">
             <div></div>
             <div>
@@ -33,8 +32,12 @@ const rowData = ref(null); // Set rowData to Array of Objects, one Object per Ro
 const columnDefs = reactive([
     { headerName: "T/r", valueGetter: "node.rowIndex + 1", width: 120 },
     { headerName: "Kod", field: "id", width: 120 },
-    // { headerName: "Unique ID", field: "category_id",width: 500 },
-    { headerName: "Nomi", field: "category_name", flex: 1 },
+    { headerName: "User Id", field: "user_id", width: 120 },
+    { headerName: "Ism", field: "name", flex: 1 },
+    { headerName: "Telefon", field: "phone", flex: 1 },
+
+    // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
+    { headerName: "Buyurtma vaqti", field: "created_at", flex: 1 },
     // {
     //     headerName: "",
     //     field: "",
@@ -81,7 +84,7 @@ function gridRestart() {
     getRowData();
 }
 async function getRowData() {
-    const { data } = await axios.get(`category`);
+    const { data } = await axios.get(`orders-left`);
     rowData.value = data;
 }
 

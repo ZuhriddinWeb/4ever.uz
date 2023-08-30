@@ -70,13 +70,13 @@ class UserController extends Controller
         
 
         $parent = User::where('promo_code', $res['code'])->first();
-
+        $phonemask = '998';
         $user = User::create([
             'parent_id' => $parent ? $parent->id : null,
             'fname' => $res['fname'],
             'lname' => $res['lname'],
             'passport' => $res['passport'],
-            'phone' => $res['phone'],
+            'phone' => $phonemask.$res['phone'],
             'promo_code' => $promo_code,
             'code' => $res['code'],
             'password' => Hash::make($res['password']),

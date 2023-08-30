@@ -105,6 +105,15 @@
                         Таблица
                     </div>
                 </router-link>
+                <router-link :to="{ name: 'myregister' }"
+                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
+                        <i class="fal fa-user-plus"></i>
+                    </div>
+                    <div class="flex justify-center">
+                        Pегистрация
+                    </div>
+                </router-link>
                 <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-receipt"></i>

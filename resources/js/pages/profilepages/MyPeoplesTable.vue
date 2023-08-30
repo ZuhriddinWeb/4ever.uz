@@ -47,7 +47,7 @@ const columnDefs = reactive([
     // { headerName: "Buyurtma vaqti", field: "order_check",flex:1 },
     { headerName: "Имя ", field: "fname", width: 120 },
     { headerName: "Фамилия ", field: "lname", width: 120 },
-    { headerName: "Степень", field: 'level' },
+    { headerName: "Поколение ", field: 'level' },
     { headerName: "Сумма", field: 'total' },
     { headerName: "Процент", field: 'procent', flex: 1 },
 ],

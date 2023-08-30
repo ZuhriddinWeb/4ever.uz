@@ -93,9 +93,10 @@ Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     
     Route::get('/getOrderStatuses/{id}', [OrdersController::class, 'getOrderStatuses']);
     Route::get('/getSendOrder/{id}', [OrdersController::class, 'getSendOrder']);
+    Route::get('/orders-left', [OrdersController::class, 'getLeftOrders']);
+
 
     Route::get('/pay-check', [PayCheckController::class, 'index']);
-
 });
 
 Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {

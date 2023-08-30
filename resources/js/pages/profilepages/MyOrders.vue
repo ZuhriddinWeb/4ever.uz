@@ -1,17 +1,6 @@
 <template>
     <AddImage @close="add_Check = null" :selectedDataEdit="add_Check" v-if="add_Check" />
-    <OrderInfo @close="order_info = null" :selectedDataEdit="order_info" v-if="order_info" />
-    <!-- <div class="items-center bg-transparent w-full border-collapse ml-4 h-full">
-            <ag-grid-vue
-                    class="ag-theme-material h-full w-full shadow border-0"
-                    :columnDefs="columnDefs"
-                    :rowData="orders"
-                    :defaultColDef="defaultColDef"
-                    animateRows="true"
-                    :rowSelection="'multiple'"
-                    @rowDoubleClicked="rowProtocolSelect">
-            </ag-grid-vue>
-        </div> -->
+    <OrderInfo @close="order_info = null" :selectedDataEdit="order_info" v-if="order_info" />    
     <div class="w-full overflow-scroll">
         <h3 class="text-3xl h-28 ">Мои заказы</h3>
         <table class="items-center bg-transparent w-full border-collapse ml-4">

@@ -4,9 +4,12 @@
         <article class="xl:w-3/5 md:w-full m-4">
             <p class="text-center font-medium">Личный кабинет</p>
             <form class="flex flex-col justify-center mt-4" autocomplete="off" @submit.prevent="onLogin">
-                <input v-model="result_login.phone" type="text"
-                    class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
+                <div class="flex justify-between">
+                    <input class="w-1/5 mb-2 appearance-none bg-transparent text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none" type="text" value="+998" disabled>
+                    <input v-model="result_login.phone" type="text"
+                    class="w-4/5  mb-2 appearance-none bg-transparent text-gray-700  px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
                     placeholder="Мобильный телефон">
+                </div>
                 <input v-model="result_login.password" type="password"
                     class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"
                     placeholder="Парол">

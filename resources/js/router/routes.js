@@ -86,6 +86,11 @@ export default [
 				name:'myhistory',
 				component: () => import('../pages/profilepages/MyHistory.vue'),		
 			},
+			{
+				path: 'myregister',
+				name:'myregister',
+				component: () => import('../pages/profilepages/MyRegister.vue'),		
+			},
 		],
 		meta: {
 			guard: 'auth',

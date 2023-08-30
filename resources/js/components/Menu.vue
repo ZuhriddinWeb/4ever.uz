@@ -37,6 +37,30 @@
                     Пользователь
                 </label>
                 <div class="mb-4">
+                    <div class="text-gray-600">
+                        <span class="w-10 inline-block mr-3 text-center">
+                            <i class="fal fa-user"></i>
+                        </span>
+                       {{ $store.state.user.fname }} {{ $store.state.user.lname }}
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="text-gray-600">
+                        <span class="w-10 inline-block mr-3 text-center">
+                            <i class="fal fa-lightbulb-on"></i>
+                        </span>
+                        id пользователя: {{ $store.state.user.id }}
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <router-link :to="{ name: 'myregister' }" class="text-gray-600 hover:text-orange-300">
+                        <span class="w-10 inline-block mr-3 text-center">
+                            <i class="fal fa-user-plus"></i>
+                        </span>
+                        Pегистрация
+                    </router-link>
+                </div>
+                <div class="mb-4">
                     <router-link :to="{ name: 'mypeoples' }" class="text-gray-600 hover:text-orange-300">
                         <span class="w-10 inline-block mr-3 text-center">
                             <i class="fal fa-users"></i>
