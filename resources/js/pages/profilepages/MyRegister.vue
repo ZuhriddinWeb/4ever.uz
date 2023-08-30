@@ -93,7 +93,7 @@ const onRegistration = async () => {
         Swal.fire({
             position: 'top-center',
             icon: 'success',
-            title: 'Regstratsiyadan muvafaqiyatli o\'tdingiz!',
+            title: 'Успешная регистрация!',
             showConfirmButton: false,
             timer: 2000
         })

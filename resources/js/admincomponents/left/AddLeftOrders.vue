@@ -246,19 +246,19 @@ function select_info(e) {
 async function agreement() {
     const { data } = await axios.post("order-save", result);
     if (data.status == 200 && result.pay_id == 3) {
-        // Swal.fire({
-        //     position: 'top-end',
-        //     icon: 'success',
-        //     title: 'Спасибо, ваша заявка принята',
-        //     showConfirmButton: false,
-        //     timer: 2000
-        // })
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Спасибо, ваша заявка принята',
+            showConfirmButton: false,
+            timer: 2000
+        })
         // axios.post("cart-clear");
         // console.log(data.message)
         // router.push(data.message)
         orderId.value = data.orderId
         axios.post("/order-pay-check", orderId.value)
-        // window.location.href = data.message;
+        window.location.href = '/admin/left';
     }
 
 }
