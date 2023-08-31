@@ -1,7 +1,7 @@
 <template>
     <main class="xl:mx-auto md:mx-4 bg-white my-5 w-full flex flex-col justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
         <article class="xl:w-3/5 md:w-full m-4">
-            <p class="flex text-center font-medium"><span>Зарегистрировать нового члена Клуба ForeverGab</span></p>
+            <p class="flex text-center font-medium"><span>Зарегистрировать нового члена Клуба ForeverGAB</span></p>
             <form class="flex flex-col justify-center mt-4" @submit.prevent="onRegistration">
                 <input v-model="result.fname" type="text"
                     class="mb-2 appearance-none bg-transparent w-full text-gray-700 mr-3 px-2 leading-tight border-b border-gray-200 py-2 focus:outline-none"

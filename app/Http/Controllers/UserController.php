@@ -32,9 +32,12 @@ class UserController extends Controller
 
     public function login(Request $request)
     {   
+        $phonemask = '998';
         $credentials = $request->validate(['phone' => 'required',   'password' => 'required']);
+        $addCodePhone = [];
+        array_push($addCodePhone,array("phone"=>$phonemask.$credentials['phone'],"password"=>$credentials['password']));
 
-        if (!$this->guard()->attempt($credentials)) {
+        if (!$this->guard()->attempt($addCodePhone[0])) {
             return response()->json(['message' => 'Parol yoki login xato!'], 299);
         }
 
