@@ -159,11 +159,12 @@ import { reactive, onMounted, ref } from "vue";
 import store from "../../store";
 
 
-function updateSelected(data){
-    console.log(data)
-}
+// function updateSelected(data){
+//     console.log(data)
+// }
 
 const emit = defineEmits(['close'])
+
 const viloyat = ref(null);
 const tuman = ref(null);
 const summa = ref(null);
@@ -256,9 +257,11 @@ async function agreement() {
         // axios.post("cart-clear");
         // console.log(data.message)
         // router.push(data.message)
-        orderId.value = data.orderId
-        axios.post("/order-pay-check", orderId.value)
-        window.location.href = '/admin/left';
+        // orderId.value = data.orderId
+        // axios.post("/order-pay-check", orderId.value)
+        // window.location.href = '/admin/left';
+        // emit("added");
+        emit("close");
     }
 
 }

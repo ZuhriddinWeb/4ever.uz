@@ -60,7 +60,9 @@ const columnDefs = reactive([
     // },
 ],
 );
-
+function gridRestart() {
+    getRowData();
+}
 const defaultColDef = {
     sortable: true,
     filter: true,
@@ -80,15 +82,15 @@ async function getDelete(e) {
         category_delete.value = true;
     }
 }
-function gridRestart() {
-    getRowData();
-}
+
 async function getRowData() {
     const { data } = await axios.get(`orders-left`);
     rowData.value = data;
 }
+getRowData();
+// onMounted(async () => {   
+//     const { data } = await axios.get(`orders-left`);
+//     rowData.value = data;
+// });
 
-onMounted(async () => {
-    getRowData();
-});
 </script>

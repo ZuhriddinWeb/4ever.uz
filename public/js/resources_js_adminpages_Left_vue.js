@@ -19,6 +19,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
+
+// function updateSelected(data){
+//     console.log(data)
+// }
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'AddLeftOrders',
   emits: ['close'],
@@ -26,9 +31,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var expose = _ref.expose,
       emit = _ref.emit;
     expose();
-    function updateSelected(data) {
-      console.log(data);
-    }
     var viloyat = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var tuman = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var summa = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
@@ -131,9 +133,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 // axios.post("cart-clear");
                 // console.log(data.message)
                 // router.push(data.message)
-                orderId.value = data.orderId;
-                axios.post("/order-pay-check", orderId.value);
-                window.location.href = '/admin/left';
+                // orderId.value = data.orderId
+                // axios.post("/order-pay-check", orderId.value)
+                // window.location.href = '/admin/left';
+                // emit("added");
+                emit("close");
               }
             case 5:
             case "end":
@@ -144,7 +148,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return _agreement.apply(this, arguments);
     }
     var __returned__ = {
-      updateSelected: updateSelected,
       emit: emit,
       viloyat: viloyat,
       tuman: tuman,
@@ -258,6 +261,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     // },
     ]);
 
+    function gridRestart() {
+      getRowData();
+    }
     var defaultColDef = {
       sortable: true,
       filter: true
@@ -266,9 +272,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return _getEdit.apply(this, arguments);
     }
     function _getEdit() {
-      _getEdit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
+      _getEdit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
             case 0:
               if (e.id != "") {
                 console.log(e);
@@ -277,9 +283,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }
             case 1:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
-        }, _callee2);
+        }, _callee);
       }));
       return _getEdit.apply(this, arguments);
     }
@@ -287,9 +293,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return _getDelete.apply(this, arguments);
     }
     function _getDelete() {
-      _getDelete = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(e) {
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
+      _getDelete = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
             case 0:
               // console.log(e);
               if (e.id != "") {
@@ -298,59 +304,51 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }
             case 1:
             case "end":
-              return _context3.stop();
+              return _context2.stop();
           }
-        }, _callee3);
+        }, _callee2);
       }));
       return _getDelete.apply(this, arguments);
-    }
-    function gridRestart() {
-      getRowData();
     }
     function getRowData() {
       return _getRowData.apply(this, arguments);
     }
     function _getRowData() {
-      _getRowData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      _getRowData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
         var _yield$axios$get, data;
-        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-          while (1) switch (_context4.prev = _context4.next) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              _context4.next = 2;
+              _context3.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("orders-left");
             case 2:
-              _yield$axios$get = _context4.sent;
+              _yield$axios$get = _context3.sent;
               data = _yield$axios$get.data;
               rowData.value = data;
             case 5:
             case "end":
-              return _context4.stop();
+              return _context3.stop();
           }
-        }, _callee4);
+        }, _callee3);
       }));
       return _getRowData.apply(this, arguments);
     }
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            getRowData();
-          case 1:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    })));
+    getRowData();
+    // onMounted(async () => {   
+    //     const { data } = await axios.get(`orders-left`);
+    //     rowData.value = data;
+    // });
+
     var __returned__ = {
       left_input: left_input,
       gridApi: gridApi,
       onGridReady: onGridReady,
       rowData: rowData,
       columnDefs: columnDefs,
+      gridRestart: gridRestart,
       defaultColDef: defaultColDef,
       getEdit: getEdit,
       getDelete: getDelete,
-      gridRestart: gridRestart,
       getRowData: getRowData,
       get axios() {
         return axios__WEBPACK_IMPORTED_MODULE_3__["default"];
@@ -662,13 +660,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     modelValue: $setup.result.cart_user,
     "onUpdate:modelValue": [_cache[15] || (_cache[15] = function ($event) {
       return $setup.result.cart_user = $event;
-    }), $setup.updateSelected],
+    }), _ctx.updateSelected],
     options: $setup.pageData.products,
     multiple: true,
     placeholder: "Pick some",
     label: "product_name",
     "track-by": "id"
-  }, null, 8 /* PROPS */, ["modelValue", "options"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_37, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.result.cart_user, function (item) {
+  }, null, 8 /* PROPS */, ["modelValue", "options", "onUpdate:modelValue"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_37, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.result.cart_user, function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.product_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.price), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       "class": "mr-2 bg-gray-200",
       onClick: function onClick($event) {
