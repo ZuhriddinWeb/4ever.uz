@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('passport');
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->string('promo_code');
             $table->string('code')->nullable();
             $table->integer('status')->nullable();

@@ -8,11 +8,10 @@
             @close="PageProps.selecteduser = null"
          />
       </transition>
-      <ag-grid-vue class="ag-theme-material h-full w-full shadow border-0" :columnDefs="PageProps.columnDefs" :rowData="PageProps.rowData"
-         :defaultColDef="{
-            sortable: true,
-            filter: true,
-         }"
+      <ag-grid-vue class="ag-theme-material h-full w-full shadow border-0"
+         :columnDefs="PageProps.columnDefs"
+         :rowData="PageProps.rowData"
+         :defaultColDef="{ sortable: true,filter: true }"
          animateRows="true"
          :rowSelection="'multiple'"
       />
@@ -40,9 +39,7 @@ const PageProps = reactive({
          headerName: "",
          width: 65,
          cellClass: ['text-center', 'bg-gray-100', 'active:bg-gray-50', 'hover:bg-gray-200'],
-         onCellClicked: function (cell){
-            PageProps.selecteduser = cell.data
-         },
+         onCellClicked: (cell) => PageProps.selecteduser = cell.data,
          cellRenderer: () => '<i class="fas fa-clipboard-list-check text-teal-600"></i>'
       },
    ]

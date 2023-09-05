@@ -1,4 +1,4 @@
-import { computed , ref} from "vue"
+import { computed , ref } from "vue"
 
 export function Init(selectedUser = null, lastPeriod){
     const totalPrice = ref(null)
@@ -8,8 +8,7 @@ export function Init(selectedUser = null, lastPeriod){
 
     function changePeriod(){
         totalPrice.value = null
-        if(selectedUser) getSelectedPeoples(period.value, selectedUser)
-        else getPeoples(period.value)
+        getSelectedPeoples(period.value, selectedUser)
     }
 
     function recursiya(data) {
@@ -35,13 +34,6 @@ export function Init(selectedUser = null, lastPeriod){
         })
     }
 
-    function getPeoples(period = null) {
-        axios.get(`getusers/${period}`).then(({ data }) => {
-            user.value = data
-            recursiya(data.children)
-        })
-    }
-
     function getSelectedPeoples(period = null, selectedUser) {
         axios.get(`getusers/${period}/${selectedUser}`).then(({data}) => {
             user.value = data
@@ -49,9 +41,7 @@ export function Init(selectedUser = null, lastPeriod){
         })
     }
 
-    if(selectedUser) getSelectedPeoples(period.value, selectedUser)
-    else getPeoples(period.value)
-    
+    getSelectedPeoples(period.value, selectedUser)
 
     const levels = computed(() => {
         const activeUsers = user.value?.children.filter((user) => user.total >= 30).length

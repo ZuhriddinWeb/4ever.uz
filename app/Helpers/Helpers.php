@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-
 class Helpers{
     public function calculate($summa){
         $minimalSumma = 30;

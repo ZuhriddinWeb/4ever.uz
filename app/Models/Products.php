@@ -18,11 +18,6 @@ class Products extends Model
         'Category'
     ];
 
-    protected $casts = [
-        'images_product' => 'array'
-    ];
-
-
     public function Category()
     {
         return $this->belongsTo(Category::class);
@@ -30,20 +25,14 @@ class Products extends Model
 
     public function scopeCategories($query,$category_id)
     {
-        if(empty($category_id)){
-            return;
-        }
-        else{
+        if(empty($category_id) == false){
             $query->whereIn('category_id', $category_id);
         }
     }
 
     public function scopeGender($query,$gender_id)
     {
-        if($gender_id == null){
-            return;
-        }
-        else{
+        if($gender_id != null){
             $query->where('tree_id', $gender_id);
         }
     }

@@ -1,5 +1,6 @@
 <template>
     <div class="flex flex-col h-full">
+        <h3 class="text-2xl text-gray-700 mb-4">Таблица</h3>
         <header>
             <h3 class="text-xl font-semibold">
                 <span>Квалификация</span><span class="text-teal-500 pl-2">{{ $store.state.statuses[levels - 1] }} </span>
@@ -15,14 +16,19 @@
                 <div class="flex flex-col">
                     <label for="period" class="text-gray-500 mb-1 w-full inline-block text-right text-sm">Период</label>
                     <select id="period" v-model="period" @change="changePeriod" class="border-b outline-none px-2 py-0.5">
-                        <option v-for="period in $store.state.user.lastPeriod" :value="period">{{ period }} Период</option>
+                        <option v-for="period in $store.state.user.lastPeriod" :value="period">{{ period }} Период </option>
                     </select>
                 </div>
             </main>
         </header>
         <section class="flex-grow flex flex-col">
-            <ag-grid-vue class="ag-theme-material h-96 w-full shadow border-0" :columnDefs="columnDefs"
-                :rowData="users" :defaultColDef="defaultColDef" animateRows="true" :rowSelection="'multiple'"
+            <ag-grid-vue
+                class="ag-theme-material h-96 w-full shadow border-0"
+                :columnDefs="columnDefs"
+                :rowData="users"
+                :defaultColDef="defaultColDef"
+                animateRows="true"
+                :rowSelection="'multiple'"
             />
         </section>
     </div>
@@ -32,7 +38,7 @@ import "@ssthouse/vue3-tree-chart/dist/vue3-tree-chart.css"
 import { reactive, ref, watch } from "vue"
 import { Init } from '../../helpers/userAccount'
 const vehicules = reactive({ name: null, children: [] })
-const { users, levels, totalPrice, user, period, changePeriod } = Init(null, store.state.user.lastPeriod)
+const { users, levels, totalPrice, user, period, changePeriod } = Init(store.state.user.id, store.state.user.lastPeriod)
 
 watch(() => user.value, () => {
     vehicules.name = user.value.fname
