@@ -128,8 +128,6 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
     Route::get('/latest', [OrdersController::class, 'getLatest']);
 
     Route::get('/getuniversalbonuses' , [UniversalBonusController::class, 'getUniversalBonuses']);
-    Route::get('/getusers/{period}' , [UniversalBonusController::class, 'getUsersWithChildrens']);
-
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {

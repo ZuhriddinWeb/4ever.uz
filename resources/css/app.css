@@ -26,7 +26,10 @@
 ::-webkit-scrollbar-thumb {
     background-color: rgb(249 115 22);
 }
-
+.tree-container .link {
+    stroke-width: 1px !important;
+    stroke: #ee5fa6 !important;
+}
 
 @layer base {
 	.router-link-active .route-icon{

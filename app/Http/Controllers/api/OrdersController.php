@@ -198,7 +198,7 @@ class OrdersController extends Controller
         $cashback = new Cashback();
         $orders = Orders::where('orderId',$id)->get();
         $helpers = new Helpers();
-        $userCashback=$helpers->getCashback($orders[0]['order_summa'])/2;
+        $userCashback = $helpers->getCashback($orders[0]['order_summa'])/2;
         $older = Cashback::where('user_id',$orders[0]['user_id'])->first();
         if(empty($older)){
             $cashback->user_id = $orders[0]['user_id'];

@@ -3,30 +3,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Orders;
-use Auth;
-use Carbon\Carbon;
 use Validator;
+use Auth;
 use Hash;
-use Illuminate\Support\Str;
-use DB;
+use App\Helpers\UserAccount;
 class UserController extends Controller
 {
+    function __construct() {
+        $this->account = new UserAccount();
+    }
+
+
     public function info($id){
         return User::where('id',$id)->get();
     }
 
     public function index()
     {
-        $users = DB::table('users')->get();
-
+        $users = User::all();
         foreach ($users as $key => $user) {
-            $date = Carbon::create($user->created_at);
-            $today = Carbon::now();
-            $diffDay = $today->diffInDays($date);
-            $user->lastPeriod = $diffDay == 0 ? 1 : ceil($diffDay/30);
+            $user->lastPeriod = $this->account->getLastPeriod($user);
         }
-
         return $users;
     }
 
@@ -70,7 +67,6 @@ class UserController extends Controller
         if($validate->fails()){
             return response()->json($validate->errors(),299);
         }
-        
 
         $parent = User::where('promo_code', $res['code'])->first();
         $phonemask = '998';
@@ -110,16 +106,16 @@ class UserController extends Controller
 
     public function getUser(Request $req){
         $user = $req->user();
-        $date = Carbon::create($user->created_at);
-        $today = Carbon::now();
-        $diffDay = $today->diffInDays($date);
-        $user->lastPeriod = $diffDay == 0 ? 1 : ceil($diffDay/30);
+        $user->lastPeriod = $this->account->getLastPeriod($user);
         return $user;
     }
+
+
     public function getParent($id){
-        
         return User::where('promo_code',$id)->get();
     }
+
+
     // public function passwordReset(Request $req){
     //     $user = Auth::user();
     

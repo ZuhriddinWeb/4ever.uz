@@ -9,9 +9,11 @@ import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 import 'ag-grid-community/styles/ag-theme-material.css'; // Optional theme CSS
 import { AgGridVue } from "ag-grid-vue3";  // the AG Grid Vue Component
 import Swal from 'sweetalert2'
-import VueTree from "@ssthouse/vue3-tree-chart";
-import "@ssthouse/vue3-tree-chart/dist/vue3-tree-chart.css";
-import "vue-multiselect/dist/vue-multiselect.css";
+import VueTree from "@ssthouse/vue3-tree-chart"
+import "@ssthouse/vue3-tree-chart/dist/vue3-tree-chart.css"
+import "vue-multiselect/dist/vue-multiselect.css"
+import 'swiper/css'
+
 import VueMultiselect from 'vue-multiselect'
 
 window.Swal = Swal
