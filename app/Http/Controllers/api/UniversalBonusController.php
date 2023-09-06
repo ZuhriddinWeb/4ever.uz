@@ -21,6 +21,6 @@ class UniversalBonusController extends Controller
 
     public function getUsersWith($period, $userid){
         $user = User::with('children')->find($userid);
-        return $this->account->bindUserData($user, $period);
+        return $this->account->bindUserData($user, (int)$period);
     }
 }

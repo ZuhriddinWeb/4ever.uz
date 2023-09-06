@@ -1,10 +1,10 @@
 <template>
     <section class="flex-grow flex flex-col">
-        <main>
-            <swiper :width="160" :space-between="10" class="!py-0.5">
+        <main class="w-full relative overflow-hidden h-24">
+            <swiper :width="160" :space-between="10" @init="initSlider" class="!py-0.5 !absolute top-0 left-0">
                 <swiper-slide @click="changePeriod(index + 1)" v-for="(period, index) in user?.allperiods">
                     <main :class="{ '!border-orange-500 bg-white shadow': activePeriod == (index + 1) }"
-                        class="border bg-gray-100 p-2 pt-0 border-transparent cursor-pointer transition-all">
+                        class="border bg-gray-100 p-2 pt-0 border-transparent cursor-pointer transition-all h-[90px]">
                         <div class="flex justify-between items-center  mb-2 pt-1">
                             <h3 :class="{'text-orange-500': activePeriod == (index + 1)}" class="text-sm text-gray-600 font-semibold">
                                 Период {{ index + 1 }}
@@ -38,7 +38,7 @@
 
         <table class="border border-gray-100 mt-3">
             <thead>
-                <tr class="bg-stone-50 text-gray-600">
+                <tr class="text-xs md:text-base bg-stone-50 text-gray-600">
                     <td class="border-y px-2 py-0.5 border-gray-100">
                         Стартовый Бонус
                     </td>
@@ -55,7 +55,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="text-xs md:text-base">
                     <td class="border-y px-2 py-1 border-gray-100">
                         {{ Math.round(startBonus) }}
                     </td>
@@ -90,7 +90,7 @@
             </div>
             <vue-tree
                 ref="tree"
-                class="w-full h-full shadow-inner bg-stone-50"
+                class="w-full h-[500px] lg:h-full shadow-inner bg-stone-50"
                 :dataset="vehicules"
                 :config="{ nodeWidth: 200, nodeHeight: 100, levelHeight: 180 }"
                 linkStyle="straight"
@@ -136,6 +136,11 @@ import moment from '../helpers/moment'
 const tree = ref()
 
 const { selectedUser } = defineProps(['selectedUser'])
+
+
+function initSlider(slider){
+    slider.slideTo(selectedUser?.lastPeriod - 2)
+}
 
 const activePeriod = ref(selectedUser?.lastPeriod)
 const startBonuses = ref([])

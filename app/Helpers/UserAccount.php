@@ -38,35 +38,30 @@ class UserAccount{
 
 
     public function bindUserData($user, $period){
-        $periodInt = (int)$period;
-
 
         $user->lastPeriod = $this->getLastPeriod($user);
         $user->allperiods = $this->getAllPeriodDays($user);
 
-        $between = $this->getPeriodDays($periodInt, $user);
-
+        $between = $this->getPeriodDays($period, $user);
         $user->days = $between;
         $user->total = Orders::where('user_id', $user->id)->sumInAllPeriod()->first()->total;
         $user->periodSumma = Orders::where('user_id', $user->id)->sumInPeriod($between)->first()->total;
 
-        $this->recursion($user->children, 1, $periodInt, $user);
+        $this->recursion($user->children, 1, $period, $user);
 
         return $user;
     }
 
 
 
-    public function getPeriodDays($selectedPeriod = null, $user){
+    public function getPeriodDays($period = null, $user){
         $registrationDate = Carbon::create($user->created_at);
-        $latestPeriod = $this->getLastPeriod($user);
 
-        if($selectedPeriod == null){ $days = $this->getPeriod($latestPeriod); }
-        else{ $days = $this->getPeriod($selectedPeriod); }
-
-        $firstDay = $registrationDate->addDays($days->firstDay)->format('Y-m-d');
+        $days = $this->getDays($period);
         $lastDay = $registrationDate->copy()->addDays($days->lastDay)->format('Y-m-d');
-        return [ $firstDay, $lastDay];
+        $firstDay = $registrationDate->copy()->addDays($days->firstDay)->format('Y-m-d');
+
+        return [$firstDay, $lastDay];
     }
 
 
@@ -77,7 +72,7 @@ class UserAccount{
     }
 
 
-    public function getPeriod($period){
+    public function getDays($period){
         $days = new \stdClass;
         $days->lastDay = $period * 30;
         $days->firstDay = $days->lastDay - 30;
@@ -89,7 +84,6 @@ class UserAccount{
         for ($i = 1; $i <= $user->lastPeriod; $i++) { 
             $days[] =  $this->getPeriodDays($i, $user);
         }
-
         return $days;
     }
 

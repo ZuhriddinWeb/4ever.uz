@@ -3,7 +3,7 @@
         <div class="w-full p-3 flex flex-col bg-white my-2 rounded-md border  overflow-hidden">
             <main class="-m-3 mb-3 relative">
                 <div class="absolute top-0 left-0 w-full h-full bg-black/10"></div>
-                <img class="h-[250px] w-full object-contain" :src="'/images/' + product.images_product" />
+                <img class="h-[250px] w-full scale-90 object-contain" :src="'/images/' + product.images_product" />
                 <div @click="addToCart(product.id)"
                     class="cursor-pointer absolute bottom-3 right-3 w-[48px] h-[48px] bg-white/70 rounded-full shadow-inner flex justify-center items-center text-gray-700"
                     :class="{ '!bg-orange-600 text-white': $store.state.cart.includes(product.id) }">
