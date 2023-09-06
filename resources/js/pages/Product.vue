@@ -41,7 +41,16 @@
                         </p>
                     </article>
                     <main class="flex justify-between items-end">
-                        <div>
+                        <div v-if="!$store.state.user">
+                            <span class="text-2xl text-orange-600">
+                                32$
+                            </span>
+                            <br>
+                            <span class="text-gray-400 border-t">
+                                {{32 * pageData.uzsnbu?.Rate }} сум
+                            </span>
+                        </div>
+                        <div v-else>
                             <span class="text-2xl text-orange-600">
                                 {{ pageData.currentProduct?.price }}$
                             </span>

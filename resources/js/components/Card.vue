@@ -23,7 +23,10 @@
                 <div class="text-gray-400 text-xs mb-1.5">
                     {{ product.category?.category_name }}
                 </div>
-                <div class="text-orange-400 text-xs">
+                <div  v-if="!$store.state.user" class="text-orange-400 text-xs">
+                    32$
+                </div>
+                <div v-else class="text-orange-400 text-xs">
                     {{ product.price }}$
                 </div>
                 <router-link

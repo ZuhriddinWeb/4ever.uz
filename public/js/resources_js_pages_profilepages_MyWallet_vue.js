@@ -310,21 +310,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddCard_vue_vue_type_template_id_da808860__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddCard.vue?vue&type=template&id=da808860 */ "./resources/js/components/profile/AddCard.vue?vue&type=template&id=da808860");
 /* harmony import */ var _AddCard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddCard.vue?vue&type=script&setup=true&lang=js */ "./resources/js/components/profile/AddCard.vue?vue&type=script&setup=true&lang=js");
-<<<<<<< HEAD
-/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-=======
-/* harmony import */ var D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
->>>>>>> 2ace424b09ffa4a9874e0d46aefe99403b5b1f65
+/* harmony import */ var E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-<<<<<<< HEAD
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddCard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddCard_vue_vue_type_template_id_da808860__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/profile/AddCard.vue"]])
-=======
-const __exports__ = /*#__PURE__*/(0,D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddCard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddCard_vue_vue_type_template_id_da808860__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/profile/AddCard.vue"]])
->>>>>>> 2ace424b09ffa4a9874e0d46aefe99403b5b1f65
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddCard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddCard_vue_vue_type_template_id_da808860__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/profile/AddCard.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -345,21 +337,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MyWallet_vue_vue_type_template_id_29abc2a0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyWallet.vue?vue&type=template&id=29abc2a0 */ "./resources/js/pages/profilepages/MyWallet.vue?vue&type=template&id=29abc2a0");
 /* harmony import */ var _MyWallet_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyWallet.vue?vue&type=script&setup=true&lang=js */ "./resources/js/pages/profilepages/MyWallet.vue?vue&type=script&setup=true&lang=js");
-<<<<<<< HEAD
-/* harmony import */ var E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-=======
-/* harmony import */ var D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
->>>>>>> 2ace424b09ffa4a9874e0d46aefe99403b5b1f65
+/* harmony import */ var E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-<<<<<<< HEAD
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyWallet_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyWallet_vue_vue_type_template_id_29abc2a0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyWallet.vue"]])
-=======
-const __exports__ = /*#__PURE__*/(0,D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyWallet_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyWallet_vue_vue_type_template_id_29abc2a0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyWallet.vue"]])
->>>>>>> 2ace424b09ffa4a9874e0d46aefe99403b5b1f65
+const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MyWallet_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyWallet_vue_vue_type_template_id_29abc2a0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyWallet.vue"]])
 /* hot reload */
 if (false) {}
 
