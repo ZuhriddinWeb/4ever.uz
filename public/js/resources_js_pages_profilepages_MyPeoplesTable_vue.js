@@ -178,6 +178,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./resources/js/helpers/mathHelpers.js":
+/*!*********************************************!*\
+  !*** ./resources/js/helpers/mathHelpers.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getBigNumbers": () => (/* binding */ getBigNumbers),
+/* harmony export */   "roundNumber": () => (/* binding */ roundNumber)
+/* harmony export */ });
+function getBigNumbers(array, length) {
+  array.sort(function (a, b) {
+    return a - b;
+  });
+  return array.slice(-length);
+}
+function roundNumber(number) {
+  var multiple = Math.pow(10, 1);
+  return Math.round(number * multiple) / multiple;
+}
+
+/***/ }),
+
 /***/ "./resources/js/helpers/userAccount.js":
 /*!*********************************************!*\
   !*** ./resources/js/helpers/userAccount.js ***!
@@ -189,6 +213,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Init": () => (/* binding */ Init)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _mathHelpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mathHelpers */ "./resources/js/helpers/mathHelpers.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
 
 function Init() {
   var selectedUser = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -197,10 +229,8 @@ function Init() {
   var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
   var period = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(lastPeriod);
   var users = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-  function changePeriod() {
-    totalPrice.value = null;
-    getSelectedPeoples(period.value, selectedUser);
-  }
+  var liderCategories = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+  var leaderBonus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
   function recursiya(data) {
     data.forEach(function (user) {
       user.name = user.fname;
@@ -217,20 +247,46 @@ function Init() {
         return user.id == element.parent_id;
       });
       user.childrenCount = user.children.length;
+      if (LiderProsent.value && user.level > 5) {
+        user.liderBonus = +user.total * (LiderProsent.value / 100);
+        leaderBonus.value += user.liderBonus;
+      }
       users.value.push(user);
       recursiya(user.children);
     });
   }
+  axios.get('lidershipbonus').then(function (_ref) {
+    var data = _ref.data;
+    liderCategories.value = data;
+    getSelectedPeoples(period.value, selectedUser);
+  });
   function getSelectedPeoples() {
     var period = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     var selectedUser = arguments.length > 1 ? arguments[1] : undefined;
-    axios.get("getusers/".concat(period, "/").concat(selectedUser)).then(function (_ref) {
-      var data = _ref.data;
+    axios.get("getusers/".concat(period, "/").concat(selectedUser)).then(function (_ref2) {
+      var data = _ref2.data;
       user.value = data;
       recursiya(data.children);
     });
   }
-  getSelectedPeoples(period.value, selectedUser);
+  var LiderProsent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
+    if (user.value && liderCategories.value.length) {
+      var prosent = 0;
+      var summaBranches = user.value.children.map(function (children) {
+        return +children.summaBranch;
+      });
+      var threeBigBranches = (0,_mathHelpers__WEBPACK_IMPORTED_MODULE_1__.getBigNumbers)(summaBranches, 3);
+      if (threeBigBranches.length < 3) return 0;
+      var minBranch = Math.min.apply(Math, _toConsumableArray(threeBigBranches));
+      liderCategories.value.forEach(function (bonus, index) {
+        var maxLimit = liderCategories.value[index + 1] ? liderCategories.value[index + 1].ball : Infinity;
+        if (minBranch > bonus.ball && minBranch <= maxLimit) {
+          prosent = bonus.prosent;
+        }
+      });
+      return prosent;
+    }
+  });
   var levels = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
     var _user$value, _user$value2;
     var activeUsers = (_user$value = user.value) === null || _user$value === void 0 ? void 0 : _user$value.children.filter(function (user) {
@@ -283,7 +339,7 @@ function Init() {
     totalPrice: totalPrice,
     user: user,
     period: period,
-    changePeriod: changePeriod,
+    leaderBonus: leaderBonus,
     getSelectedPeoples: getSelectedPeoples
   };
 }
@@ -355,7 +411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MyPeoplesTable_vue_vue_type_template_id_71c3655e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyPeoplesTable.vue?vue&type=template&id=71c3655e */ "./resources/js/pages/profilepages/MyPeoplesTable.vue?vue&type=template&id=71c3655e");
 /* harmony import */ var _MyPeoplesTable_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyPeoplesTable.vue?vue&type=script&setup=true&lang=js */ "./resources/js/pages/profilepages/MyPeoplesTable.vue?vue&type=script&setup=true&lang=js");
 /* harmony import */ var _MyPeoplesTable_vue_vue_type_style_index_0_id_71c3655e_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyPeoplesTable.vue?vue&type=style&index=0&id=71c3655e&lang=css */ "./resources/js/pages/profilepages/MyPeoplesTable.vue?vue&type=style&index=0&id=71c3655e&lang=css");
-/* harmony import */ var E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -363,7 +419,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_MyPeoplesTable_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyPeoplesTable_vue_vue_type_template_id_71c3655e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyPeoplesTable.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_MyPeoplesTable_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MyPeoplesTable_vue_vue_type_template_id_71c3655e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/profilepages/MyPeoplesTable.vue"]])
 /* hot reload */
 if (false) {}
 

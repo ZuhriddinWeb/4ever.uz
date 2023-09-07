@@ -61,7 +61,7 @@
 
             <main class="pt-3">
                 <router-link :to="{ name: 'myinfo' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-user"></i>
                     </div>
@@ -70,7 +70,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'mywallet' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-wallet"></i>
                     </div>
@@ -79,7 +79,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'myorders' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-box"></i>
                     </div>
@@ -88,7 +88,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'mypeoples' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-users"></i>
                     </div>
@@ -97,7 +97,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'mypeoplestable' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-poll-people"></i>
                     </div>
@@ -106,7 +106,7 @@
                     </div>
                 </router-link>
                 <router-link :to="{ name: 'myregister' }"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-user-plus"></i>
                     </div>
@@ -114,7 +114,7 @@
                         Pегистрация
                     </div>
                 </router-link>
-                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                <!-- <router-link :to="{ name: 'myhistory' }" class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-receipt"></i>
                     </div>
@@ -123,7 +123,7 @@
                     </div>
                 </router-link> -->
                 <article @click="$store.dispatch('logout')"
-                    class="flex items-center py-3 cursor-pointer profile hover:text-orange-300">
+                    class="flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300">
                     <div class="bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center">
                         <i class="fal fa-sign-out"></i>
                     </div>

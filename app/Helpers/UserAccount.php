@@ -7,34 +7,30 @@ use Carbon\Carbon;
 
 class UserAccount{
 
-    public function recursion($array, $index, $period, $mainuser){
-        $periodDays = $this->getPeriodDays($period, $mainuser);
-
+    public function recursion($array, $index, $periodDays, $mainuser){
         foreach ($array as $key => $user) {
             $user->level = $index;
             $user->total = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
+            $this->recursion($user->children, $index + 1, $periodDays, $mainuser);
+
 
             if($index == 1){
                 $user->summaBranch = $user->total;
-                $this->getSummaBranch($user, $period);
+                $this->summaRecursion($user->children, $user, $periodDays);
             }
-
-            $this->recursion($user->children, $index + 1, $period, $mainuser);
         }
     }
 
-    public function summaRecursion($childrens, $mainuser, $period){
-        $periodDays = $this->getPeriodDays($period, $mainuser);
-
+    public function summaRecursion($childrens, $mainuser, $periodDays){
         foreach ($childrens as $key => $user) {
+
             $mainuser->summaBranch += Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
-            $this->summaRecursion($user->children, $mainuser, $period);
+            $this->summaRecursion($user->children, $mainuser, $periodDays);
+
         }
     }
 
-    public function getSummaBranch($mainuser, $period){
-        $this->summaRecursion($mainuser->children, $mainuser, $period);
-    }
+
 
 
     public function bindUserData($user, $period){
@@ -42,12 +38,12 @@ class UserAccount{
         $user->lastPeriod = $this->getLastPeriod($user);
         $user->allperiods = $this->getAllPeriodDays($user);
 
-        $between = $this->getPeriodDays($period, $user);
-        $user->days = $between;
+        $periodDays = $this->getPeriodDays($period, $user);
+        $user->days = $periodDays;
         $user->total = Orders::where('user_id', $user->id)->sumInAllPeriod()->first()->total;
-        $user->periodSumma = Orders::where('user_id', $user->id)->sumInPeriod($between)->first()->total;
+        $user->periodSumma = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
 
-        $this->recursion($user->children, 1, $period, $user);
+        $this->recursion($user->children, 1, $periodDays, $user);
 
         return $user;
     }

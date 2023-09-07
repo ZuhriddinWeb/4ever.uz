@@ -7,6 +7,7 @@ use DB;
 use Hash;
 use App\Models\Category;
 use App\Models\Products;
+use App\Models\LidershipBonus;
 use App\Models\StartBonus;
 use App\Models\User;
 
@@ -21,6 +22,34 @@ class MainSeeder extends Seeder
     public function run()
     {
         //
+
+        LidershipBonus::insert([
+            [
+                'ball' => 5000,
+                'prosent' => 0.25,
+                'created_at' => now(),
+            ],
+            [
+                'ball' => 15000,
+                'prosent' => 0.50,
+                'created_at' => now(),
+            ],
+            [
+                'ball' => 45000,
+                'prosent' => 0.75,
+                'created_at' => now(),
+            ],
+            [
+                'ball' => 90000,
+                'prosent' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'ball' => 200000,
+                'prosent' => 2,
+                'created_at' => now(),
+            ],
+        ]);
 
         DB::table('viloyats')->insert([
             [ 'viloyat' => 'Andijon'],

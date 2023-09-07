@@ -200,7 +200,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'myinfo'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_20, _hoisted_21];
@@ -210,7 +210,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'mywallet'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_22, _hoisted_23];
@@ -220,7 +220,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'myorders'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_24, _hoisted_25];
@@ -230,7 +230,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'mypeoples'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_26, _hoisted_27];
@@ -240,7 +240,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'mypeoplestable'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_28, _hoisted_29];
@@ -250,17 +250,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'myregister'
     },
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_30, _hoisted_31];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{ name: 'myhistory' }\" class=\"flex items-center py-3 cursor-pointer profile hover:text-orange-300\">\r\n                    <div class=\"bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center\">\r\n                        <i class=\"fal fa-receipt\"></i>\r\n                    </div>\r\n                    <div class=\"flex justify-center\">\r\n                        Транзакции\r\n                    </div>\r\n                </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <router-link :to=\"{ name: 'myhistory' }\" class=\"flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300\">\r\n                    <div class=\"bg-gray-100 rounded-full route-icon mr-4 w-12 h-12 flex justify-center items-center\">\r\n                        <i class=\"fal fa-receipt\"></i>\r\n                    </div>\r\n                    <div class=\"flex justify-center\">\r\n                        Транзакции\r\n                    </div>\r\n                </router-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$store.dispatch('logout');
     }),
-    "class": "flex items-center py-3 cursor-pointer profile hover:text-orange-300"
+    "class": "flex items-center lg:py-3 py-1.5 cursor-pointer profile hover:text-orange-300"
   }, _hoisted_34)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])]);
 }
 
@@ -278,13 +278,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Profile_vue_vue_type_template_id_074da5b0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Profile.vue?vue&type=template&id=074da5b0 */ "./resources/js/pages/Profile.vue?vue&type=template&id=074da5b0");
 /* harmony import */ var _Profile_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Profile.vue?vue&type=script&setup=true&lang=js */ "./resources/js/pages/Profile.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,E_xampp_htdocs_online_shop3_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Profile_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Profile_vue_vue_type_template_id_074da5b0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/Profile.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_media_ospanel_domains_4ever_uz_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Profile_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Profile_vue_vue_type_template_id_074da5b0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/pages/Profile.vue"]])
 /* hot reload */
 if (false) {}
 

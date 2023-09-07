@@ -66,6 +66,54 @@ class TestDataSeeder extends Seeder
         ]));
 
 
+        User::create(array_merge($constantUser , [
+            'fname' => 'Malak',
+            'lname' => 'Mustafoyev',
+            'parent_id'=> 2,
+            'phone' => '9985972328',
+            'promo_code'=> bin2hex(random_bytes(2)),
+        ]));
+
+        User::create(array_merge($constantUser , [
+            'fname' => 'Suvash',
+            'lname' => 'Mustafoyev',
+            'parent_id'=> 6,
+            'phone' => '9985972329',
+            'promo_code'=> bin2hex(random_bytes(2)),
+        ]));
+
+        User::create(array_merge($constantUser , [
+            'fname' => 'Aram',
+            'lname' => 'Mustafoyev',
+            'parent_id'=> 7,
+            'phone' => '9985972330',
+            'promo_code'=> bin2hex(random_bytes(2)),
+        ]));
+
+        User::create(array_merge($constantUser , [
+            'fname' => 'Filer',
+            'lname' => 'Mustafoyev',
+            'parent_id'=> 8,
+            'phone' => '9985972331',
+            'promo_code'=> bin2hex(random_bytes(2)),
+        ]));
+
+        User::create(array_merge($constantUser , [
+            'fname' => 'Abdimuller',
+            'lname' => 'Mustafoyev',
+            'parent_id'=> 8,
+            'phone' => '9985972332',
+            'promo_code'=> bin2hex(random_bytes(2)),
+        ]));
+
+        User::create(array_merge($constantUser , [
+            'fname' => 'Bumin',
+            'lname' => 'Mustafoyev',
+            'parent_id'=> 10,
+            'phone' => '9985972333',
+            'promo_code'=> bin2hex(random_bytes(2)),
+        ]));
+
         Orders::withoutEvents(function() {
             $constantOrder = [
                 'orderId' => 100,
@@ -89,6 +137,33 @@ class TestDataSeeder extends Seeder
             Orders::create(array_merge( $constantOrder , ['order_summa'=> 100, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
             Orders::create(array_merge( $constantOrder , ['order_summa'=> 200, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
             Orders::create(array_merge( $constantOrder , ['order_summa'=> 300, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
+            Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
             Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
             Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));
             Orders::create(array_merge( $constantOrder , ['order_summa'=> 400, 'user_id' =>  User::where('id', '!=' , 1)->inRandomOrder()->first()->id] ));

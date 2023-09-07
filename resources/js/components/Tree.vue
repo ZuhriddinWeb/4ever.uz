@@ -9,8 +9,6 @@
                             <h3 :class="{'text-orange-500': activePeriod == (index + 1)}" class="text-sm text-gray-600 font-semibold">
                                 Период {{ index + 1 }}
                             </h3>
-                            <i :class="{ 'text-orange-500': paymentPeriodToggle(index + 1) == 1, 'text-teal-600': paymentPeriodToggle(index + 1) == 2 }"
-                                class="fas fa-circle text-gray-400 relative top-px text-[10px]"></i>
                         </div>
                         <aside class="flex text-xs justify-between items-center">
                             <div class="w-10 text-center bg-gray-200 rounded-sm overflow-hidden shadow">
@@ -37,39 +35,34 @@
         </main>
 
         <table class="border border-gray-100 mt-3">
-            <thead>
-                <tr class="text-xs md:text-base bg-stone-50 text-gray-600">
-                    <td class="border-y px-2 py-0.5 border-gray-100">
-                        Стартовый Бонус
-                    </td>
-
-                    <td class="border-y px-2 py-0.5 border-gray-100">
-                        Универсальный бонус
-                    </td>
-                    <td class="border-y px-2 py-0.5 border-gray-100">
-                        Лидерский Бонус
-                    </td>
-                    <td class="border-y px-2 py-0.5 border-gray-100">
-                        Сумма
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="text-xs md:text-base">
-                    <td class="border-y px-2 py-1 border-gray-100">
-                        {{ Math.round(startBonus) }}
-                    </td>
-                    <td class="border-y px-2 py-1 border-gray-100">
-                        {{ Math.round(totalPrice) }}
-                    </td>
-                    <td class="border-y px-2 py-1 border-gray-100">
-                        {{ totalPrice }}
-                    </td>
-                    <td class="border-y px-2 py-1 border-gray-100">
-                        {{ totalPrice }}
-                    </td>
-                </tr>
-            </tbody>
+            <tr class="text-xs md:text-base bg-stone-50 text-gray-600">
+                <td class="border-y px-2 py-0.5 border-gray-100">
+                    Стартовый Бонус
+                </td>
+                <td class="border-y px-2 py-0.5 border-gray-100">
+                    Универсальный бонус
+                </td>
+                <td class="border-y px-2 py-0.5 border-gray-100">
+                    Лидерский Бонус
+                </td>
+                <td class="border-y px-2 py-0.5 border-gray-100">
+                    Сумма
+                </td>
+            </tr>
+            <tr class="text-xs md:text-base">
+                <td class="border-y px-2 py-1 border-gray-100">
+                    {{ roundNumber(startBonus, 2) }}
+                </td>
+                <td class="border-y px-2 py-1 border-gray-100">
+                    {{ roundNumber(totalPrice, 2) }}
+                </td>
+                <td class="border-y px-2 py-1 border-gray-100">
+                    {{ roundNumber(leaderBonus, 2) }}
+                </td>
+                <td class="border-y px-2 py-1 border-gray-100">
+                    {{ roundNumber(totalPrice, 2) + roundNumber(startBonus, 2) + roundNumber(leaderBonus, 2) }}
+                </td>
+            </tr>
         </table>
         <aside class="relative flex-grow">
             <div class="flex flex-col absolute top-3 right-3 z-50 text-right">
@@ -101,9 +94,11 @@
                             <div class="flex justify-between items-center w-full leading-none">
                                 <span class="text-gray-500 text-md font-semibold">{{ node.name }}</span>
                                 <span v-if="node.summaBranch" class="text-gray-400 text-sm" title="Объём Ветки">О.В</span>
+                                <span v-if="node.liderBonus" class="text-gray-400 text-sm" title="Лидерский Бонус">Л.Б</span>
                             </div>
                             <div class="text-right leading-none mb-1.5">
-                                <span class="text-pink-500 text-md">{{ node.summaBranch }}</span>
+                                <span v-if="node.summaBranch" class="text-pink-500">{{ node.summaBranch }}</span>
+                                <span v-if="node.liderBonus" class="text-orange-500">{{ node.liderBonus }}</span>
                             </div>
                             <div class="flex justify-between items-center w-full leading-[5px]">
                                 <header>
@@ -131,32 +126,26 @@
 import { reactive, watch, ref, computed } from "vue"
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Init } from '../helpers/userAccount'
+import { roundNumber } from '../helpers/mathHelpers'
 import moment from '../helpers/moment'
 // HTML Element
 const tree = ref()
 
 const { selectedUser } = defineProps(['selectedUser'])
-
-
 function initSlider(slider){
-    slider.slideTo(selectedUser?.lastPeriod - 2)
+    slider.slideTo(selectedUser.lastPeriod - 2)
 }
 
-const activePeriod = ref(selectedUser?.lastPeriod)
+const activePeriod = ref(selectedUser.lastPeriod)
 const startBonuses = ref([])
-const payment = ref(null)
-
-const userAllPayments = ref([])
-
-
 const vehicules = reactive({ name: null, children: [] })
 
-const { levels, totalPrice, user, period, getSelectedPeoples } = Init(selectedUser?.id, activePeriod.value)
+const { levels, totalPrice, user, getSelectedPeoples , leaderBonus} = Init(selectedUser?.id, activePeriod.value)
 
 function changePeriod(period) {
     totalPrice.value = null
     activePeriod.value = period
-    // getPayment()
+    leaderBonus.value = 0
     getSelectedPeoples(period, selectedUser?.id)
 }
 
@@ -165,48 +154,10 @@ axios.get('startbonus').then(({ data }) => {
     startBonuses.value = data
 })
 
-
-axios.get(`money/${selectedUser?.id}`).then(({ data }) => {
-    userAllPayments.value = data
-})
-
 const startBonus = computed(() => {
     const active = startBonuses.value.find((elem) => elem.period == activePeriod.value)
     return totalPrice.value / 100 * active?.prosent
 })
-
-
-
-watch(() => user.value, () => {
-    vehicules.name = user.value.fname
-    vehicules.total = user.value.periodSumma
-    vehicules.children = user.value.children
-    vehicules.childrenCount = user.value.children.length
-})
-
-function paymentPeriodToggle(period) {
-    const select = userAllPayments.value.find((elem) => elem.period == period)
-
-    if (select) {
-        if (select.check == true) return 2
-
-        else return 1
-    }
-
-    else return 0
-}
-
-
-
-function getPayment() {
-    axios.get(`money/${activePeriod.value}/${selectedUser?.id}`).then(({ data }) => {
-        if (data.length == 0) return payment.value = null
-        payment.value = data
-    })
-}
-getPayment()
-
-
 
 const getDay = (day) => moment(day).format("D")
 const getMonth = (day) => moment(day).format("MMM")

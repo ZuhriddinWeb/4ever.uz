@@ -19,6 +19,7 @@ use App\Http\Controllers\api\UserCardController;
 use App\Http\Controllers\StartBonusController;
 use App\Http\Controllers\MoneyController;
 use App\Http\Controllers\api\ViloyatController;
+use App\Http\Controllers\LidershipBonusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/products-filter', [ProductsController::class, 'filter']);
 Route::get('/tree', [TreeController::class, 'index']);
 
+
+Route::apiResource('lidershipbonus' , LidershipBonusController::class);
 
 Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     // Category routes

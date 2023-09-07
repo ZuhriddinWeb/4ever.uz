@@ -1,15 +1,12 @@
 import { computed , ref } from "vue"
-
+import { getBigNumbers } from './mathHelpers'
 export function Init(selectedUser = null, lastPeriod){
     const totalPrice = ref(null)
     const user = ref(null)
     const period = ref(lastPeriod)
     const users = ref([])
-
-    function changePeriod(){
-        totalPrice.value = null
-        getSelectedPeoples(period.value, selectedUser)
-    }
+    const liderCategories = ref([])
+    const leaderBonus = ref(0)
 
     function recursiya(data) {
         data.forEach((user) => {
@@ -29,10 +26,20 @@ export function Init(selectedUser = null, lastPeriod){
             user.children = user.children.filter((element) => user.id == element.parent_id)
             user.childrenCount = user.children.length
 
+            if(LiderProsent.value && user.level > 5){
+                user.liderBonus = +user.total * (LiderProsent.value/100)
+                leaderBonus.value +=user.liderBonus
+            }
+
             users.value.push(user)
             recursiya(user.children)
         })
     }
+
+    axios.get('lidershipbonus').then(({data}) => {
+        liderCategories.value = data
+        getSelectedPeoples(period.value, selectedUser)
+    })
 
     function getSelectedPeoples(period = null, selectedUser) {
         axios.get(`getusers/${period}/${selectedUser}`).then(({data}) => {
@@ -41,7 +48,27 @@ export function Init(selectedUser = null, lastPeriod){
         })
     }
 
-    getSelectedPeoples(period.value, selectedUser)
+
+    const LiderProsent = computed(() => {
+        if(user.value && liderCategories.value.length) {
+            var prosent = 0
+            const summaBranches = user.value.children.map((children) => +children.summaBranch)
+
+            const threeBigBranches = getBigNumbers(summaBranches, 3)
+            if(threeBigBranches.length < 3) return 0
+
+            const minBranch = Math.min(...threeBigBranches)
+
+            liderCategories.value.forEach((bonus, index) => {
+                const maxLimit = liderCategories.value[index + 1] ? liderCategories.value[index + 1].ball: Infinity
+
+                if(minBranch > bonus.ball && minBranch <= maxLimit){
+                    prosent = bonus.prosent
+                }
+            })
+            return prosent
+        }
+    })
 
     const levels = computed(() => {
         const activeUsers = user.value?.children.filter((user) => user.total >= 30).length
@@ -98,5 +125,5 @@ export function Init(selectedUser = null, lastPeriod){
         return levelUp
     }
 
-    return { users, levels, totalPrice, user , period , changePeriod, getSelectedPeoples }
+    return { users, levels, totalPrice, user , period , leaderBonus, getSelectedPeoples }
 }

@@ -14,7 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var swiper_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/vue */ "./node_modules/swiper/vue/swiper-vue.js");
 /* harmony import */ var _helpers_userAccount__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../helpers/userAccount */ "./resources/js/helpers/userAccount.js");
-/* harmony import */ var _helpers_moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/moment */ "./resources/js/helpers/moment.js");
+/* harmony import */ var _helpers_mathHelpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers/mathHelpers */ "./resources/js/helpers/mathHelpers.js");
+/* harmony import */ var _helpers_moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helpers/moment */ "./resources/js/helpers/moment.js");
+
 
 
 
@@ -30,12 +32,10 @@ __webpack_require__.r(__webpack_exports__);
     var selectedUser = __props.selectedUser;
     var tree = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
     function initSlider(slider) {
-      slider.slideTo((selectedUser === null || selectedUser === void 0 ? void 0 : selectedUser.lastPeriod) - 2);
+      slider.slideTo(selectedUser.lastPeriod - 2);
     }
-    var activePeriod = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(selectedUser === null || selectedUser === void 0 ? void 0 : selectedUser.lastPeriod);
+    var activePeriod = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(selectedUser.lastPeriod);
     var startBonuses = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-    var payment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
-    var userAllPayments = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var vehicules = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
       name: null,
       children: []
@@ -44,21 +44,17 @@ __webpack_require__.r(__webpack_exports__);
       levels = _Init.levels,
       totalPrice = _Init.totalPrice,
       user = _Init.user,
-      period = _Init.period,
-      getSelectedPeoples = _Init.getSelectedPeoples;
+      getSelectedPeoples = _Init.getSelectedPeoples,
+      leaderBonus = _Init.leaderBonus;
     function changePeriod(period) {
       totalPrice.value = null;
       activePeriod.value = period;
-      // getPayment()
+      leaderBonus.value = 0;
       getSelectedPeoples(period, selectedUser === null || selectedUser === void 0 ? void 0 : selectedUser.id);
     }
     axios.get('startbonus').then(function (_ref2) {
       var data = _ref2.data;
       startBonuses.value = data;
-    });
-    axios.get("money/".concat(selectedUser === null || selectedUser === void 0 ? void 0 : selectedUser.id)).then(function (_ref3) {
-      var data = _ref3.data;
-      userAllPayments.value = data;
     });
     var startBonus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       var active = startBonuses.value.find(function (elem) {
@@ -66,35 +62,11 @@ __webpack_require__.r(__webpack_exports__);
       });
       return totalPrice.value / 100 * (active === null || active === void 0 ? void 0 : active.prosent);
     });
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
-      return user.value;
-    }, function () {
-      vehicules.name = user.value.fname;
-      vehicules.total = user.value.periodSumma;
-      vehicules.children = user.value.children;
-      vehicules.childrenCount = user.value.children.length;
-    });
-    function paymentPeriodToggle(period) {
-      var select = userAllPayments.value.find(function (elem) {
-        return elem.period == period;
-      });
-      if (select) {
-        if (select.check == true) return 2;else return 1;
-      } else return 0;
-    }
-    function getPayment() {
-      axios.get("money/".concat(activePeriod.value, "/").concat(selectedUser === null || selectedUser === void 0 ? void 0 : selectedUser.id)).then(function (_ref4) {
-        var data = _ref4.data;
-        if (data.length == 0) return payment.value = null;
-        payment.value = data;
-      });
-    }
-    getPayment();
     var getDay = function getDay(day) {
-      return (0,_helpers_moment__WEBPACK_IMPORTED_MODULE_3__["default"])(day).format("D");
+      return (0,_helpers_moment__WEBPACK_IMPORTED_MODULE_4__["default"])(day).format("D");
     };
     var getMonth = function getMonth(day) {
-      return (0,_helpers_moment__WEBPACK_IMPORTED_MODULE_3__["default"])(day).format("MMM");
+      return (0,_helpers_moment__WEBPACK_IMPORTED_MODULE_4__["default"])(day).format("MMM");
     };
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return user.value;
@@ -109,18 +81,14 @@ __webpack_require__.r(__webpack_exports__);
       initSlider: initSlider,
       activePeriod: activePeriod,
       startBonuses: startBonuses,
-      payment: payment,
-      userAllPayments: userAllPayments,
       vehicules: vehicules,
       levels: levels,
       totalPrice: totalPrice,
       user: user,
-      period: period,
       getSelectedPeoples: getSelectedPeoples,
+      leaderBonus: leaderBonus,
       changePeriod: changePeriod,
       startBonus: startBonus,
-      paymentPeriodToggle: paymentPeriodToggle,
-      getPayment: getPayment,
       getDay: getDay,
       getMonth: getMonth,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
@@ -136,8 +104,11 @@ __webpack_require__.r(__webpack_exports__);
       get Init() {
         return _helpers_userAccount__WEBPACK_IMPORTED_MODULE_2__.Init;
       },
+      get roundNumber() {
+        return _helpers_mathHelpers__WEBPACK_IMPORTED_MODULE_3__.roundNumber;
+      },
       get moment() {
-        return _helpers_moment__WEBPACK_IMPORTED_MODULE_3__["default"];
+        return _helpers_moment__WEBPACK_IMPORTED_MODULE_4__["default"];
       }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -230,7 +201,7 @@ var _hoisted_11 = {
 var _hoisted_12 = {
   "class": "border border-gray-100 mt-3"
 };
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "text-xs md:text-base bg-stone-50 text-gray-600"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "border-y px-2 py-0.5 border-gray-100"
@@ -240,7 +211,7 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "border-y px-2 py-0.5 border-gray-100"
 }, " Лидерский Бонус "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "border-y px-2 py-0.5 border-gray-100"
-}, " Сумма ")])], -1 /* HOISTED */);
+}, " Сумма ")], -1 /* HOISTED */);
 var _hoisted_14 = {
   "class": "text-xs md:text-base"
 };
@@ -300,39 +271,49 @@ var _hoisted_33 = {
   title: "Объём Ветки"
 };
 var _hoisted_34 = {
-  "class": "text-right leading-none mb-1.5"
+  key: 1,
+  "class": "text-gray-400 text-sm",
+  title: "Лидерский Бонус"
 };
 var _hoisted_35 = {
-  "class": "text-pink-500 text-md"
+  "class": "text-right leading-none mb-1.5"
 };
 var _hoisted_36 = {
+  key: 0,
+  "class": "text-pink-500"
+};
+var _hoisted_37 = {
+  key: 1,
+  "class": "text-orange-500"
+};
+var _hoisted_38 = {
   "class": "flex justify-between items-center w-full leading-[5px]"
 };
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-gray-400 text-sm"
 }, "Покупка", -1 /* HOISTED */);
-var _hoisted_38 = {
+var _hoisted_40 = {
   "class": "text-gray-500 text-xs"
 };
-var _hoisted_39 = {
+var _hoisted_41 = {
   key: 0,
   "class": "text-right"
 };
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-gray-400 text-sm",
   title: "Универсальный бонус"
 }, "У.Б", -1 /* HOISTED */);
-var _hoisted_41 = {
+var _hoisted_43 = {
   "class": "text-gray-500 text-xs"
 };
-var _hoisted_42 = {
+var _hoisted_44 = {
   key: 0,
   "class": "absolute right-1/2 bottom-0 translate-x-1/2"
 };
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fal fa-angle-down leading-none relative top-[5px] text-pink-500"
 }, null, -1 /* HOISTED */);
-var _hoisted_44 = [_hoisted_43];
+var _hoisted_46 = [_hoisted_45];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_vue_tree = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-tree");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Swiper"], {
@@ -358,12 +339,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
                 'text-orange-500': $setup.activePeriod == index + 1
               }, "text-sm text-gray-600 font-semibold"])
-            }, " Период " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1), 3 /* TEXT, CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-              "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-                'text-orange-500': $setup.paymentPeriodToggle(index + 1) == 1,
-                'text-teal-600': $setup.paymentPeriodToggle(index + 1) == 2
-              }, "fas fa-circle text-gray-400 relative top-px text-[10px]"])
-            }, null, 2 /* CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getMonth(period[0])), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getDay(period[0])), 1 /* TEXT */)]), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getMonth(period[1])), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getDay(period[1])), 1 /* TEXT */)])])], 2 /* CLASS */)];
+            }, " Период " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getMonth(period[0])), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getDay(period[0])), 1 /* TEXT */)]), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getMonth(period[1])), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getDay(period[1])), 1 /* TEXT */)])])], 2 /* CLASS */)];
           }),
 
           _: 2 /* DYNAMIC */
@@ -372,7 +348,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
 
     _: 1 /* STABLE */
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round($setup.startBonus)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(Math.round($setup.totalPrice)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.totalPrice), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.totalPrice), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.statuses[$setup.levels - 1]) + " ", 1 /* TEXT */), _hoisted_23])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.roundNumber($setup.startBonus, 2)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.roundNumber($setup.totalPrice, 2)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.roundNumber($setup.leaderBonus, 2)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.roundNumber($setup.totalPrice, 2) + $setup.roundNumber($setup.startBonus, 2) + $setup.roundNumber($setup.leaderBonus, 2)), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("aside", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.statuses[$setup.levels - 1]) + " ", 1 /* TEXT */), _hoisted_23])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $setup.tree.zoomIn();
     }),
@@ -396,7 +372,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     node: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref) {
       var node = _ref.node,
         collapsed = _ref.collapsed;
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.name), 1 /* TEXT */), node.summaBranch ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_33, "О.В")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.summaBranch), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_38, "$" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.total), 1 /* TEXT */)]), node.procent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("footer", _hoisted_39, [_hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.procent), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), node.childrenCount > 0 && collapsed ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_42, _hoisted_44)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.name), 1 /* TEXT */), node.summaBranch ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_33, "О.В")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), node.liderBonus ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_34, "Л.Б")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [node.summaBranch ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.summaBranch), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), node.liderBonus ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.liderBonus), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_40, "$" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.total), 1 /* TEXT */)]), node.procent ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("footer", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(node.procent), 1 /* TEXT */)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), node.childrenCount > 0 && collapsed ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_44, _hoisted_46)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])];
     }),
     _: 1 /* STABLE */
   }, 8 /* PROPS */, ["dataset"])])]);
@@ -428,6 +404,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Tree"], {
     selectedUser: _ctx.$store.state.user
   }, null, 8 /* PROPS */, ["selectedUser"])]);
+}
+
+/***/ }),
+
+/***/ "./resources/js/helpers/mathHelpers.js":
+/*!*********************************************!*\
+  !*** ./resources/js/helpers/mathHelpers.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getBigNumbers": () => (/* binding */ getBigNumbers),
+/* harmony export */   "roundNumber": () => (/* binding */ roundNumber)
+/* harmony export */ });
+function getBigNumbers(array, length) {
+  array.sort(function (a, b) {
+    return a - b;
+  });
+  return array.slice(-length);
+}
+function roundNumber(number) {
+  var multiple = Math.pow(10, 1);
+  return Math.round(number * multiple) / multiple;
 }
 
 /***/ }),
@@ -466,6 +467,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Init": () => (/* binding */ Init)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _mathHelpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mathHelpers */ "./resources/js/helpers/mathHelpers.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
 
 function Init() {
   var selectedUser = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -474,10 +483,8 @@ function Init() {
   var user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
   var period = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(lastPeriod);
   var users = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-  function changePeriod() {
-    totalPrice.value = null;
-    getSelectedPeoples(period.value, selectedUser);
-  }
+  var liderCategories = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
+  var leaderBonus = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
   function recursiya(data) {
     data.forEach(function (user) {
       user.name = user.fname;
@@ -494,20 +501,46 @@ function Init() {
         return user.id == element.parent_id;
       });
       user.childrenCount = user.children.length;
+      if (LiderProsent.value && user.level > 5) {
+        user.liderBonus = +user.total * (LiderProsent.value / 100);
+        leaderBonus.value += user.liderBonus;
+      }
       users.value.push(user);
       recursiya(user.children);
     });
   }
+  axios.get('lidershipbonus').then(function (_ref) {
+    var data = _ref.data;
+    liderCategories.value = data;
+    getSelectedPeoples(period.value, selectedUser);
+  });
   function getSelectedPeoples() {
     var period = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
     var selectedUser = arguments.length > 1 ? arguments[1] : undefined;
-    axios.get("getusers/".concat(period, "/").concat(selectedUser)).then(function (_ref) {
-      var data = _ref.data;
+    axios.get("getusers/".concat(period, "/").concat(selectedUser)).then(function (_ref2) {
+      var data = _ref2.data;
       user.value = data;
       recursiya(data.children);
     });
   }
-  getSelectedPeoples(period.value, selectedUser);
+  var LiderProsent = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
+    if (user.value && liderCategories.value.length) {
+      var prosent = 0;
+      var summaBranches = user.value.children.map(function (children) {
+        return +children.summaBranch;
+      });
+      var threeBigBranches = (0,_mathHelpers__WEBPACK_IMPORTED_MODULE_1__.getBigNumbers)(summaBranches, 3);
+      if (threeBigBranches.length < 3) return 0;
+      var minBranch = Math.min.apply(Math, _toConsumableArray(threeBigBranches));
+      liderCategories.value.forEach(function (bonus, index) {
+        var maxLimit = liderCategories.value[index + 1] ? liderCategories.value[index + 1].ball : Infinity;
+        if (minBranch > bonus.ball && minBranch <= maxLimit) {
+          prosent = bonus.prosent;
+        }
+      });
+      return prosent;
+    }
+  });
   var levels = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
     var _user$value, _user$value2;
     var activeUsers = (_user$value = user.value) === null || _user$value === void 0 ? void 0 : _user$value.children.filter(function (user) {
@@ -560,7 +593,7 @@ function Init() {
     totalPrice: totalPrice,
     user: user,
     period: period,
-    changePeriod: changePeriod,
+    leaderBonus: leaderBonus,
     getSelectedPeoples: getSelectedPeoples
   };
 }
