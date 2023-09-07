@@ -18,3 +18,13 @@ const mix = require('laravel-mix');
      //
  ]);
 mix.disableSuccessNotifications();
+
+if (mix.inProduction()) {
+    mix.version()
+    mix.webpackConfig({
+        output: {
+            filename:'[name].js',
+            chunkFilename: 'js/[name].[chunkhash].js',
+        },
+    })
+}
