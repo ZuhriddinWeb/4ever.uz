@@ -43,15 +43,15 @@ Route::get('/uzsnbu', [ProductsController::class, 'index_UZS']);
 Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/products-filter', [ProductsController::class, 'filter']);
 Route::get('/tree', [TreeController::class, 'index']);
-
+Route::apiResource('startbonus' , StartBonusController::class);
 
 Route::apiResource('lidershipbonus' , LidershipBonusController::class);
 
 Route::middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     // Category routes
-    Route::get('/getusers/{period}/{userid}' , [UniversalBonusController::class, 'getUsersWith']);
+   
     // 
-    Route::apiResource('startbonus' , StartBonusController::class);
+   
     Route::apiResource('money' , MoneyController::class)->except('show', 'index');
     Route::get('/money/{userid}' , [MoneyController::class, 'index']);
     Route::get('/money/{period}/{userid}' , [MoneyController::class, 'show']);
@@ -135,6 +135,7 @@ Route::middleware(['auth:sanctum', 'ability:user,admin'])->group(function () {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user' , [UserController::class, 'getUser']);
+     Route::get('/getusers/{period}/{userid}' , [UniversalBonusController::class, 'getUsersWith']);
 
 });
 
