@@ -10,7 +10,7 @@ class UserAccount{
     public function recursion($array, $index, $periodDays, $mainuser){
         foreach ($array as $key => $user) {
             $user->level = $index;
-            $user->total = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
+            $user->total = Orders::where('user_id', $user->id)->selectRaw('sum(order_summa) as total')->first()->total;
             $this->recursion($user->children, $index + 1, $periodDays, $mainuser);
 
 
