@@ -92,9 +92,9 @@ class OrdersController extends Controller
         $uzum =  Http::withHeaders([
             'Content-Language' => 'uz-UZ',
             'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
-            'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
-            'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-            ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [               
+            'X-Terminal-Id' => '8e15fe10-aa00-4ef1-b682-6bd8a214ef01',
+            'X-Signature'=>'MEUCIDOQw3u9HX6MP/7yIOmaudAfSaq2EPHBt0IUpJsQTyCEAiEAlkydvEMix75ZwOj61snzgMDAAwDNlle35oZFspsT234=',
+            ])->post('https://checkout-api.inplat-tech.com/api/v1/payment/getOrderStatus', [               
                 'orderId' => $id,                 
             ]);
             $pay = json_decode($uzum, true);
@@ -115,9 +115,9 @@ class OrdersController extends Controller
         $uzum =  Http::withHeaders([
             'Content-Language' => 'uz-UZ',
             'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
-            'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
-            'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-            ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [               
+            'X-Terminal-Id' => '8e15fe10-aa00-4ef1-b682-6bd8a214ef01',
+            'X-Signature'=>'MEUCIDOQw3u9HX6MP/7yIOmaudAfSaq2EPHBt0IUpJsQTyCEAiEAlkydvEMix75ZwOj61snzgMDAAwDNlle35oZFspsT234=',
+            ])->post('https://checkout-api.inplat-tech.com/api/v1/payment/getOrderStatus', [               
                 'orderId' => $id,                 
             ]);
             
@@ -139,8 +139,8 @@ class OrdersController extends Controller
             $pay = json_decode($uzum, true);
 
             $uzumCheck =  Http::withHeaders([
-                'ssl-client-fingerprint'=>'9e8f9cb431f69a39fab5f9cb91727343b8700154'
-            ])->post('https://test-arp.ipt-merch.com/fiscal_receipt_generation', [               
+                'ssl-client-fingerprint'=>'1928c51dab21995bcc8bfcf1bb294b565d4c97e6'
+            ])->post('https://ofd.inplat-tech.com/fiscal_receipt_generation', [               
                 'operation_id' => $pay['result']['operations'][1]['operationId'],
                 'date_time'=>$pay['result']['operations'][1]['doneAt'],
                     'cash_amount'=> 0,
@@ -320,9 +320,9 @@ class OrdersController extends Controller
             $uzumPayCurl =  Http::withHeaders([
                 'Content-Language' => 'uz-UZ',
                 'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
-                'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
-                'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-            ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/register', [
+                'X-Terminal-Id' => '8e15fe10-aa00-4ef1-b682-6bd8a214ef01',
+                'X-Signature'=>'MEUCIDOQw3u9HX6MP/7yIOmaudAfSaq2EPHBt0IUpJsQTyCEAiEAlkydvEMix75ZwOj61snzgMDAAwDNlle35oZFspsT234=',
+            ])->post('https://checkout-api.inplat-tech.com/api/v1/payment/register', [
                 'amount' => $data->order_summa* $data->rate_uzs*100,
                 'clientId' =>  $data->user_id,
                 'currency' => 860,
@@ -345,9 +345,9 @@ class OrdersController extends Controller
             $uzum =  Http::withHeaders([
                 'Content-Language' => 'uz-UZ',
                 'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
-                'X-Terminal-Id' => '52ace782-f92f-47d6-8789-39ebd8066e59',
-                'X-Signature'=>'MEUCIQC8loCVlc/akDRdaVujJPQg8gMcVebSg5nerEET0X/mVQIgQrRbMQcr8mWeIxwtNt3eG44jA5sHOcFS2jHyxq6Flww=',
-            ])->post('https://test-chk-api.ipt-merch.com/api/v1/payment/getOrderStatus', [               
+                'X-Terminal-Id' => '8e15fe10-aa00-4ef1-b682-6bd8a214ef01',
+                'X-Signature'=>'MEUCIDOQw3u9HX6MP/7yIOmaudAfSaq2EPHBt0IUpJsQTyCEAiEAlkydvEMix75ZwOj61snzgMDAAwDNlle35oZFspsT234=',
+            ])->post('https://checkout-api.inplat-tech.com/api/v1/payment/getOrderStatus', [               
                 'orderId' =>$payment['result']['orderId'],                 
             ]);
                 $pay = json_decode($uzum, true);
