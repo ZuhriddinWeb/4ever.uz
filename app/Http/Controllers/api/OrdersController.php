@@ -322,6 +322,7 @@ class OrdersController extends Controller
                 'X-Fingerprint' => '355ecee8b55693deccf2c9461415228ba9c80d38',
                 'X-Terminal-Id' => '8e15fe10-aa00-4ef1-b682-6bd8a214ef01',
                 'X-Signature'=>'MEUCIDOQw3u9HX6MP/7yIOmaudAfSaq2EPHBt0IUpJsQTyCEAiEAlkydvEMix75ZwOj61snzgMDAAwDNlle35oZFspsT234=',
+                'X-API-key'=>'75a53944e6c634c20173814b7520746b51f56cca745d58dd40fd943d00be8076',
             ])->post('https://checkout-api.inplat-tech.com/api/v1/payment/register', [
                 'amount' => $data->order_summa* $data->rate_uzs*100,
                 'clientId' =>  $data->user_id,
@@ -334,7 +335,7 @@ class OrdersController extends Controller
                     'payType' => 'TWO_STEP',
                     'isAutoComplete'=>true
                 ],
-                'sessionTimeoutSecs' => 1000,
+                'sessionTimeoutSecs' => 5000,
             ]);
             $payment = json_decode($uzumPayCurl, true);
             // dd($payment);
