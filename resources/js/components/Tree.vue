@@ -102,8 +102,8 @@
                             </div>
                             <div class="flex justify-between items-center w-full leading-[5px]">
                                 <header>
-                                    <p class="text-gray-400 text-sm">Покупка</p>
-                                    <span class="text-gray-500 text-xs">${{ node.total }}</span>
+                                    <p class="text-gray-400 text-sm">Балл</p>
+                                    <span class="text-gray-500 text-xs">{{ node.total }}</span>
                                 </header>
                                 <footer v-if="node.procent" class="text-right">
                                     <p class="text-gray-400 text-sm" title="Универсальный бонус">У.Б</p>
@@ -163,7 +163,7 @@ const getDay = (day) => moment(day).format("D")
 const getMonth = (day) => moment(day).format("MMM")
 watch(() => user.value, () => {
     vehicules.name = user.value.fname
-    vehicules.total = user.value.periodSumma
+    vehicules.total = user.value.total
     vehicules.children = user.value.children
     vehicules.childrenCount = user.value.children.length
 })

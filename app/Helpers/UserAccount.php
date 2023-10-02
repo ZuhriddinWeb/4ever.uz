@@ -10,7 +10,7 @@ class UserAccount{
     public function recursion($array, $index, $periodDays, $mainuser){
         foreach ($array as $key => $user) {
             $user->level = $index;
-            $user->total = Orders::where('user_id', $user->id)->selectRaw('sum(order_summa) as total')->first()->total;
+            $user->total = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total/2;
             $this->recursion($user->children, $index + 1, $periodDays, $mainuser);
 
 
@@ -24,7 +24,7 @@ class UserAccount{
     public function summaRecursion($childrens, $mainuser, $periodDays){
         foreach ($childrens as $key => $user) {
 
-            $mainuser->summaBranch += Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
+            $mainuser->summaBranch += Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total/2;
             $this->summaRecursion($user->children, $mainuser, $periodDays);
 
         }
@@ -41,7 +41,7 @@ class UserAccount{
         $periodDays = $this->getPeriodDays($period, $user);
         $user->days = $periodDays;
         $user->total = Orders::where('user_id', $user->id)->sumInAllPeriod()->first()->total;
-        $user->periodSumma = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
+        // $user->periodSumma = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
 
         $this->recursion($user->children, 1, $periodDays, $user);
 
