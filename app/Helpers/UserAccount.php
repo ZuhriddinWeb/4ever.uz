@@ -40,8 +40,8 @@ class UserAccount{
 
         $periodDays = $this->getPeriodDays($period, $user);
         $user->days = $periodDays;
-        $user->total = Orders::where('user_id', $user->id)->sumInAllPeriod()->first()->total;
-        // $user->periodSumma = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total;
+        $user->total = Orders::where('user_id', $user->id)->sumInPeriod($periodDays)->first()->total/2;
+        $user->nlo = Orders::where('user_id', $user->id)->sumInAllPeriod()->first()->total/2;
 
         $this->recursion($user->children, 1, $periodDays, $user);
 

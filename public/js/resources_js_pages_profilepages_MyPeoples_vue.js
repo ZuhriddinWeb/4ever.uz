@@ -546,7 +546,7 @@ function Init() {
     var activeUsers = (_user$value = user.value) === null || _user$value === void 0 ? void 0 : _user$value.children.filter(function (user) {
       return user.total >= 30;
     }).length;
-    var userSumma = (_user$value2 = user.value) === null || _user$value2 === void 0 ? void 0 : _user$value2.total;
+    var userSumma = (_user$value2 = user.value) === null || _user$value2 === void 0 ? void 0 : _user$value2.nlo;
     var levelUp = getLevelUp();
     if (activeUsers >= 9 && userSumma >= 5000 && levelUp == 9) return 9;else if (activeUsers >= 8 && userSumma >= 2500 && levelUp >= 8) return 8;else if (activeUsers >= 7 && userSumma >= 1200 && levelUp >= 7) return 7;else if (activeUsers >= 6 && userSumma >= 600 && levelUp >= 6) return 6;else if (activeUsers >= 5 && userSumma >= 250 && levelUp >= 5) return 5;else if (activeUsers >= 4 && userSumma >= 120 && levelUp >= 4) return 4;else if (activeUsers >= 3 && userSumma >= 60) return 3;else if (activeUsers >= 2) return 2;else if (activeUsers >= 1) return 1;else return 1;
   });

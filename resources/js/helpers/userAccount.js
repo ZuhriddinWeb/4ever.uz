@@ -72,7 +72,7 @@ export function Init(selectedUser = null, lastPeriod){
 
     const levels = computed(() => {
         const activeUsers = user.value?.children.filter((user) => user.total >= 30).length
-        const userSumma = user.value?.total
+        const userSumma = user.value?.nlo
         const levelUp = getLevelUp()
     
         if(activeUsers >= 9 && userSumma >= 5000 && levelUp == 9) return 9

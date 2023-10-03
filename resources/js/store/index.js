@@ -18,9 +18,9 @@ export default createStore({
             orderId:null,
             statuses: [
                 'Active partner',
-                'Partner',
-                'Partner',
-                'Partner',
+                'Partner 1',
+                'Partner 2',
+                'Partner 3',
                 'Bronze',
                 'Silver',
                 'Gold',
