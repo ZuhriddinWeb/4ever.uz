@@ -59,8 +59,14 @@
                 <td class="border-y px-2 py-1 border-gray-100">
                     {{ roundNumber(leaderBonus, 2) }}
                 </td>
-                <td class="border-y px-2 py-1 border-gray-100">
-                    {{ roundNumber(totalPrice, 2) + roundNumber(startBonus, 2) + roundNumber(leaderBonus, 2) }}
+                <td class="border-y px-2 py-1 border-gray-100 flex justify-between items-center">
+                    {{ total }}
+                    <button v-if="admin && close.issetPayment == null" @click="payment" :disabled="close.payment == false || total == 0" class="py-1 px-3 bg-pink-500 text-gray-100 rounded-sm shadow-sm disabled:bg-gray-300">
+                        Заплатить ${{ total }}
+                    </button>
+                    <button v-else-if="admin" class="py-1 px-3 bg-gray-500 text-gray-100 rounded-sm shadow-sm">
+                        Заплачено ${{ total }} <i class="fal fa-check text-sm text-green-500"></i>
+                    </button>
                 </td>
             </tr>
         </table>
@@ -131,7 +137,12 @@ import moment from '../helpers/moment'
 // HTML Element
 const tree = ref()
 
-const { selectedUser } = defineProps(['selectedUser'])
+const close = reactive({
+    payment: true,
+    issetPayment: null
+})
+const { selectedUser, admin } = defineProps(['selectedUser', 'admin'])
+
 function initSlider(slider){
     slider.slideTo(selectedUser.lastPeriod - 2)
 }
@@ -143,9 +154,14 @@ const vehicules = reactive({ name: null, children: [] })
 const { levels, totalPrice, user, getSelectedPeoples , leaderBonus} = Init(selectedUser?.id, activePeriod.value)
 
 function changePeriod(period) {
+
+    close.payment = true
+    close.issetPayment = null
+
     totalPrice.value = null
     activePeriod.value = period
     leaderBonus.value = 0
+    issetPayment()
     getSelectedPeoples(period, selectedUser?.id)
 }
 
@@ -158,6 +174,35 @@ const startBonus = computed(() => {
     const active = startBonuses.value.find((elem) => elem.period == activePeriod.value)
     return totalPrice.value / 100 * active?.prosent
 })
+
+
+const total = computed(() => roundNumber(totalPrice.value, 2) + roundNumber(startBonus.value, 2) + roundNumber(leaderBonus.value, 2))
+
+
+
+function payment(){
+    if(close.payment){
+        close.payment = false
+        axios.post('money', {
+            user_id: selectedUser?.id,
+            period: activePeriod.value,
+            summa: total.value
+        }).then(({data})=> {
+            close.issetPayment = data
+            close.payment = true
+        }).catch(() => {
+            close.payment = true
+        })
+    }
+
+}
+
+function issetPayment(){
+    axios.get(`money/${activePeriod.value}/${selectedUser?.id}`).then(({ data }) => {
+        if(data) close.issetPayment = data
+    })
+}
+issetPayment()
 
 const getDay = (day) => moment(day).format("D")
 const getMonth = (day) => moment(day).format("MMM")

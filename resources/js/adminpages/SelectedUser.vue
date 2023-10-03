@@ -7,7 +7,7 @@
                 </button>
             </header>
             <section class="px-4 py-2 bg-white flex-grow flex flex-col">
-                <Tree :selectedUser="selectedUser"></Tree>
+                <Tree :selectedUser="selectedUser" :admin="true"></Tree>
             </section>
         </main>
     </section>
