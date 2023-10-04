@@ -24,6 +24,8 @@ class MoneyController extends Controller
             'user_id' => $request->user_id,
             'period' => $request->period,
             'summa' => $request->summa,
+            'classification' => $request->classification,
+
             'check' => false,
         ]);
     }

@@ -17,6 +17,7 @@ class CreateMoneyTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('period');
+            $table->string('classification');
             $table->double('summa', 10, 2);
             $table->boolean('check')->default(false);
             $table->timestamps();

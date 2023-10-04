@@ -14,5 +14,6 @@ class Money extends Model
         'period',
         'summa',
         'check',
+        'classification'
     ];
 }

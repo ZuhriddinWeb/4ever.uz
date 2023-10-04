@@ -186,7 +186,8 @@ function payment(){
         axios.post('money', {
             user_id: selectedUser?.id,
             period: activePeriod.value,
-            summa: total.value
+            summa: total.value,
+            classification:$store.state.statuses[levels - 1]
         }).then(({data})=> {
             close.issetPayment = data
             close.payment = true
@@ -196,7 +197,6 @@ function payment(){
     }
 
 }
-
 function issetPayment(){
     axios.get(`money/${activePeriod.value}/${selectedUser?.id}`).then(({ data }) => {
         if(data) close.issetPayment = data
