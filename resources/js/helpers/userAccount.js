@@ -96,7 +96,7 @@ export function Init(selectedUser = null, lastPeriod){
 
     function getProcent(user, cent){
         var prosent = (+user.total/100)*cent
-        user.procent = Math.round(prosent * 100)/100/2
+        user.procent = Math.round(prosent * 100)/100
         totalPrice.value += user.procent
     }
 
