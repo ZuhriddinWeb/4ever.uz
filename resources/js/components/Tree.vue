@@ -187,7 +187,7 @@ function payment(){
             user_id: selectedUser?.id,
             period: activePeriod.value,
             summa: total.value,
-            classification:$store.state.statuses[levels - 1]
+            classification:store.state.statuses[levels - 1]
         }).then(({data})=> {
             close.issetPayment = data
             close.payment = true
